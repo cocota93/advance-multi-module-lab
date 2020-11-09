@@ -36,20 +36,21 @@ public class MemberApiController {
         return loginToken;
     }
 
-    //postman으로 헤더에 X_AUTH_TOKEN 제대로 안넣어서 보내면 requestId가 익명으로 나오고
-    //제대로 넣어서 보내면 누군지 식별됨.
-    //이대한 일련의 과정은 JwtAuthenticationFilter에서 처리됨.
-//    @PostMapping(value = "/modify")
-//    public String modify(){
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String requestId = authentication.getName();
-//
-//        Member findMember = memberRepository.findFetchAuthByLoginId(requestId);
-//        if(findMember == null){
-//            return "";
-//        }
-//
-//        return "modify";
-//    }
+    @PostMapping(value = "/findLoginId")
+    public void findLoginId() {
+        memberAuthService.findLoginId();
+    }
 
+    @PostMapping(value = "/findPassword")
+    public void findPassword() {
+        memberAuthService.findPassword();
+    }
+
+    @PostMapping(value = "/modifyPassword")
+    public void modifyPassword() {
+        memberAuthService.modifyPassword();
+    }
+
+
+//    이메일인증
 }

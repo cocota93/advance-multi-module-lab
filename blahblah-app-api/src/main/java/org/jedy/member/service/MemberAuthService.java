@@ -69,4 +69,13 @@ public class MemberAuthService {
         String token = jwtTokenProvider.createToken(String.valueOf(loginMember.getLoginId()), authorityList);
         return token;
     }
+
+    public void findLoginId() {
+    }
+
+    public void findPassword() {
+    }
+
+    public void modifyPassword() {
+    }
 }

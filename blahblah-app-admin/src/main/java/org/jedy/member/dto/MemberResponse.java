@@ -1,5 +1,6 @@
 package org.jedy.member.dto;
 
+import com.querydsl.core.annotations.QueryProjection;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,5 +14,10 @@ public class MemberResponse {
 
     public MemberResponse(final Member member) {
         this.name = member.getName();
+    }
+
+    @QueryProjection
+    public MemberResponse(final String name) {
+        this.name = name;
     }
 }

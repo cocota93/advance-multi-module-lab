@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class OperatorController {
 
     @Autowired OperatorRepository operatorRepository;
+
     @Autowired PasswordEncoder passwordEncoder;
 
     @GetMapping("/create")
