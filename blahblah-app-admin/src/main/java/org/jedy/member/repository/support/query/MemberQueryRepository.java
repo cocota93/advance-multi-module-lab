@@ -1,4 +1,4 @@
-package org.jedy.member.query;
+package org.jedy.member.repository.support.query;
 
 import org.jedy.member.dto.MemberResponse;
 import org.jedy.member_core.domain.Member;
@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface MemberQueryRepository extends JpaRepository<Member, Long>, MemberQueryRepositoryCustom {
 

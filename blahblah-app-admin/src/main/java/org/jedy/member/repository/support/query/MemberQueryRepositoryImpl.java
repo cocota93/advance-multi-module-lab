@@ -1,7 +1,6 @@
-package org.jedy.member.query;
+package org.jedy.member.repository.support.query;
 
 
-import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -9,9 +8,7 @@ import org.jedy.member.dto.MemberResponse;
 import org.jedy.member.dto.MemberSearchCondition;
 import org.jedy.member.dto.QMemberResponse;
 import org.jedy.member_core.domain.Member;
-import org.jedy.member_core.domain.QMember;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.support.PageableExecutionUtils;
 
