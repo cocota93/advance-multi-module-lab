@@ -111,6 +111,8 @@ project(':blahblah-app-api') {
     dependencies {
         compile project(':member-core')
         compile project(':core-web')
+
+        implementation 'io.jsonwebtoken:jjwt:0.9.1'
     }
 }
 
