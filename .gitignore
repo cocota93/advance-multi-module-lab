@@ -1,2 +1,27 @@
 # Project exclude paths
 /.gradle/
+
+/blahblah-app-admin/build/
+/blahblah-app-admin/out/
+/blahblah-app-admin/src/main/generated/
+
+/blahblah-app-api/build/
+/blahblah-app-api/out/
+/blahblah-app-api/src/main/generated/
+
+/member-core/build/
+/member-core/out/
+/member-core/src/main/generated/
+
+/operator-core/build/
+/operator-core/out/
+/operator-core/src/main/generated/
+
+
+/core-web/build/
+/core-web/out/
+/core-web/src/main/generated/
+
+/system-core/build/
+/system-core/out/
+/system-core/src/main/generated/
