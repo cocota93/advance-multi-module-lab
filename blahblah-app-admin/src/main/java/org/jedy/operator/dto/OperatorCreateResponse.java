@@ -3,9 +3,9 @@ package org.jedy.operator.dto;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.jedy.operator_core.domain.operator.Operator;
-import org.jedy.operator_core.domain.operator.OperatorAuth;
-import org.jedy.operator_core.domain.operator.OperatorAuthType;
+import org.jedy.operator_core.domain.Operator;
+import org.jedy.operator_core.domain.OperatorAuth;
+import org.jedy.operator_core.domain.OperatorAuthType;
 
 import java.util.ArrayList;
 import java.util.List;

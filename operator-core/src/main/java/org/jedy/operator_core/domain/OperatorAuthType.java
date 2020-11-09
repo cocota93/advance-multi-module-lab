@@ -1,4 +1,4 @@
-package org.jedy.operator_core.domain.operator;
+package org.jedy.operator_core.domain;
 
 import org.springframework.security.core.GrantedAuthority;
 

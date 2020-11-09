@@ -1,4 +1,4 @@
-package org.jedy.operator_core.domain.operator;
+package org.jedy.member_core.domain;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -18,20 +18,20 @@ import javax.persistence.*;
         }
 )
 @ToString(of = {"id", "type"} )
-public class OperatorAuth {
+public class MemberAuth {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "operator_auth_id")
+    @Column(name = "member_auth_id")
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private OperatorAuthType type;
+    private MemberAuthType type;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id")
-    private Operator owner;
+    private Member owner;
 
-    public OperatorAuth(Operator owner, OperatorAuthType type) {
+    public MemberAuth(Member owner, MemberAuthType type) {
         this.owner = owner;
         this.type = type;
     }

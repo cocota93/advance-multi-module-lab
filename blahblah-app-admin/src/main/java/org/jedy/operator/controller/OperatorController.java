@@ -1,10 +1,10 @@
 package org.jedy.operator.controller;
 
 import org.jedy.operator.dto.OperatorCreateResponse;
-import org.jedy.operator_core.domain.operator.Operator;
-import org.jedy.operator_core.domain.operator.OperatorAuth;
-import org.jedy.operator_core.domain.operator.OperatorAuthType;
-import org.jedy.operator_core.domain.operator.OperatorRepository;
+import org.jedy.operator_core.domain.Operator;
+import org.jedy.operator_core.domain.OperatorAuth;
+import org.jedy.operator_core.domain.OperatorAuthType;
+import org.jedy.operator_core.repository.OperatorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;

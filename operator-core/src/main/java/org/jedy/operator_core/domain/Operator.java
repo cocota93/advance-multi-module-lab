@@ -1,4 +1,4 @@
-package org.jedy.operator_core.domain.operator;
+package org.jedy.operator_core.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
@@ -49,7 +49,6 @@ public class Operator {
     public void addAuthority(/*@NotNull*/ OperatorAuth operatorAuth){
         if(operatorAuth == null || this != operatorAuth.getOwner()){
             //TODO 별도로 예외를 만들어서 발생시킬려 했더니 의존성 역전 발생. 어떻게 해야될까?
-//            throw new OperatorAuthAddException();
             throw new BusinessException(ErrorCode.ADD_AUTH_OWNER_NOT_EQUAL);
         }
 
