@@ -1,7 +1,6 @@
 spring:
   datasource:
     url: jdbc:h2:tcp://localhost/~/advance_multi_module_lab
-    #    url: jdbc:h2:mem:test
     username: sa
     password:
     driver-class-name: org.h2.Driver
@@ -11,19 +10,14 @@ spring:
       ddl-auto: create
     properties:
       hibernate:
-  #        show_sql: true
-  #        format_sql: true
-  #        use_sql_comments: true
-
-  jwt.secret: wjsurshdmf@$&
+#        show_sql: true
+#        format_sql: true
+#        use_sql_comments: true
 
 #logging:
 #  level:
 #    root: warn
 #    org.hibernate.SQL: debug
 
-
-springdoc:
-  swagger-ui:
-    path: /swagger-ui.html
-  paths-to-match: /api/**
+#server:
+#  port: 8888
