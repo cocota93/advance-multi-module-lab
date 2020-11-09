@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.jedy.system_core.entity.BaseTimeEntity;
 import org.jedy.system_core.global.error.exception.BusinessException;
 import org.jedy.system_core.global.error.exception.ErrorCode;
 
@@ -23,7 +24,7 @@ import java.util.List;
         }
 )
 @ToString(of = {"id", "loginId"} )
-public class Operator {
+public class Operator extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

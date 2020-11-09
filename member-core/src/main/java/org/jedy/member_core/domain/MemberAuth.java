@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.jedy.system_core.entity.BaseTimeEntity;
 
 import javax.persistence.*;
 
@@ -18,7 +19,7 @@ import javax.persistence.*;
         }
 )
 @ToString(of = {"id", "type"} )
-public class MemberAuth {
+public class MemberAuth extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_auth_id")
