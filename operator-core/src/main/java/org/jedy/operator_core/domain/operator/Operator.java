@@ -5,8 +5,12 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.jedy.system_core.global.error.exception.BusinessException;
+import org.jedy.system_core.global.error.exception.ErrorCode;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -33,22 +37,22 @@ public class Operator {
     @Column(nullable = false)
     private String password;
 
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
-//    private List<OperatorAuth> authorityList = new ArrayList<>();
-//
+    @JsonIgnore
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    private List<OperatorAuth> authorityList = new ArrayList<>();
+
     public Operator(String loginId, String password) {
         this.loginId = loginId;
         this.password = password;
     }
-//
-//    public void addAuthority(@NotNull OperatorAuth operatorAuth){
-//        if(operatorAuth == null || this != operatorAuth.getOwner()){
-//            //TODO 별도로 예외를 만들어서 발생시킬려 했더니 의존성 역전 발생. 어떻게 해야될까?
-////            throw new OperatorAuthAddException();
-//            throw new BusinessException(ErrorCode.ADD_AUTH_OWNER_NOT_EQUAL);
-//        }
-//
-//        authorityList.add(operatorAuth);
-//    }
+
+    public void addAuthority(/*@NotNull*/ OperatorAuth operatorAuth){
+        if(operatorAuth == null || this != operatorAuth.getOwner()){
+            //TODO 별도로 예외를 만들어서 발생시킬려 했더니 의존성 역전 발생. 어떻게 해야될까?
+//            throw new OperatorAuthAddException();
+            throw new BusinessException(ErrorCode.ADD_AUTH_OWNER_NOT_EQUAL);
+        }
+
+        authorityList.add(operatorAuth);
+    }
 }
