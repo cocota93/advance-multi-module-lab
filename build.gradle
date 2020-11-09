@@ -27,7 +27,6 @@ subprojects {
     dependencies {
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
-        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     }
 
 //    task initSourceFolders {
@@ -72,6 +71,11 @@ project(':operator-core') {
     dependencies {
         compile project(':system-core')
 
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+        implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5'
+        implementation 'com.querydsl:querydsl-jpa'
+        implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.6.2")
+
         compile('com.h2database:h2:1.4.199')
     }
 }
@@ -81,6 +85,10 @@ project(':core-web') {
     jar.enabled = true//main이 없는 모듈에는 다 포함 추가해줘야한다
 
     dependencies {
+        compile 'org.springframework.boot:spring-boot-starter-web'
+        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        }
     }
 }
 
@@ -88,7 +96,7 @@ project(':core-web') {
 project(':blahblah-app-api') {
     dependencies {
         compile project(':member-core')
-        implementation 'org.springframework.boot:spring-boot-starter-web'
+        compile project(':core-web')
     }
 }
 
@@ -97,7 +105,11 @@ project(':blahblah-app-admin') {
     dependencies {
         compile project(':operator-core')
         compile project(':member-core')
+        compile project(':core-web')
 
-        implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+        implementation 'org.springframework.boot:spring-boot-devtools'
+
+
     }
 }
