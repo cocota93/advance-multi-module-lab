@@ -112,6 +112,7 @@ project(':blahblah-app-api') {
         compile project(':member-core')
         compile project(':core-web')
 
+        compile 'org.springdoc:springdoc-openapi-ui:1.4.8'
         implementation 'io.jsonwebtoken:jjwt:0.9.1'
     }
 }

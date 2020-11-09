@@ -1,2 +1,7 @@
 spring:
   jwt.secret: wjsurshdmf@$&
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  paths-to-match: /api/**
