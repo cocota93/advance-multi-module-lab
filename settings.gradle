@@ -1,0 +1,8 @@
+rootProject.name = 'advance-multi-module-lab'
+include 'blahblah-app-admin'
+include 'blahblah-app-api'
+include 'system-core'
+include 'member-core'
+include 'operator-core'
+include 'core-web'
+
