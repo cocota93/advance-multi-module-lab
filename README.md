@@ -5,12 +5,14 @@
 
 ### 사용된 기술
 - spring boot
+- gradle
 - JPA 
 - jpa data 
 - query dsl 
 - Postgre sql 
 - spring security form방식
 - spring security jwt방식 
+- swagger(springdoc openapi)
 
 ### 프로젝트 특징
 - 어드민계정(Operator)과 일반 유저계정(Member)을 완전히 분리하여 진행
