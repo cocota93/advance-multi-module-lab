@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface MemberQueryRepositoryCustom {
     List<MemberResponse> search(MemberSearchCondition condition);
-    Page<MemberResponse> searchPageComplex(MemberSearchCondition condition, Pageable pageable);
+    Page<MemberResponse> searchPageComplex(MemberSearchCondition condition, Integer page, Integer size);
 }

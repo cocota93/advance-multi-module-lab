@@ -9,6 +9,7 @@ import org.jedy.member.dto.MemberSearchCondition;
 import org.jedy.member.dto.QMemberResponse;
 import org.jedy.member_core.domain.Member;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.support.PageableExecutionUtils;
 
@@ -46,7 +47,9 @@ public class MemberQueryRepositoryImpl implements MemberQueryRepositoryCustom{
     }
 
     @Override
-    public Page<MemberResponse> searchPageComplex(MemberSearchCondition condition, Pageable pageable) {
+    public Page<MemberResponse> searchPageComplex(MemberSearchCondition condition, Integer page, Integer size) {
+        PageRequest pageRequest = PageRequest.of(page, size);
+
         List<MemberResponse> content = queryFactory
                 .select(new QMemberResponse(
                         member.loginId,
@@ -59,8 +62,8 @@ public class MemberQueryRepositoryImpl implements MemberQueryRepositoryCustom{
                 .where(
                         usernameEq(condition.getName())
                 )
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
+                .offset(pageRequest.getOffset())
+                .limit(pageRequest.getPageSize())
                 .fetch();
 
         JPAQuery<Member> countQuery = queryFactory
@@ -72,7 +75,9 @@ public class MemberQueryRepositoryImpl implements MemberQueryRepositoryCustom{
                         ageLoe(condition.getAgeLoe())
                 );
 
-        return PageableExecutionUtils.getPage(content, pageable, countQuery::fetchCount);
+        Page<MemberResponse> pageList = PageableExecutionUtils.getPage(content, pageRequest, countQuery::fetchCount);
+
+        return pageList;
     }
 
 
