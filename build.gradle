@@ -28,7 +28,7 @@ subprojects {
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
 
-        //jpa라이브러리를 밑에 코어쪽으로 내리고싶은데 내리면 blahblah-app-admin에서 @QueryProject으로 dto를 q파일로 만들려는게 제대로 생성이 안됨
+        //jpa라이브러리를 밑에 코어쪽으로 내리고싶은데 내리면 blahblah-app-admin에서 @QueryProject사용해서 dto를 q파일로 만들려는게 제대로 생성이 안됨
         compile 'org.springframework.boot:spring-boot-starter-data-jpa'
         compile 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5'
         compile 'com.querydsl:querydsl-jpa'
