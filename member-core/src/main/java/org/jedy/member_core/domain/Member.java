@@ -41,17 +41,20 @@ public class Member extends BaseTimeEntity {
 
   private String email;
 
+  private Integer age;
+
   @JsonIgnore
   @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
   private List<MemberAuth> authorityList = new ArrayList<>();
 
 
   @Builder(builderClassName = "BySignup", builderMethodName = "BySignup")
-  public Member(String loginId, String password, String name, String email) {
+  public Member(String loginId, String password, String name, String email, Integer age) {
     this.loginId = loginId;
     this.password = password;
     this.name = name;
     this.email = email;
+    this.age = age;
   }
 
   public void addAuthority(/*@NotNull*/ MemberAuth memberAuth) {

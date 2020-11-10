@@ -1,4 +1,4 @@
-package org.jedy.member.repository.support.query;
+package org.jedy.member.repository.query;
 
 
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -30,12 +30,17 @@ public class MemberQueryRepositoryImpl implements MemberQueryRepositoryCustom{
     public List<MemberResponse> search(MemberSearchCondition condition) {
         return queryFactory
                 .select(new QMemberResponse(
-                        member.name
+                        member.loginId,
+                        member.name,
+                        member.email,
+                        member.age
                         )
                 )
                 .from(member)
                 .where(
-                        usernameEq(condition.getName())
+                        usernameEq(condition.getName()),
+                        ageGoe(condition.getAgeGoe()),
+                        ageLoe(condition.getAgeLoe())
                 )
                 .fetch();
     }
@@ -44,7 +49,10 @@ public class MemberQueryRepositoryImpl implements MemberQueryRepositoryCustom{
     public Page<MemberResponse> searchPageComplex(MemberSearchCondition condition, Pageable pageable) {
         List<MemberResponse> content = queryFactory
                 .select(new QMemberResponse(
-                                member.name
+                        member.loginId,
+                        member.name,
+                        member.email,
+                        member.age
                         )
                 )
                 .from(member)
@@ -59,7 +67,9 @@ public class MemberQueryRepositoryImpl implements MemberQueryRepositoryCustom{
                 .select(member)
                 .from(member)
                 .where(
-                        usernameEq(condition.getName())
+                        usernameEq(condition.getName()),
+                        ageGoe(condition.getAgeGoe()),
+                        ageLoe(condition.getAgeLoe())
                 );
 
         return PageableExecutionUtils.getPage(content, pageable, countQuery::fetchCount);
@@ -70,4 +80,14 @@ public class MemberQueryRepositoryImpl implements MemberQueryRepositoryCustom{
         return hasText(name) ? member.name.eq(name) : null;
     }
 
+
+    private BooleanExpression ageGoe(Integer ageGoe) {
+        return ageGoe != null ? member.age.goe(ageGoe) : null;
+
+    }
+
+    private BooleanExpression ageLoe(Integer ageLoe) {
+        return ageLoe != null ? member.age.loe(ageLoe) : null;
+
+    }
 }

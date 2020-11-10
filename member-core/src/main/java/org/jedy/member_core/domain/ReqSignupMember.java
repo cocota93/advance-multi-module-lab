@@ -9,5 +9,6 @@ public class ReqSignupMember {
     private String password;
     private String name;
     private String email;
+    private Integer age;
 
 }

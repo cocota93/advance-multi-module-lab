@@ -1,4 +1,4 @@
-package org.jedy.member.repository.support.query;
+package org.jedy.member.repository.query;
 
 import org.jedy.member.dto.MemberResponse;
 import org.jedy.member.dto.MemberSearchCondition;

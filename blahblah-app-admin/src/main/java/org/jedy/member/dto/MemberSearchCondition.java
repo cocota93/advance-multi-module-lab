@@ -6,4 +6,6 @@ import lombok.Data;
 public class MemberSearchCondition {
 
     private String name;
+    private Integer ageGoe;
+    private Integer ageLoe;
 }

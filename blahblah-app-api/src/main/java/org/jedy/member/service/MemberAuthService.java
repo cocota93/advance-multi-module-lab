@@ -32,7 +32,7 @@ public class MemberAuthService {
 
     @GetMapping(value = "/create")
     public MemberCreateResponse testCreate() {
-        Member member = new Member("jedy", passwordEncoder.encode("1234"), "ryong", "cocota93@gmail.com");
+        Member member = new Member("jedy", passwordEncoder.encode("1234"), "ryong", "cocota93@gmail.com", 28);
         member.addAuthority(new MemberAuth(member, MemberAuthType.COMMON_USER));
         memberRepository.save(member);
         return new MemberCreateResponse(member);
@@ -52,6 +52,7 @@ public class MemberAuthService {
                 .password(passwordEncoder.encode(reqSignupMember.getPassword()))
                 .name(reqSignupMember.getName())
                 .email(reqSignupMember.getEmail())
+                .age(reqSignupMember.getAge())
                 .build();
         member.addAuthority(new MemberAuth(member, MemberAuthType.COMMON_USER));
         return memberRepository.save(member).getId();

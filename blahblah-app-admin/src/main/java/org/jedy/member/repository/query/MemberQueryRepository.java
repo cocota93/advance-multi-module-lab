@@ -1,4 +1,4 @@
-package org.jedy.member.repository.support.query;
+package org.jedy.member.repository.query;
 
 import org.jedy.member.dto.MemberResponse;
 import org.jedy.member_core.domain.Member;
@@ -18,7 +18,7 @@ public interface MemberQueryRepository extends JpaRepository<Member, Long>, Memb
     @Query("select m.name from Member m")
     List<String> findNameList();
 
-    @Query("select new org.jedy.member.dto.MemberResponse(m.name) from Member m ")
+    @Query("select new org.jedy.member.dto.MemberResponse(m.loginId, m.name, m.email, m.age) from Member m ")
     List<MemberResponse> findMemberDto();
 
 }
