@@ -5,4 +5,5 @@ include 'system-core'
 include 'member-core'
 include 'operator-core'
 include 'core-web'
+include 'notice-core'
 

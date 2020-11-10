@@ -103,6 +103,17 @@ project(':operator-core') {
     }
 }
 
+project(':notice-core') {
+    bootJar.enabled = false//main이 없는 모듈에는 다 포함 추가해줘야한다
+    jar.enabled = true//main이 없는 모듈에는 다 포함 추가해줘야한다
+
+    dependencies {
+        compile project(':system-core')
+
+        compile('com.h2database:h2:1.4.199')
+    }
+}
+
 project(':core-web') {
     bootJar.enabled = false//main이 없는 모듈에는 다 포함 추가해줘야한다
     jar.enabled = true//main이 없는 모듈에는 다 포함 추가해줘야한다
@@ -134,6 +145,7 @@ project(':blahblah-app-admin') {
         compile project(':operator-core')
         compile project(':member-core')
         compile project(':core-web')
+        compile project(':notice-core')
 
 
         compile 'org.springframework.boot:spring-boot-starter-thymeleaf'

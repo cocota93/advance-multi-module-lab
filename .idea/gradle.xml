@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/blahblah-app-api" />
             <option value="$PROJECT_DIR$/core-web" />
             <option value="$PROJECT_DIR$/member-core" />
+            <option value="$PROJECT_DIR$/notice-core" />
             <option value="$PROJECT_DIR$/operator-core" />
             <option value="$PROJECT_DIR$/system-core" />
           </set>

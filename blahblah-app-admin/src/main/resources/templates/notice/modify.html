@@ -1,0 +1,47 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/main_template}">
+
+<head>
+  <title>Spring Security Example </title>
+</head>
+<body>
+<div layout:fragment="content">
+  <form th:action="@{/notice/modify}" method="post">
+    <label>공지사항 수정</label>
+    <div><input type="hidden" th:value="${notice.id}" name="noticeId" id="noticeId" /></div>
+
+    <div> <textarea name="content" style="width:300px;height:200px;overflow-y:hidden" th:text="${notice.content}"></textarea> </div>
+
+    <div>
+      <input type="submit" value="등록"  />
+      <input type="submit" formaction="/notice/delete" value="삭제"  />
+    </div>
+  </form>
+
+  <script>
+      function xSize(e)
+      {
+          var t;
+
+          e.onfocus = function()
+          {
+              t = setInterval(
+                  function()
+                  {
+                      e.style.height = '1px';
+                      e.style.height = (e.scrollHeight + 12) + 'px';
+                  }, 100);
+          }
+
+          e.onblur = function()
+          {
+              clearInterval(t);
+          }
+      }
+
+      xSize(document.getElementById('ta'));
+  </script>
+</div>
+</body>
+</html>

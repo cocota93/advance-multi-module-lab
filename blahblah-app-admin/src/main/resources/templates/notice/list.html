@@ -1,14 +1,41 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{/layouts/main_template}">
 
 <head>
-  <title>공지사항</title>
+  <title>User</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 <div layout:fragment="content">
-<h1>공지사항!</h1>
+  <h2 th:text="'공지사항'"></h2>
+
+
+  <table border="1">
+    <tr>
+      <th align="center" width="80" th:text="'글번호'"></th>
+      <th align="center" width="120" th:text="'최초 작성자'"></th>
+      <th align="center" width="120" th:text="'최초 작성시간'"></th>
+      <th align="center" width="120" th:text="'마지막 수정자'"></th>
+      <th align="center" width="120" th:text="'마지막 수정시간'"></th>
+      <th align="center" width="120" th:text="'내용'"></th>
+    </tr>
+
+    <tr th:if="${#lists.isEmpty(pageList.content)}">
+      <td colspan="6" th:text="'List is empty.'">
+      </td>
+    </tr>
+
+    <tr th:each="notice : ${pageList.content}">
+      <td align="center" th:text="${notice.id}"></td>
+      <td align="center" th:text="${notice.createdBy}"></td>
+      <td align="center" th:text="${notice.createDate}"></td>
+      <td align="center" th:text="${notice.lastModifiedBy}"></td>
+      <td align="center" th:text="${notice.lastModifiedDate}"></td>
+      <td align="right"><a  th:text="${notice.content}" th:href="@{/notice/modify(noticeId=${notice.id})}"></a></td>
+    </tr>
+  </table>
+    <a th:href="@{/notice/create}" th:text="'새글'"></a>
 
 </div>
 </body>

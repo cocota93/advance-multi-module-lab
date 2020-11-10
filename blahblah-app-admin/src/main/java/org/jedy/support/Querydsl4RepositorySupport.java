@@ -1,4 +1,4 @@
-package org.jedy.member.repository.support;
+package org.jedy.support;
 
 import com.mysema.commons.lang.Assert;
 import com.querydsl.core.types.EntityPath;

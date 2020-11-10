@@ -4,18 +4,16 @@ import lombok.RequiredArgsConstructor;
 import org.jedy.constant.CustomConstant;
 import org.jedy.member_core.domain.Member;
 import org.jedy.member_core.repository.MemberRepository;
+import org.jedy.notice_core.domain.Notice;
 import org.jedy.operator_core.domain.Operator;
 import org.jedy.operator_core.domain.OperatorAuth;
 import org.jedy.operator_core.domain.OperatorAuthType;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
-import java.awt.print.Book;
 
 @Component
 @RequiredArgsConstructor
@@ -26,7 +24,7 @@ public class initDb {
     @PostConstruct
     public void init(){
         initService.defaultOperatorInit();
-        initService.dbInit1();
+        initService.memberInit();
     }
 
 
@@ -49,11 +47,15 @@ public class initDb {
             em.persist(operator);
         }
 
-        public void dbInit1(){
+        public void memberInit(){
             for(int i = 1; i < 123; ++i){
                 Member member = createMember("member", i);
                 em.persist(member);
             }
+        }
+
+        public void noticeInit(){
+//            Notice notice =
         }
 
         private Member createMember(String aliasName, Integer sequence) {

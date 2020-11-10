@@ -31,3 +31,8 @@
 /system-core/build/classes/java/main/
 /system-core/out/
 /system-core/src/main/generated/
+
+/notice-core/build/
+/notice-core/build/classes/java/main/
+/notice-core/out/
+/notice-core/src/main/generated/
