@@ -1,11 +1,13 @@
 package org.jedy;
 
 import lombok.RequiredArgsConstructor;
+import org.jedy.constant.CustomConstant;
 import org.jedy.member_core.domain.Member;
 import org.jedy.member_core.repository.MemberRepository;
 import org.jedy.operator_core.domain.Operator;
 import org.jedy.operator_core.domain.OperatorAuth;
 import org.jedy.operator_core.domain.OperatorAuthType;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -38,8 +40,11 @@ public class initDb {
 
         private final MemberRepository memberRepository;
 
+        private final CustomConstant customConstant;
+
+
         public void defaultOperatorInit(){
-            Operator operator = new Operator("jedy", passwordEncoder.encode("1234"));
+            Operator operator = new Operator(customConstant.getTestOperatorId(), passwordEncoder.encode(customConstant.getTestOperatorPassword()));
             operator.addAuthority(new OperatorAuth(operator, OperatorAuthType.PAY_MANAGER));
             em.persist(operator);
         }

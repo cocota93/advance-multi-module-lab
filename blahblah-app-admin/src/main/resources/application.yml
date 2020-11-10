@@ -13,6 +13,12 @@ spring:
 #        show_sql: true
 #        format_sql: true
 #        use_sql_comments: true
+#
+
+  testdata:
+    operator.id: jedy
+    operator.password: 1234
+
 
 #logging:
 #  level:

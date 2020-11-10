@@ -27,6 +27,7 @@ public class MemberController {
     return "hihi";
   }
 
+
   @GetMapping("/notFound")
   public MemberResponse notFoundError(Model model) {
 

@@ -138,6 +138,8 @@ project(':blahblah-app-admin') {
 
         compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
         compile 'org.springframework.boot:spring-boot-devtools'
+        compile 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+
 
         compile 'org.springframework.boot:spring-boot-starter-security'
         testImplementation 'org.springframework.security:spring-security-test'

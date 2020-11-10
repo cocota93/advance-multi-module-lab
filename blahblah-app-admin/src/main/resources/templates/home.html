@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/main_template}">
+
 <head>
   <title>Spring Security Example</title>
 </head>
 <body>
+<div layout:fragment="content">
 <h1>Welcome!</h1>
-
+<h2 th:text="'테스트 어드민계정 아이디 : ' + ${operatorId}"></h2>
+<h2 th:text="'테스트 어드민계정 비밀번호 : ' + ${operatorPassword}"> </h2>
 <p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
+</div>
 </body>
 </html>
