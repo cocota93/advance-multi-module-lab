@@ -1,10 +1,7 @@
 package org.jedy.member_core.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.jedy.system_core.entity.BaseTimeEntity;
 import org.jedy.system_core.global.error.exception.BusinessException;
 import org.jedy.system_core.global.error.exception.ErrorCode;
