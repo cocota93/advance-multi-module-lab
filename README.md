@@ -35,3 +35,8 @@ system domain계층
 system core계층  
   - system-core
 ```
+
+### 코드를 보는 방법
+- spring security form : Operator를 중점으로
+- spring security jwt : Member를 중점으로
+- crud : notice를 중점으로
