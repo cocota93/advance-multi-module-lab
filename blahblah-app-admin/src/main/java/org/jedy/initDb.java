@@ -8,6 +8,7 @@ import org.jedy.notice_core.domain.Notice;
 import org.jedy.operator_core.domain.Operator;
 import org.jedy.operator_core.domain.OperatorAuth;
 import org.jedy.operator_core.domain.OperatorAuthType;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,10 +49,10 @@ public class initDb {
         }
 
         public void memberInit(){
-            for(int i = 1; i < 123; ++i){
-                Member member = createMember("member", i);
-                em.persist(member);
-            }
+//            for(int i = 1; i < 47; ++i){
+//                Member member = createMember("member", i);
+//                em.persist(member);
+//            }
         }
 
         public void noticeInit(){

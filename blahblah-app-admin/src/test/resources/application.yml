@@ -1,4 +1,4 @@
-#spring:
+spring:
 #  datasource:
 #    url: jdbc:h2:tcp://localhost/~/advance_multi_module_lab
 #    username: sa

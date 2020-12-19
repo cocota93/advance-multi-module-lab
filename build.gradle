@@ -33,7 +33,7 @@ subprojects {
         compile 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5'
         compile 'com.querydsl:querydsl-jpa'
         compile("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.6.2")
-
+        compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.4")
 //        compile 'org.springframework.boot:spring-boot-starter-web'
 //        compile('com.h2database:h2:1.4.199')
 
@@ -114,6 +114,17 @@ project(':notice-core') {
     }
 }
 
+project(':oembed-core') {
+    bootJar.enabled = false//main이 없는 모듈에는 다 포함 추가해줘야한다
+    jar.enabled = true//main이 없는 모듈에는 다 포함 추가해줘야한다
+
+    dependencies {
+        compile project(':system-core')
+
+        compile('com.h2database:h2:1.4.199')
+    }
+}
+
 project(':core-web') {
     bootJar.enabled = false//main이 없는 모듈에는 다 포함 추가해줘야한다
     jar.enabled = true//main이 없는 모듈에는 다 포함 추가해줘야한다
@@ -151,14 +162,15 @@ project(':blahblah-app-admin') {
         compile 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
         compile 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 
-
-
+        compile 'org.springframework.boot:spring-boot-starter-web'
+        compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.4")
         compile 'org.springframework.boot:spring-boot-starter-security'
         testImplementation 'org.springframework.security:spring-security-test'
 
-        testImplementation('org.springframework.boot:spring-boot-starter-test') {
-            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-        }
+//        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+//            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+//        }
+        testImplementation('org.springframework.boot:spring-boot-starter-test')
     }
 
 

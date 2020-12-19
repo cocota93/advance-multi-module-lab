@@ -27,6 +27,7 @@
         <module name="advance-multi-module-lab.operator-core.main" />
         <module name="advance-multi-module-lab.blahblah-app-admin.main" />
         <module name="advance-multi-module-lab.member-core.main" />
+        <module name="advance-multi-module-lab.oembed-core.main" />
         <module name="advance-multi-module-lab.notice-core.main" />
         <module name="advance-multi-module-lab.blahblah-app-api.main" />
         <module name="advance-multi-module-lab.system-core.main" />

@@ -25,9 +25,10 @@ public enum ErrorCode {
     COUPON_EXPIRE(400, "CO002", "Coupon was already expired"),
 
     // Operator
-    ADD_AUTH_OWNER_NOT_EQUAL(400, "OPERATOR_00001", "owner of added auth not equal")
+    ADD_AUTH_OWNER_NOT_EQUAL(400, "OPERATOR_00001", "owner of added auth not equal"),
 
-
+    // Oembed
+    NOT_SUPPORT_PROVIDER_TYPE(405, "OEMBED_00001", "Not support provider type")
     ;
 
 
