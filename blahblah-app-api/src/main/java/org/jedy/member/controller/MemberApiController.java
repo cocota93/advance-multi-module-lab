@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.jedy.member.dto.response.MemberCreateResponse;
 import org.jedy.member_core.domain.ReqSignupMember;
 import org.jedy.member.service.MemberAuthService;
+import org.jedy.system_core.global.response.ResponseService;
+import org.jedy.system_core.global.response.SingleResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -16,18 +18,19 @@ import javax.validation.Valid;
 public class MemberApiController {
 
     private final MemberAuthService memberAuthService;
+    private final ResponseService responseService;
 
 
     @GetMapping(value = "/create")
-    public MemberCreateResponse create() {
-        return memberAuthService.testCreate();
+    public SingleResult<MemberCreateResponse> create() {
+        return responseService.getSingleResult(memberAuthService.testCreate());
     }
 
 
     @PostMapping(value = "/signup")
-    public MemberCreateResponse signup(@Valid ReqSignupMember reqSignupMember) {
+    public SingleResult<MemberCreateResponse> signup(@Valid ReqSignupMember reqSignupMember) {
         MemberCreateResponse member = memberAuthService.signup(reqSignupMember);
-        return member;
+        return responseService.getSingleResult(member);
     }
 
     @PostMapping(value = "/login")
