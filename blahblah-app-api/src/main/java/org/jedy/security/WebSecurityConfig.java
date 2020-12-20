@@ -57,14 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
-//
-    @Override // ignore check swagger resource(https://github.com/springdoc/springdoc-openapi/issues/308)
-    public void configure(WebSecurity web) {
-        web.ignoring()
-                .antMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**")
-        ;
 
-    }
 }
 
 //cors설정 참고 : https://oddpoet.net/blog/2017/04/27/cors-with-spring-security/

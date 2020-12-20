@@ -23,7 +23,4 @@ spring:
 #    org.hibernate.SQL: debug
 
 
-springdoc:
-  swagger-ui:
-    path: /swagger-ui.html
-  paths-to-match: /api/**
+

@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
@@ -78,6 +79,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         };
     }
 
+    @Override // ignore check swagger resource(https://github.com/springdoc/springdoc-openapi/issues/308)
+    public void configure(WebSecurity web) {
+        web.ignoring()
+                .antMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**")
+        ;
+
+    }
 }
 
 //cors설정 참고 : https://oddpoet.net/blog/2017/04/27/cors-with-spring-security/1
