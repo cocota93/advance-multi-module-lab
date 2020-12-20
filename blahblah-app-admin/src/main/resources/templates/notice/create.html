@@ -13,29 +13,6 @@
     <div><input type="submit" value="등록"/></div>
   </form>
 
-  <script>
-      function xSize(e)
-      {
-          var t;
-
-          e.onfocus = function()
-          {
-              t = setInterval(
-                  function()
-                  {
-                      e.style.height = '1px';
-                      e.style.height = (e.scrollHeight + 12) + 'px';
-                  }, 100);
-          }
-
-          e.onblur = function()
-          {
-              clearInterval(t);
-          }
-      }
-
-      xSize(document.getElementById('ta'));
-  </script>
 </div>
 </body>
 </html>

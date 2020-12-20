@@ -1,4 +1,4 @@
-package org.jedy.oembed.util;
+package org.jedy.oembed_core.util;
 
 import org.jedy.oembed_core.domain.OembedProviderType;
 import org.jedy.system_core.global.error.exception.BusinessException;
@@ -6,6 +6,7 @@ import org.jedy.system_core.global.error.exception.ErrorCode;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -31,7 +32,8 @@ public class OembedUrlUtil {
         }
 
         String fixedHost = host.replace(".", "").toUpperCase();
-        OembedProviderType providerType = OembedProviderType.valueOf(fixedHost);
+        OembedProviderType providerType = Arrays.stream(OembedProviderType.values()).filter(src -> fixedHost.contains(src.toString())).findAny().orElseThrow(() -> new BusinessException(ErrorCode.NOT_SUPPORT_PROVIDER_TYPE));
+
         StringBuilder sb = new StringBuilder();
         switch (providerType){
             case YOUTUBE:{

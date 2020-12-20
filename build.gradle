@@ -153,6 +153,7 @@ project(':blahblah-app-admin') {
     dependencies {
         compile project(':operator-core')
         compile project(':member-core')
+        compile project(':oembed-core')
         compile project(':core-web')
         compile project(':notice-core')
 
@@ -166,6 +167,7 @@ project(':blahblah-app-admin') {
         compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.4")
         compile 'org.springframework.boot:spring-boot-starter-security'
         testImplementation 'org.springframework.security:spring-security-test'
+        implementation 'org.springframework.boot:spring-boot-devtools'
 
 //        testImplementation('org.springframework.boot:spring-boot-starter-test') {
 //            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

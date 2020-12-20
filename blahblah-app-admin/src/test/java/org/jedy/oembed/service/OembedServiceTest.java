@@ -1,7 +1,7 @@
 package org.jedy.oembed.service;
 
 import org.jedy.oembed.repository.query.OembedQueryRepository;
-import org.jedy.oembed.util.OembedUrlUtil;
+import org.jedy.oembed_core.util.OembedUrlUtil;
 import org.jedy.oembed_core.domain.Oembed;
 import org.jedy.oembed_core.service.OembedServiceImpl;
 import org.jedy.system_core.util.HttpUtil;
