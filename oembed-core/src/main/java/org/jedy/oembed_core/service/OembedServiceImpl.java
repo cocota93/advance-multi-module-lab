@@ -35,7 +35,6 @@ public class OembedServiceImpl {
         return oembedRepository.findById(createId).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND.getMessage() + " createdId : " + createId));
     }
 
-    //TODO searchUrl타입을 string말고 oembedUrl같은 클래스를 만들어서 관리하는게 나을듯?
     public Oembed searchFromExternal(String searchUrl) throws Exception {
         StringBuilder jsonString = HttpUtil.get(OembedUrlUtil.createApiUrl(searchUrl));
         Oembed oembed = ConverterUtil.convertJsonStringToObject(jsonString.toString(), Oembed.class);

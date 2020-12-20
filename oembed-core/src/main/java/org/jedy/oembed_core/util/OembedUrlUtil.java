@@ -16,23 +16,28 @@ import java.util.regex.Pattern;
 * 실제로 어떤걸 쓰게될지 알수없기때문에 기본적인 호출만 만들어두고
 * 그외에는 구체적인 기획에 따라 대응
 *
-* url분리 정규표현식 출처 : https://lottogame.tistory.com/4647
 * */
 
 public class OembedUrlUtil {
 
+    //fixedhost가 필요한 이유가 잘 드러나지 않는것 같다.
+    //컨텐츠 제공자별로 여러가지 host형태를 제공해주는게 문제다.
+    //예를들면 유튜브는 아래의 형태를 모두 제공해줘야한다.
+    // ex)https://www.youtube.com/watch?v=Chgq1SWxa5Q&feature=youtu.be , https://youtu.be/Chgq1SWxa5Q
+    // 컨텐츠 제공자별로 제공해주는 형태를 모두 어떤 리스트에 담아두고 관리하는게 나을까?
+    // 근데 시간이 지나도 여기서 더 건드릴만한 일이 없을것같은데 너무 오버하는거 아닌가?
     public static URL createApiUrl(String url) throws MalformedURLException {
-        final String regex = "(^(http[s]?|ftp):\\/)?\\/?([^:\\/\\s]+)((\\/\\w+)*\\/)([\\w\\-\\.]+[^#?\\s]+)(.*)?(#[\\w\\-]+)?$";
-
-        final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
-        final Matcher matcher = pattern.matcher(url);
         String host = "";
-        if(matcher.find()){
-            host = matcher.group(3);
+        if(!"http".equals(url.substring(0, 4))){
+            host = new URL("http://" + url).getHost();
+        }else{
+            host = new URL(url).getHost();
         }
-
         String fixedHost = host.replace(".", "").toUpperCase();
-        OembedProviderType providerType = Arrays.stream(OembedProviderType.values()).filter(src -> fixedHost.contains(src.toString())).findAny().orElseThrow(() -> new BusinessException(ErrorCode.NOT_SUPPORT_PROVIDER_TYPE));
+        OembedProviderType providerType = Arrays.stream(OembedProviderType.values())
+                .filter(src -> fixedHost.contains(src.toString()))
+                .findAny().orElseThrow(() -> new BusinessException(ErrorCode.NOT_SUPPORT_PROVIDER_TYPE))
+                ;
 
         StringBuilder sb = new StringBuilder();
         switch (providerType){

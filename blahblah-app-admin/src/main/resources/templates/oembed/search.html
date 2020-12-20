@@ -54,7 +54,9 @@
     <h2 th:text="'oEmbed Test'" style="color: #f2f2f2; padding-bottom: 10px;"></h2>
     <form class="d-flex" id="search-form" th:action="@{/oembed/search}" method="get">
       <span class="icon"><i class="fa fa-search"></i></span>
-      <input class="form-control me-2" type="search" id="searchUrl" name="searchUrl" placeholder="Search" value="https://vimeo.com/20097015" aria-label="Search">
+
+      <input th:if="${searchUrl}" class="form-control me-2" type="search" id="searchUrl" name="searchUrl" placeholder="Search" th:value="${searchUrl}" aria-label="Search">
+      <input th:unless="${searchUrl}" class="form-control me-2" type="search" id="searchUrl" name="searchUrl" placeholder="Search" value="https://vimeo.com/20097015" aria-label="Search">
 <!--      <button class="btn btn-outline-success " type="submit" id="searchBtn" onclick="doSearch(event)" style="background-color: gold; color: black; border: none;">확인</button>-->
       <button class="btn btn-outline-success " type="submit" id="searchBtn" style="background-color: gold; color: black; border: none;">확인</button>
     </form>

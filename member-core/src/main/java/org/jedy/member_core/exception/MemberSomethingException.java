@@ -1,4 +1,4 @@
-package org.jedy.member.exception;
+package org.jedy.member_core.exception;
 
 
 import org.jedy.system_core.global.error.exception.BusinessException;

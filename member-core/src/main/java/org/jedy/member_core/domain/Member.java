@@ -56,8 +56,6 @@ public class Member extends BaseTimeEntity {
 
   public void addAuthority(/*@NotNull*/ MemberAuth memberAuth) {
     if(memberAuth == null || this != memberAuth.getOwner()){
-      //TODO 별도로 예외를 만들어서 발생시킬려 했더니 의존성 역전 발생. 어떻게 해야될까?
-//            throw new MemberAuthAddException();
       throw new BusinessException(ErrorCode.ADD_AUTH_OWNER_NOT_EQUAL);
     }
 

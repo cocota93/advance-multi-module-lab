@@ -31,10 +31,10 @@ public class OembedController {
 
     @GetMapping(value = "/search")
     public String search(Model model, String searchUrl) throws Exception {
-//TODO  파라미터 널처리
         if(!StringUtils.isEmpty(searchUrl)){
             Oembed oembed = oembedService.searchFromExternal(searchUrl);
             model.addAttribute("searchResult",oembed);
+            model.addAttribute("searchUrl", searchUrl);
         }
         return "/oembed/search";
     }

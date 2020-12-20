@@ -52,6 +52,7 @@ public class Oembed extends BaseTimeEntity {
     private Integer thumbnail_width;
     @Column(name = "thumbnail_url")
     private String thumbnail_url;
+    @Lob
     private String html;
 
     @Column(name = "cache_age")
