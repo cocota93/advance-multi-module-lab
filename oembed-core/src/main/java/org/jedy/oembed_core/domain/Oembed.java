@@ -31,6 +31,7 @@ public class Oembed extends BaseTimeEntity {
     @Column(name = "oembed_id")
     private Long id;
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private OembedProviderType providerType;
 
     private String title;

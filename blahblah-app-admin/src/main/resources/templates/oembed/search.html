@@ -66,34 +66,34 @@
 
     <table class="table table-striped" id="searchResult" >
       <thead >
-        <tr>
+        <tr th:if="${searchResult?.title}">
           <th style="border: none; padding-bottom: 30px;">title</th>
           <td style="border: none; padding-bottom: 30px; font-weight: bold;" th:text="${searchResult?.title}"></td>
         </tr>
       </thead>
 
       <tbody >
-        <tr>
+        <tr th:if="${searchResult?.author_name}">
           <th scope="row">type</th>
           <td th:text="${searchResult?.author_name}"></td>
         </tr>
-        <tr>
+        <tr th:if="${searchResult?.version}">
           <th scope="row">version</th>
           <td th:text="${searchResult?.version}"></td>
         </tr>
-        <tr>
+        <tr th:if="${searchResult?.provider_name}">
           <th scope="row">provider_name</th>
           <td th:text="${searchResult?.provider_name}"></td>
         </tr>
-        <tr>
+        <tr th:if="${searchResult?.provider_url}">
           <th scope="row">provider_url</th>
           <td th:text="${searchResult?.provider_url}"></td>
         </tr>
-        <tr>
+        <tr th:if="${searchResult?.is_plus}">
           <th scope="row">is_plus</th>
           <td th:text="${searchResult?.is_plus}"></td>
         </tr>
-        <tr>
+        <tr th:if="${searchResult?.html}">
           <th scope="row">html</th>
             <td >
               <div th:text="${searchResult?.html}"></div>
@@ -101,60 +101,60 @@
             </td>
         </tr>
 
-        <tr>
+        <tr th:if="${searchResult?.width}">
           <th scope="row">width</th>
           <td th:text="${searchResult?.width}"></td>
         </tr>
-        <tr>
+        <tr th:if="${searchResult?.height}">
           <th scope="row">height</th>
           <td th:text="${searchResult?.height}"></td>
         </tr>
-        <tr>
+        <tr th:if="${searchResult?.duration}">
           <th scope="row">duration</th>
           <td th:text="${searchResult?.duration}"></td>
         </tr>
-        <tr>
+        <tr th:if="${searchResult?.description}">
           <th scope="row">description</th>
           <td th:text="${searchResult?.description}"></td>
         </tr>
-        <tr>
+        <tr th:if="${searchResult?.thumbnail_url}">
           <th scope="row">thumbnail_url</th>
           <td>
             <a th:href="@{${searchResult?.thumbnail_url}}" th:text="${searchResult?.thumbnail_url}"></a>
             <img th:src="${searchResult?.thumbnail_url}">
           </td>
         </tr>
-        <tr>
+        <tr th:if="${searchResult?.thumbnail_width}">
           <th scope="row">thumbnail_width</th>
           <td th:text="${searchResult?.thumbnail_width}"></td>
         </tr>
-        <tr>
+        <tr th:if="${searchResult?.thumbnail_height}">
           <th scope="row">thumbnail_height</th>
           <td th:text="${searchResult?.thumbnail_height}"></td>
         </tr>
-        <tr>
+        <tr th:if="${searchResult?.thumbnail_url_with_play_button}">
           <th scope="row">thumbnail_url_with_play_button</th>
           <td>
             <a th:href="@{${searchResult?.thumbnail_url_with_play_button}}" th:text="${searchResult?.thumbnail_url_with_play_button}"></a>
           </td>
         </tr>
 
-        <tr>
+        <tr th:if="${searchResult?.upload_date}">
           <th scope="row">upload_date</th>
           <td th:text="${searchResult?.upload_date}"></td>
         </tr>
 
-        <tr>
+        <tr th:if="${searchResult?.video_id}">
           <th scope="row">video_id</th>
           <td th:text="${searchResult?.video_id}"></td>
         </tr>
 
-        <tr>
+        <tr th:if="${searchResult?.uri}">
           <th scope="row">url</th>
           <td th:text="${searchResult?.uri}"></td>
         </tr>
 
-        <tr>
+        <tr th:if="${searchResult?.author_name}">
           <th scope="row">author_name</th>
           <td th:text="${searchResult?.author_name}"></td>
         </tr>
