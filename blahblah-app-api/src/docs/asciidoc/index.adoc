@@ -1,0 +1,67 @@
+= API Document
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 3
+:sectlinks:
+:docinfo: shared-head
+
+[[introduction]]
+== 소개
+blahblah API
+
+&#160;
+
+[[common]]
+== 공통 사항
+
+API에 관계없이 아래 사항을 지켜주셔야 합니다. +
+blahblah... +
+현재 페이지는 http://localhost:8080/docs/index.html 로 접속하시면 볼수 있습니다.
+
+&#160;
+
+
+== 통계 API
+
+[[ad_hourly_statistic_search]]
+=== 광고 시간별 통계 조회
+
+==== Request
+include::{snippets}/ad_hourly_statistic_search/request-fields.adoc[]
+
+
+===== Request HTTP Example
+include::{snippets}/ad_hourly_statistic_search/http-request.adoc[]
+
+
+==== Response
+include::{snippets}/ad_hourly_statistic_search/response-fields-data.adoc[]
+
+
+===== Response HTTP Example
+include::{snippets}/ad_hourly_statistic_search/http-response.adoc[]
+
+&#160;
+
+[[ad_hourly_statistic_upload]]
+=== 광고 시간별 통계 업로드
+
+==== Request
+include::{snippets}/ad_hourly_statistic_upload/request-fields.adoc[]
+
+
+===== Request HTTP Example
+include::{snippets}/ad_hourly_statistic_upload/http-request.adoc[]
+
+
+==== Response
+include::{snippets}/ad_hourly_statistic_upload/response-fields-data.adoc[]
+
+
+===== Response HTTP Example
+include::{snippets}/ad_hourly_statistic_upload/http-response.adoc[]
+
+
+&#160;

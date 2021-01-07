@@ -1,20 +1,30 @@
 buildscript {
     ext {
-        springBootVersion = '2.2.2.RELEASE'
+        springBootVersion = '2.4.0'
+//        snippetsDir = file('build/generated-snippets')
+        apidocDir = file('blahblah-app-api/build/generated-snippets')
     }
+
+
     repositories {
         mavenCentral()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath "io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE"
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.9.RELEASE"
     }
+}
+
+
+plugins {
+    id "org.asciidoctor.convert" version "1.5.9.2"
 }
 
 subprojects {
     apply plugin: 'java'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'org.asciidoctor.convert'
 
     group = 'org.jedy'
     version = '0.0.1-SNAPSHOT'
@@ -30,6 +40,7 @@ subprojects {
 
         //jpa라이브러리를 밑에 코어쪽으로 내리고싶은데 내리면 blahblah-app-admin에서 @QueryProject사용해서 dto를 q파일로 만들려는게 제대로 생성이 안됨
         compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+        compile 'org.springframework.boot:spring-boot-starter-validation'
         compile 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5'
         compile 'com.querydsl:querydsl-jpa'
         compile("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.6.2")
@@ -125,6 +136,21 @@ project(':oembed-core') {
     }
 }
 
+project(':ad-statistic-core') {
+    bootJar.enabled = false//main이 없는 모듈에는 다 포함 추가해줘야한다
+    jar.enabled = true//main이 없는 모듈에는 다 포함 추가해줘야한다
+
+    dependencies {
+        compile project(':system-core')
+
+        compile('com.h2database:h2:1.4.199')
+        compile 'org.springframework.boot:spring-boot-starter-validation'
+        asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor:1.2.6.RELEASE' // (4)
+        testImplementation('org.springframework.restdocs:spring-restdocs-mockmvc') // (5)
+        testImplementation('org.springframework.boot:spring-boot-starter-test')
+    }
+}
+
 project(':core-web') {
     bootJar.enabled = false//main이 없는 모듈에는 다 포함 추가해줘야한다
     jar.enabled = true//main이 없는 모듈에는 다 포함 추가해줘야한다
@@ -138,13 +164,61 @@ project(':core-web') {
 }
 
 
+
 project(':blahblah-app-api') {
+
+
+    apply plugin: 'org.asciidoctor.convert'
+
     dependencies {
         compile project(':member-core')
         compile project(':core-web')
+        compile project(':ad-statistic-core')
 
+        compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.4")
+        compile 'org.springframework.boot:spring-boot-starter-validation'
         implementation 'io.jsonwebtoken:jjwt:0.9.1'
+        asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor:1.2.6.RELEASE' // (4)
+        testImplementation('org.springframework.restdocs:spring-restdocs-mockmvc') // (5)
+        testImplementation('org.springframework.boot:spring-boot-starter-test')
     }
+
+    ext {
+//        snippetsDir = file('build/generated-snippets')
+        snippetsDir = apidocDir
+    }
+
+    test {
+        outputs.dir snippetsDir // 선언한 디렉토리에 생성
+        useJUnitPlatform()
+    }
+
+    asciidoctor {
+        attributes 'snippets': snippetsDir // adoc 파일 생성시 올바르게 include하기 위함
+        inputs.dir snippetsDir
+        dependsOn test
+    }
+
+    bootJar {
+        dependsOn asciidoctor
+        from ("${asciidoctor.outputDir}/html5") { // gradle은 src/docs/asciidoc 에 메인 adoc생성!
+            into 'static/docs' // asciidoctor로 만든 문서는 static/docs 디렉토리로.!
+        }
+    }
+
+    task copyDocument(type: Copy) { // 생성된 docs 파일을 build시 static 아래에 docs로 복사!
+        dependsOn bootJar
+
+        from file("build/asciidoc/html5/")
+        into file("src/main/resources/static/docs")
+    }
+
+    build {
+        dependsOn copyDocument // build시 copy 실행
+    }
+
+
+
 }
 
 project(':blahblah-app-admin') {
@@ -155,6 +229,7 @@ project(':blahblah-app-admin') {
         compile project(':oembed-core')
         compile project(':core-web')
         compile project(':notice-core')
+        compile project(':ad-statistic-core')
 
 
         compile 'org.springframework.boot:spring-boot-starter-thymeleaf'

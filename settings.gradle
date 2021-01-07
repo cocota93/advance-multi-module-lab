@@ -7,4 +7,5 @@ include 'operator-core'
 include 'core-web'
 include 'notice-core'
 include 'oembed-core'
+include 'ad-statistic-core'
 

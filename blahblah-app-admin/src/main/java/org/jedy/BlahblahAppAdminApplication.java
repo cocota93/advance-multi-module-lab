@@ -10,7 +10,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 @SpringBootApplication
-@EnableJpaAuditing
 public class BlahblahAppAdminApplication {
 
   public static void main(String[] args) {
