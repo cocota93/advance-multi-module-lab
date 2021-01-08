@@ -1,5 +1,6 @@
 package org.jedy.adStatistic.controller;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.jedy.RestDocConfiguration;
 import org.jedy.ad_statistic_core.domain.AdHourlyStatistic;
@@ -7,35 +8,35 @@ import org.jedy.ad_statistic_core.dto.req.AdStatisticSearchCondition;
 import org.jedy.ad_statistic_core.dto.req.ReqUploadAdStatistic;
 import org.jedy.ad_statistic_core.dto.res.ResAdHourlyStatistic;
 import org.jedy.ad_statistic_core.dto.res.ResUploadAdHourlyStatistic;
-import org.jedy.ad_statistic_core.repository.AdHourlyStatisticRepository;
 import org.jedy.ad_statistic_core.service.AdHourlyStatisticService;
+import org.jedy.config.CustomResponseFieldsSnippet;
+import org.jedy.document.Docs;
+import org.jedy.document.EnumViewController;
 import org.jedy.security.JwtTokenProvider;
-import org.jedy.security.WebSecurityConfig;
 import org.jedy.system_core.global.response.ResponseService;
 import org.jedy.system_core.global.response.SingleResult;
 import org.jedy.system_core.util.ConverterUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.http.MediaType;
+import org.springframework.restdocs.payload.FieldDescriptor;
 import org.springframework.restdocs.payload.JsonFieldType;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.restdocs.payload.PayloadSubsectionExtractor;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Map;
 
-import static org.jedy.ad_statistic_core.domain.QAdHourlyStatistic.adHourlyStatistic;
 import static org.jedy.config.DocumentFormatGenerator.getDateFormat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
@@ -45,12 +46,12 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.restdocs.snippet.Attributes.attributes;
+import static org.springframework.restdocs.snippet.Attributes.key;
 
-//@WebMvcTest(controllers = AdStatisticController.class, excludeAutoConfiguration = {SecurityAutoConfiguration.class, WebSecurityConfig.class})
-//@RunWith(SpringRunner.class)
-@WebMvcTest(controllers = AdStatisticController.class)
+
+@WebMvcTest(controllers = {AdStatisticController.class, EnumViewController.class})
 @AutoConfigureRestDocs
-//@Import({RestDocConfiguration.class, WebSecurityConfig.class, JwtTokenProvider.class}) // 테스트 설정 import
 @Import({RestDocConfiguration.class}) // 테스트 설정 import
 class AdStatisticControllerTest {
 
@@ -61,6 +62,9 @@ class AdStatisticControllerTest {
 //    @MockBean private AdHourlyStatisticRepository adHourlyStatisticRepository;
 
 //    @Autowired private JwtTokenProvider jwtTokenProvider;
+
+    @Autowired
+    protected ObjectMapper objectMapper;
 
     private AdHourlyStatistic adHourlyStatistic;
 

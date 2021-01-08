@@ -65,3 +65,9 @@ include::{snippets}/ad_hourly_statistic_upload/http-response.adoc[]
 
 
 &#160;
+
+
+
+include::{snippets}/common/custom-response-fields.adoc[]
+
+include::{snippets}/common/custom-response-fields-apiResponseCodes.adoc[]

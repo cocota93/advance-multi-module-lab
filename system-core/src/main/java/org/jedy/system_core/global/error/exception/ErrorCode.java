@@ -1,9 +1,10 @@
 package org.jedy.system_core.global.error.exception;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.jedy.system_core.EnumType;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum ErrorCode {
+public enum ErrorCode implements EnumType {
 
     // Common
     INVALID_INPUT_VALUE(400, "C001", " Invalid Input Value"),
@@ -43,10 +44,12 @@ public enum ErrorCode {
         this.code = code;
     }
 
+    @Override
     public String getMessage() {
         return this.message;
     }
 
+    @Override
     public String getCode() {
         return code;
     }
