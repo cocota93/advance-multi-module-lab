@@ -32,7 +32,9 @@ public class MemberAuthService {
 
     @GetMapping(value = "/create")
     public MemberCreateResponse testCreate() {
-        Member member = new Member("jedy", passwordEncoder.encode("1234"), "ryong", "cocota93@gmail.com", 28);
+        String encode = passwordEncoder.encode("1234");
+        log.info("createEncode : " + encode);
+        Member member = new Member("jedy", encode, "ryong", "cocota93@gmail.com", 28);
         member.addAuthority(new MemberAuth(member, MemberAuthType.COMMON_USER));
         memberRepository.save(member);
         return new MemberCreateResponse(member);
@@ -61,7 +63,11 @@ public class MemberAuthService {
 
     public String login(String loginId, String password) {
         Member loginMember = memberRepository.findFetchAuthByLoginId(loginId)
-                .orElseThrow(() -> new MemberLoginFailException(loginId));
+                .orElseThrow(() -> new EntityNotFoundException(loginId));
+
+        if(!passwordEncoder.matches(password, loginMember.getPassword())){
+            throw new MemberLoginFailException(loginId);
+        }
 
         List<String> authorityList = loginMember.getAuthorityList().stream()
                 .map(auth -> auth.getType().getAuthority())

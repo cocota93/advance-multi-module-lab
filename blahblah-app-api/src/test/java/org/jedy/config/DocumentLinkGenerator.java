@@ -15,7 +15,7 @@ public interface DocumentLinkGenerator {
 
     @RequiredArgsConstructor
     enum DocUrl {
-        SOMETHINGENUM("somethingEnum", "예제"),
+        SOMETHINGENUM("somethingEnum", "팝업 예제"),
         ;
 
         private final String pageId;

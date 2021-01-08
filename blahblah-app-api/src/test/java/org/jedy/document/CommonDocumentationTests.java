@@ -39,7 +39,6 @@ import static org.springframework.restdocs.snippet.Attributes.key;
 import static org.springframework.restdocs.payload.PayloadDocumentation.beneathPath;
 
 @AutoConfigureRestDocs
-@Import({RestDocConfiguration.class}) // 테스트 설정 import
 @WebMvcTest(controllers = {EnumViewController.class})
 @Slf4j
 public class CommonDocumentationTests {

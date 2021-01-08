@@ -29,18 +29,16 @@ public class AdStatisticController {
 
     @GetMapping("/search")
     @ResponseBody
-    public List<ResAdHourlyStatistic> search(AdStatisticSearchCondition adStatisticSearchCondition){
-//        List<ResAdHourlyStatistic> search = adHourlyStatisticService.search(adStatisticSearchCondition);
-        List<ResAdHourlyStatistic> search = new ArrayList<>();
-        return search;
+    public SingleResult<List<ResAdHourlyStatistic>> search(AdStatisticSearchCondition adStatisticSearchCondition){
+        List<ResAdHourlyStatistic> search = adHourlyStatisticService.search(adStatisticSearchCondition);
+        return responseService.getSingleResult(search);
     }
 
-    @GetMapping("/upload")
+    @PostMapping("/upload")
     @ResponseBody
-    public SingleResult<ResUploadAdHourlyStatistic> uploadAdStatistic(@RequestBody /*@Valid*/ ReqUploadAdStatistic reqUploadAdStatistic) throws Exception {
-//        Long uploadEntityId = adHourlyStatisticService.doUpload(reqUploadAdStatistic);
-//        AdHourlyStatistic uploadEntity = adHourlyStatisticService.findById(uploadEntityId);
-//        return responseService.getSingleResult(new ResUploadAdHourlyStatistic(uploadEntity));
-        return responseService.getSingleResult(new ResUploadAdHourlyStatistic());
+    public SingleResult<ResUploadAdHourlyStatistic> uploadAdStatistic(@RequestBody @Valid ReqUploadAdStatistic reqUploadAdStatistic) throws Exception {
+        Long uploadEntityId = adHourlyStatisticService.doUpload(reqUploadAdStatistic);
+        AdHourlyStatistic uploadEntity = adHourlyStatisticService.findById(uploadEntityId);
+        return responseService.getSingleResult(new ResUploadAdHourlyStatistic(uploadEntity));
     }
 }

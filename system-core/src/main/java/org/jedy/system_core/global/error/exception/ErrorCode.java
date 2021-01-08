@@ -22,8 +22,8 @@ public enum ErrorCode implements EnumType {
     SOMETHING_INVALID(400, "M003", "Something is invalid"),
 
     // Coupon
-    COUPON_ALREADY_USE(400, "CO001", "Coupon was already used"),
-    COUPON_EXPIRE(400, "CO002", "Coupon was already expired"),
+    COUPON_ALREADY_USE(400, "COUPON_00001", "Coupon was already used"),
+    COUPON_EXPIRE(400, "COUPON_00002", "Coupon was already expired"),
 
     // Operator
     ADD_AUTH_OWNER_NOT_EQUAL(400, "OPERATOR_00001", "owner of added auth not equal"),

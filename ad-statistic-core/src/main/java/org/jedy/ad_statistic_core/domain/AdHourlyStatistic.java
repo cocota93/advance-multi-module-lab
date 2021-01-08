@@ -9,14 +9,6 @@ import org.jedy.ad_statistic_core.dto.req.ReqUploadAdStatistic;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-/*
-*
-- 집계 날짜 정보 (ex. 2020-01-01)
-- 집계 시각 정보 (ex. 22)
-- 광고 요청 수
-- 광고 응답 수
-- 광고 클릭 수
-* */
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(
