@@ -37,6 +37,8 @@ import java.util.Arrays;
 import java.util.Map;
 
 import static org.jedy.config.DocumentFormatGenerator.getDateFormat;
+import static org.jedy.config.DocumentLinkGenerator.DocUrl.SOMETHINGENUM;
+import static org.jedy.config.DocumentLinkGenerator.generateLinkCode;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
@@ -197,7 +199,7 @@ class AdStatisticControllerTest {
                                 fieldWithPath("hour").type(JsonFieldType.NUMBER).description("시간"),
                                 fieldWithPath("reqCount").type(JsonFieldType.NUMBER).description("광고 요청횟수"),
                                 fieldWithPath("resCount").type(JsonFieldType.NUMBER).description("광고 응답횟수"),
-                                fieldWithPath("clickCount").type(JsonFieldType.NUMBER).description("광고 클릭횟수")
+                                fieldWithPath("clickCount").type(JsonFieldType.NUMBER).description(generateLinkCode(SOMETHINGENUM))
                         )
                 )
         )
