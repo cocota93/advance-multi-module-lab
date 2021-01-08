@@ -21,6 +21,15 @@
 /operator-core/out/
 /operator-core/src/main/generated/
 
+/oembed-core/build/
+/oembed-core/build/classes/java/main/
+/oembed-core/out/
+/oembed-core/src/main/generated/
+
+/ad-statistic-core/build/
+/ad-statistic-core/build/classes/java/main/
+/ad-statistic-core/out/
+/ad-statistic-core/src/main/generated/
 
 /core-web/build/
 /core-web/build/classes/java/main/
