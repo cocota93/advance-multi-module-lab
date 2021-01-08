@@ -1,3 +1,6 @@
+ifndef::snippets[]
+:snippets: ../../../build/generated-snippets
+endif::[]
 = API Document
 :doctype: book
 :icons: font

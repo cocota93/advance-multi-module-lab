@@ -2,7 +2,7 @@ buildscript {
     ext {
         springBootVersion = '2.4.0'
 //        snippetsDir = file('build/generated-snippets')
-        apidocDir = file('blahblah-app-api/build/generated-snippets')
+//        apidocDir = file('blahblah-app-api/build/generated-snippets')
     }
 
 
@@ -187,8 +187,8 @@ project(':blahblah-app-api') {
     }
 
     ext {
-//        snippetsDir = file('build/generated-snippets')
-        snippetsDir = apidocDir
+        snippetsDir = file('build/generated-snippets')
+//        snippetsDir = apidocDir
     }
 
     test {
