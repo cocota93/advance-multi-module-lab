@@ -13,10 +13,10 @@
 
   <table border="1">
     <tr>
-      <th align="center" width="80" th:text="'아이디'"></th>
-      <th align="center" width="100" th:text="'사용자명'"></th>
+      <th align="center" width="150" th:text="'아이디'"></th>
+      <th align="center" width="150" th:text="'사용자명'"></th>
       <th align="center" width="100" th:text="'나이'"></th>
-      <th align="center" width="100" th:text="'이메일'"></th>
+      <th align="center" width="200" th:text="'이메일'"></th>
     </tr>
 
     <tr th:if="${#lists.isEmpty(pageList.content)}">
@@ -25,10 +25,10 @@
     </tr>
 
     <tr th:each="member : ${pageList.content}">
-      <td align="center" th:text="${member.loginId}"></td>
-      <td align="right" th:text="${member.name}"></td>
-      <td align="right" th:text="${member.age}"></td>
-      <td align="right" th:text="${member.email}"></td>
+      <td align="left" th:text="${member.loginId}"></td>
+      <td align="left" th:text="${member.name}"></td>
+      <td align="center" th:text="${member.age}"></td>
+      <td align="left" th:text="${member.email}"></td>
     </tr>
   </table>
 

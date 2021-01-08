@@ -1,4 +1,4 @@
-package org.jedy.system_core;
+package org.jedy.system_core.support;
 
 public interface EnumType {
     String getCode();

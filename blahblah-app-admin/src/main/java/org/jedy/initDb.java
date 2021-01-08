@@ -49,10 +49,10 @@ public class initDb {
         }
 
         public void memberInit(){
-//            for(int i = 1; i < 47; ++i){
-//                Member member = createMember("member", i);
-//                em.persist(member);
-//            }
+            for(int i = 1; i < 47; ++i){
+                Member member = createMember("member", i);
+                em.persist(member);
+            }
         }
 
         public void noticeInit(){

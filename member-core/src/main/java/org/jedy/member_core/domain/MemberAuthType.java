@@ -1,6 +1,6 @@
 package org.jedy.member_core.domain;
 
-import org.jedy.system_core.EnumType;
+import org.jedy.system_core.support.EnumType;
 import org.springframework.security.core.GrantedAuthority;
 
 public enum MemberAuthType implements GrantedAuthority, EnumType {

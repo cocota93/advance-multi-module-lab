@@ -10,6 +10,7 @@ import org.jedy.notice_core.repository.NoticeRepository;
 import org.jedy.notice_core.service.NoticeServiceImpl;
 import org.jedy.system_core.global.error.exception.EntityNotFoundException;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -57,11 +58,12 @@ public class NoticeController {
     }
 
     @GetMapping("/list")
-    public String list(Model model, @RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "20") Integer size) {
+//    public String list(Model model, @RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "20") Integer size) {
+    public String list(Model model, Pageable pageable) {
         NoticeSearchCondition condition = new NoticeSearchCondition();
         condition.setDeleted(false);
 
-        Page<Notice> pageList = noticeQueryRepository.searchPage(condition, page, size);
+        Page<Notice> pageList = noticeQueryRepository.searchPage(condition, pageable);
         model.addAttribute("pageList", pageList);
 
         return "/notice/list";

@@ -1,7 +1,7 @@
 package org.jedy.system_core.global.error.exception;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.jedy.system_core.EnumType;
+import org.jedy.system_core.support.EnumType;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum ErrorCode implements EnumType {

@@ -27,12 +27,15 @@ import static org.jedy.ad_statistic_core.domain.QAdHourlyStatistic.adHourlyStati
 
 
 @Service
-@RequiredArgsConstructor
 @Transactional
 public class AdHourlyStatisticService {
 
-    private final AdHourlyStatisticRepository adHourlyStatisticRepository;
-    private final JPAQueryFactory queryFactory;
+    @Autowired private AdHourlyStatisticRepository adHourlyStatisticRepository;
+    private JPAQueryFactory queryFactory;
+
+    public AdHourlyStatisticService(EntityManager em){
+        this.queryFactory = new JPAQueryFactory(em);
+    }
 
 
     public AdHourlyStatistic findById(Long id) {
