@@ -2,6 +2,7 @@ package org.jedy.oembed_core.service;
 
 import lombok.RequiredArgsConstructor;
 import org.jedy.oembed_core.domain.Oembed;
+import org.jedy.oembed_core.dto.OembedReceiver;
 import org.jedy.oembed_core.repository.OembedRepository;
 import org.jedy.oembed_core.util.OembedUrlUtil;
 import org.jedy.system_core.global.error.exception.EntityNotFoundException;
@@ -12,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 
 /*
 * oembed때문에 외부api호출하는 클래스를 하나 더 만들어서 서버내에서 로직처리하는 클래스와 
@@ -35,9 +35,9 @@ public class OembedServiceImpl {
         return oembedRepository.findById(createId).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND.getMessage() + " createdId : " + createId));
     }
 
-    public Oembed searchFromExternal(String searchUrl) throws Exception {
+    public OembedReceiver searchFromExternal(String searchUrl) throws Exception {
         StringBuilder jsonString = HttpUtil.get(OembedUrlUtil.createApiUrl(searchUrl));
-        Oembed oembed = ConverterUtil.convertJsonStringToObject(jsonString.toString(), Oembed.class);
-        return oembed;
+        OembedReceiver oembedReceiver = ConverterUtil.convertJsonStringToObject(jsonString.toString(), OembedReceiver.class);
+        return oembedReceiver;
     }
 }
