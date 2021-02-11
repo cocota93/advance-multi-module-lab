@@ -36,3 +36,4 @@ public abstract class ApiDocumentationTest {
 }
 
 //Service 주입 : https://spring.io/guides/gs/multi-module/
+//스프링(Spring)에서 Error creating bean with name 에러 발생시 : https://needneo.tistory.com/10

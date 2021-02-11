@@ -81,3 +81,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 
 //cors설정 참고 : https://oddpoet.net/blog/2017/04/27/cors-with-spring-security/
+
+/*
+
+가입시 : 필터 - 가입
+로그인시 : 여러가지 기본 필터 - JwtAuthenticationFilter - 서비스레이어 로그인 로직 - 끝
+토큰으로 인증시 : 필터 - jwt필터 에서 CustomAuthService이용하여 존재하는 유저인지 확인
+*/
