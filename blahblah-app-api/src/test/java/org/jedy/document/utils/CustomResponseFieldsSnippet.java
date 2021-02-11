@@ -1,4 +1,4 @@
-package org.jedy.config;
+package org.jedy.document.utils;
 
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.operation.Operation;

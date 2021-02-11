@@ -1,10 +1,10 @@
 package org.jedy.document;
 
 import org.jedy.member_core.domain.MemberAuthType;
-import org.jedy.system_core.support.EnumType;
 import org.jedy.system_core.global.error.exception.ErrorCode;
 import org.jedy.system_core.global.response.ResponseService;
 import org.jedy.system_core.global.response.SingleResult;
+import org.jedy.system_core.support.EnumType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,4 +1,4 @@
-package org.jedy.config;
+package org.jedy.document.utils;
 
 import org.springframework.restdocs.operation.preprocess.OperationRequestPreprocessor;
 import org.springframework.restdocs.operation.preprocess.OperationResponsePreprocessor;

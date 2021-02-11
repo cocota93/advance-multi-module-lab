@@ -1,92 +1,44 @@
 package org.jedy.adStatistic.controller;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.jedy.RestDocConfiguration;
+import org.jedy.ApiDocumentationTest;
 import org.jedy.ad_statistic_core.domain.AdHourlyStatistic;
 import org.jedy.ad_statistic_core.dto.req.AdStatisticSearchCondition;
 import org.jedy.ad_statistic_core.dto.req.ReqUploadAdStatistic;
 import org.jedy.ad_statistic_core.dto.res.ResAdHourlyStatistic;
-import org.jedy.ad_statistic_core.dto.res.ResUploadAdHourlyStatistic;
 import org.jedy.ad_statistic_core.service.AdHourlyStatisticService;
-import org.jedy.config.CustomResponseFieldsSnippet;
-import org.jedy.document.Docs;
-import org.jedy.document.EnumViewController;
-import org.jedy.member.service.MemberAuthService;
-import org.jedy.member_core.domain.Member;
-import org.jedy.member_core.domain.MemberAuth;
-import org.jedy.member_core.domain.MemberAuthType;
-import org.jedy.member_core.repository.MemberRepository;
-import org.jedy.security.JwtAuthenticationFilter;
-import org.jedy.security.JwtTokenProvider;
-import org.jedy.system_core.global.response.ResponseService;
-import org.jedy.system_core.global.response.SingleResult;
 import org.jedy.system_core.util.ConverterUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.mock.mockito.SpyBean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.FilterType;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
-import org.springframework.restdocs.payload.FieldDescriptor;
 import org.springframework.restdocs.payload.JsonFieldType;
-import org.springframework.restdocs.payload.PayloadSubsectionExtractor;
-import org.springframework.security.access.SecurityConfig;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.test.context.support.WithAnonymousUser;
-import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 
-import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
-import static org.jedy.config.DocumentFormatGenerator.getDateFormat;
-import static org.jedy.config.DocumentLinkGenerator.DocUrl.SOMETHINGENUM;
-import static org.jedy.config.DocumentLinkGenerator.generateLinkCode;
-import static org.jedy.config.DocumentLinkGenerator.generateText;
+import static org.jedy.document.utils.DocumentFormatGenerator.getDateFormat;
+import static org.jedy.document.utils.DocumentLinkGenerator.DocUrl.SOMETHINGENUM;
+import static org.jedy.document.utils.DocumentLinkGenerator.generateLinkCode;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
-import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.restdocs.snippet.Attributes.attributes;
-import static org.springframework.restdocs.snippet.Attributes.key;
 
 
-
-//@WebMvcTest(controllers = {AdStatisticController.class, EnumViewController.class}, excludeFilters = {@ComponentScan.Filter(classes = JwtAuthenticationFilter.class)})
-//@WebMvcTest(controllers = {AdStatisticController.class, EnumViewController.class}, excludeFilters = {@ComponentScan.Filter(type = FilterType.CUSTOM, classes = {JwtAuthenticationFilter.class, })})
-@WebMvcTest(controllers = {AdStatisticController.class, EnumViewController.class})
 @AutoConfigureMockMvc(addFilters = false)
-@AutoConfigureRestDocs
-@Import({RestDocConfiguration.class}) // 테스트 설정 import
-class AdStatisticControllerTest {
+@WebMvcTest(controllers = {
+        AdStatisticController.class
+})
+class AdStatisticControllerTest extends ApiDocumentationTest {
 
-    @Autowired private MockMvc mockMvc;
     @MockBean private AdHourlyStatisticService adHourlyStatisticService;
-    @SpyBean private JwtTokenProvider jwtTokenProvider;
-    @SpyBean private ResponseService responseService;
-
-    @SpyBean protected ObjectMapper objectMapper;
 
     private AdHourlyStatistic adHourlyStatistic;
 

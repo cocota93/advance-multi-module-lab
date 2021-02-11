@@ -1,4 +1,4 @@
-package org.jedy.config;
+package org.jedy.document.utils;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
