@@ -9,7 +9,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 public class BlahblahAppApiApplication {
 
     public static final String APPLICATION_LOCATIONS = "spring.config.location="
-            + "classpath:application.yml,"
+//            + "classpath:application.yml,"
+            + "classpath:"
+//            + "application.yml,"
             + "~/app/config/blahblah-app-api/real-application.yml";
 
 
