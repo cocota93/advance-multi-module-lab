@@ -34,5 +34,5 @@ deploy:
     acl: public_read
     wait-until-deployed: true
     on:
-      repo: jedy/advance-multi-module-lab #Github 주소
+      repo: cocota93/advance-multi-module-lab #Github 주소
       branch: master
