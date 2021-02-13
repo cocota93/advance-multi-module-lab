@@ -10,7 +10,7 @@ public class BlahblahAppApiApplication {
 
     public static final String APPLICATION_LOCATIONS = "spring.config.location="
             + "classpath:application.yml,"
-            + "/app/config/blahblah-app-api/real-application.yml";
+            + "~/app/config/blahblah-app-api/real-application.yml";
 
 
     public static void main(String[] args) {
