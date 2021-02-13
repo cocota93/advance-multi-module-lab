@@ -1,4 +1,4 @@
-# advance-multi-module-lab
+# advance-multi-module-lab [![Build Status](https://travis-ci.org/cocota93/advance-multi-module-lab.svg?branch=master)](https://travis-ci.org/cocota93/advance-multi-module-lab)
 
 
 ### 사용된 기술
