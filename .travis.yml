@@ -6,6 +6,9 @@ branches:
   only:
     - master
 
+before_install:
+  - chmod +x gradlew
+  -
 # Travis CI 서버의 Home
 cache:
   directories:
@@ -15,8 +18,6 @@ cache:
 script: "./gradlew clean build"
 
 
-before_install:
-  - chmod +x gradlew
 
 # CI 실행 완료시 메일로 알람
 notifications:
@@ -24,11 +25,19 @@ notifications:
     recipients:
       - cocota93@gmail.com
 
+
+before_deploy:
+  - zip -r blahblah-app *
+  - mkdir -p deploy
+  - mv blahblah-app.zip deploy/blahblah-app.zip
+
+
 deploy:
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
     secret_access_key: $AWS_SECRET_KEY # Travis repo settings에 설정된 값
     bucket: blahblah-app-api-deploy # 6-3-3에서 생성한 S3 버킷
+    local_dir: deploy # before_deploy에서 생성한 디렉토리
     region: ap-northeast-2
     skip_cleanup: true
     acl: public_read
