@@ -12,7 +12,7 @@ public class BlahblahAppApiApplication {
             + "classpath:application.yml,"
 //            + "classpath:"
 //            + "application.yml,"
-            + "/home/ec2-user/app/config/blahblah-app-api/real-application.yml";
+            + "file:/home/ec2-user/app/config/blahblah-app-api/real-application.yml";
 
 
     public static void main(String[] args) {
