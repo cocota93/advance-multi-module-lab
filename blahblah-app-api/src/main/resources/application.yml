@@ -1,11 +1,12 @@
 spring:
   profiles:
-    active: local
+    active: "local"
 
 ---
 spring:
-  profiles: local
-
+  config:
+    activate:
+      on-profile: "local"
 #  jpa:
 #    generate-ddl: true
 #    show_sql: true
@@ -32,12 +33,20 @@ management:
 #      show-details: always
 
 
-# 운영 환경
 ---
 spring:
   profiles:
     group:
-      set1: real-db
+      set1: "realdb"
+      set2: "realdb"
+
+
+# 운영 환경
+---
+spring:
+  config:
+    activate:
+      on-profile: "set1"
 
 server:
   port: 9091
@@ -45,9 +54,9 @@ server:
 
 ---
 spring:
-  profiles:
-    group:
-      set2: real-db
+  config:
+    activate:
+      on-profile: "set2"
 
 server:
   port: 9092
