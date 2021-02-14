@@ -19,7 +19,7 @@ script: "./gradlew clean build"
 
 
 
-
+#빌드 다되면 빌드 결과 압축해서 s3로
 before_deploy:
   - zip -r blahblah-app *
   - mkdir -p deploy
