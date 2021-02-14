@@ -5,32 +5,22 @@ spring:
 ---
 spring:
   profiles: local
-#  datasource:
-#    url: jdbc:h2:tcp://localhost/~/advance_multi_module_lab
-#    #    url: jdbc:h2:mem:test
-#    username: sa
-#    password:
-#    driver-class-name: org.h2.Driver
-#
+
 #  jpa:
-#    hibernate:
-#      ddl-auto: none
-#    properties:
-#      hibernate:
-#          show_sql: true
-#          format_sql: true
-#          use_sql_comments: true
+#    generate-ddl: true
+#    show_sql: true
+#    format_sql: true
+#    use_sql_comments: true
 
   jwt.secret: wjsurshdmf@$&
 
 #logging:
-#  level:ㄱㄷ
+#  level:
 #    root: warn
 #    org.hibernate.SQL: debug
 server:
   port: 9091
 
-#aa
 #actuator
 #https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html
 management:
@@ -40,3 +30,20 @@ management:
     health:
       enabled: true
 #      show-details: always
+
+
+# 운영 환경
+---
+spring.profiles: set1
+spring.profiles.include: real-db
+
+server:
+  port: 9091
+
+
+---
+spring.profiles: set2
+spring.profiles.include: real-db
+
+server:
+  port: 9092
