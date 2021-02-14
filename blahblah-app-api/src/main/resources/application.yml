@@ -30,3 +30,13 @@ spring:
 server:
   port: 8081
 
+
+#actuator
+#https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html
+management:
+  endpoints:
+    enabled-by-default: false
+  endpoint:
+    health:
+      enabled: true
+#      show-details: always

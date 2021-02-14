@@ -2,6 +2,7 @@ package org.jedy.security;
 
 import org.jedy.member_core.domain.MemberAuthType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
@@ -37,6 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
             .authorizeRequests() // 다음 리퀘스트에 대한 사용권한 체크
             .antMatchers("/", "/home", "/profile", "/docs/**", "/api/members/create", "/api/members/login", "/api/members/signup", "/api/members/findLoginId", "/api/members/findPassword").permitAll() // 가입 및 인증 주소는 누구나 접근가능
+            .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()//actuator모두 허용. 세부적인 조정은 application.yml에서
             .anyRequest().hasAuthority(MemberAuthType.COMMON_USER.toString()) // 그외 나머지 요청은 모두 인증된 회원만 접근 가능
         .and()
             .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class) // jwt token 필터를 id/password 인증 필터 전에 넣는다

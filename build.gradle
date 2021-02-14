@@ -187,6 +187,8 @@ project(':blahblah-app-api') {
         compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.4")
         compile 'org.springframework.boot:spring-boot-starter-validation'
         implementation 'io.jsonwebtoken:jjwt:0.9.1'
+        implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
         asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor:1.2.6.RELEASE' // (4)
         testImplementation('org.springframework.restdocs:spring-restdocs-mockmvc') // (5)
         testImplementation('org.springframework.boot:spring-boot-starter-test')
@@ -223,6 +225,10 @@ project(':blahblah-app-api') {
         into file("src/main/resources/static/docs")
     }
 
+//    configurations {
+//        jar.archiveName = 'outputJarFileName.jar'
+//    }
+
     build {
         dependsOn copyDocument // build시 copy 실행
     }
@@ -253,6 +259,7 @@ project(':blahblah-app-admin') {
         compile 'org.springframework.boot:spring-boot-starter-security'
         testImplementation 'org.springframework.security:spring-security-test'
         implementation 'org.springframework.boot:spring-boot-devtools'
+        implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
         compile 'org.springdoc:springdoc-openapi-ui:1.4.8'
 
