@@ -41,4 +41,4 @@ system core계층
 - spring security form : Operator를 중점으로
 - spring security jwt : Member를 중점으로
 - crud : Notice를 중점으로
-- restdoc : api서버 기동후 [restdoc구경하기](http://localhost:9091/docs/index.html) 클릭 (에러페이지 나올경우 프로젝트 폴더 최상단에서 터미널을 열고 'gradlew build' or 'gradle build' 를 수행해주세요)
+- restdoc : [restdoc구경하기](http://ec2-3-35-121-25.ap-northeast-2.compute.amazonaws.com/docs/index.html) 
