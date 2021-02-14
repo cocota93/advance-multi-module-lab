@@ -34,16 +34,22 @@ management:
 
 # 운영 환경
 ---
-spring.profiles: set1
-spring.profiles.include: real-db
+spring:
+  profiles:
+    group:
+      set1: real-db
 
 server:
   port: 9091
 
 
 ---
-spring.profiles: set2
-spring.profiles.include: real-db
+spring:
+  profiles:
+    group:
+      set2: real-db
 
 server:
   port: 9092
+
+#스프링2.4부터 include가 사용이 안된다.권고같은게 아니라 아에 컴파일이 안됨. 영어라고 쫄지말고 천천히 읽어보자 https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-Config-Data-Migration-Guide
