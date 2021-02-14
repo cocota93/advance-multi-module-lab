@@ -17,7 +17,7 @@ public class HomeController {
 
     @GetMapping(value = {"/", "/home"})
     public String home(){
-        return "this is api server";
+        return "this is api server_1";
     }
 
     @GetMapping(value = "/securityCheck")

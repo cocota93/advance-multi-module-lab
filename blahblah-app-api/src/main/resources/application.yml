@@ -24,11 +24,11 @@ spring:
   jwt.secret: wjsurshdmf@$&
 
 #logging:
-#  level:
+#  level:ㄱㄷ
 #    root: warn
 #    org.hibernate.SQL: debug
 server:
-  port: 8081
+  port: 9091
 
 #aa
 #actuator
