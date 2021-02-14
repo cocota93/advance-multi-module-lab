@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source:  / #s3에서 파일 가져올 위치
-      destination: /home/ec2-user/app/travis/build/ #압축을 어디에 풀건지
+    destination: /home/ec2-user/app/travis/build/ #압축을 어디에 풀건지
 
 
 hooks:
