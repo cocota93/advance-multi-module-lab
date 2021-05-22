@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 
 @Builder
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class OembedReceiver {
 //    private Long id;
