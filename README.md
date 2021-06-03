@@ -41,4 +41,4 @@ system core계층
 - spring security form : Operator를 중점으로
 - spring security jwt : Member를 중점으로
 - crud : Notice를 중점으로
-- restdoc : [restdoc구경하기](http://ec2-3-35-121-25.ap-northeast-2.compute.amazonaws.com/docs/index.html) 
+- restdoc : [restdoc구경하기](http://ec2-3-35-121-25.ap-northeast-2.compute.amazonaws.com/docs/index.html) (프리티어 만료로 서버 내립니다)
