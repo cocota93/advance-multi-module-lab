@@ -3,7 +3,6 @@ package org.jedy;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.jedy.document.EnumViewController;
 import org.jedy.security.JwtTokenProvider;
-import org.jedy.system_core.global.response.ResponseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -12,7 +11,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.MockMvc;
 
 
-@Import(ResponseService.class)
+//@Import(ResponseService.class)
 @WebMvcTest(controllers = {
         EnumViewController.class,
 })
@@ -30,9 +29,6 @@ public abstract class ApiDocumentationTest {
     protected  JwtTokenProvider jwtTokenProvider;
 
 
-//    @SpyBean
-    @Autowired
-    protected ResponseService responseService;
 }
 
 //Service 주입 : https://spring.io/guides/gs/multi-module/

@@ -30,20 +30,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-            .httpBasic().disable() // rest api 이므로 기본설정 사용안함. 기본설정은 비인증시 로그인폼 화면으로 리다이렉트 된다.
-            .csrf().disable() // rest api이므로 csrf 보안이 필요없으므로 disable처리.
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // jwt token으로 인증하므로 세션은 필요없으므로 생성안함.
-        .and()
-            .authorizeRequests() // 다음 리퀘스트에 대한 사용권한 체크
-            .antMatchers("/", "/home", "/profile", "/docs/**", "/api/members/create", "/api/members/login", "/api/members/signup", "/api/members/findLoginId", "/api/members/findPassword").permitAll() // 가입 및 인증 주소는 누구나 접근가능
-            .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()//actuator모두 허용. 세부적인 조정은 application.yml에서
-            .anyRequest().hasAuthority(MemberAuthType.COMMON_USER.toString()) // 그외 나머지 요청은 모두 인증된 회원만 접근 가능
-        .and()
-            .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class) // jwt token 필터를 id/password 인증 필터 전에 넣는다
-        ;
+//        http
+//            .httpBasic().disable() // rest api 이므로 기본설정 사용안함. 기본설정은 비인증시 로그인폼 화면으로 리다이렉트 된다.
+//            .csrf().disable() // rest api이므로 csrf 보안이 필요없으므로 disable처리.
+//            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // jwt token으로 인증하므로 세션은 필요없으므로 생성안함.
+//        .and()
+//            .authorizeRequests() // 다음 리퀘스트에 대한 사용권한 체크
+//            .antMatchers("/", "/home", "/profile", "/docs/**", "/api/members/create", "/api/members/login", "/api/members/signup", "/api/members/findLoginId", "/api/members/findPassword").permitAll() // 가입 및 인증 주소는 누구나 접근가능
+//            .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()//actuator모두 허용. 세부적인 조정은 application.yml에서
+//            .anyRequest().hasAuthority(MemberAuthType.COMMON_USER.toString()) // 그외 나머지 요청은 모두 인증된 회원만 접근 가능
+//        .and()
+//            .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class) // jwt token 필터를 id/password 인증 필터 전에 넣는다
+//        ;
 
-//        http.authorizeRequests().anyRequest().permitAll();
+        http.authorizeRequests().anyRequest().permitAll();
     }
 
     @Bean

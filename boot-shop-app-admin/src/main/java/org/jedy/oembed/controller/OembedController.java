@@ -7,7 +7,6 @@ import org.jedy.oembed.dto.OembedReceiver;
 import org.jedy.oembed.dto.ResOembed;
 import org.jedy.oembed.dto.mapper.OembedMapper;
 import org.jedy.oembed.service.OembedServiceImpl;
-import org.jedy.system_core.global.response.ResponseService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +19,6 @@ import org.thymeleaf.util.StringUtils;
 public class OembedController {
 
     private final OembedServiceImpl oembedService;
-    private final ResponseService responseService;
 
 
 //    @GetMapping(value = "/search")

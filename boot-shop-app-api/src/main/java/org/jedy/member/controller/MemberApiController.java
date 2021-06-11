@@ -8,8 +8,6 @@ import org.jedy.member.domain.ReqLoginMember;
 import org.jedy.member.domain.ReqSignupMember;
 import org.jedy.member.service.MemberAuthService;
 import org.jedy.member.repository.MemberRepository;
-import org.jedy.system_core.global.response.ResponseService;
-import org.jedy.system_core.global.response.SingleResult;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -24,19 +22,18 @@ public class MemberApiController {
 
     private final MemberAuthService memberAuthService;
     private final MemberRepository memberRepository;
-    private final ResponseService responseService;
 
 
     @GetMapping(value = "/create")
-    public SingleResult<MemberCreateResponse> create() {
-        return responseService.getSingleResult(memberAuthService.testCreate());
+    public MemberCreateResponse create() {
+        return memberAuthService.testCreate();
     }
 
 
     @PostMapping(value = "/signup")
-    public SingleResult<MemberCreateResponse> signup(@Valid @RequestBody ReqSignupMember reqSignupMember) {
+    public MemberCreateResponse signup(@Valid @RequestBody ReqSignupMember reqSignupMember) {
         MemberCreateResponse member = memberAuthService.signup(reqSignupMember);
-        return responseService.getSingleResult(member);
+        return member;
     }
 
     @PostMapping(value = "/login")

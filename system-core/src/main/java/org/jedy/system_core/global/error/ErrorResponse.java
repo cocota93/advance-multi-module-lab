@@ -4,7 +4,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.jedy.system_core.global.error.exception.ErrorCode;
-import org.jedy.system_core.global.response.CommonResult;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
@@ -18,23 +17,25 @@ import java.util.stream.Collectors;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ErrorResponse extends CommonResult {
+public class ErrorResponse  {
 
+    private String message;
+    private int status;
     private List<FieldError> errors;
-    private String errorCode;
+    private String code;
 
 
-    private ErrorResponse(final ErrorCode errorCode, final List<FieldError> errors) {
-        this.message = errorCode.getMessage();
-        this.status = errorCode.getStatus();
+    private ErrorResponse(final ErrorCode code, final List<FieldError> errors) {
+        this.message = code.getMessage();
+        this.status = code.getStatus();
         this.errors = errors;
-        this.errorCode = errorCode.getCode();
+        this.code = code.getCode();
     }
 
-    private ErrorResponse(final ErrorCode errorCode) {
-        this.message = errorCode.getMessage();
-        this.status = errorCode.getStatus();
-        this.errorCode = errorCode.getCode();
+    private ErrorResponse(final ErrorCode code) {
+        this.message = code.getMessage();
+        this.status = code.getStatus();
+        this.code = code.getCode();
         this.errors = new ArrayList<>();
     }
 

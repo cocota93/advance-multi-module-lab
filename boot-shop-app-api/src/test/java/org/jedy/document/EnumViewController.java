@@ -2,8 +2,6 @@ package org.jedy.document;
 
 import org.jedy.member.domain.MemberAuthType;
 import org.jedy.system_core.global.error.exception.ErrorCode;
-import org.jedy.system_core.global.response.ResponseService;
-import org.jedy.system_core.global.response.SingleResult;
 import org.jedy.system_core.support.EnumType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,21 +14,19 @@ import java.util.stream.Collectors;
 @RestController
 public class EnumViewController {
 
-    @Autowired ResponseService responseService;
 
     @GetMapping("/docs")
-    public SingleResult<Docs> findAll() {
+    public Docs findAll() {
 
         Map<String, String> apiResponseCodes = getDocs(ErrorCode.values());
         Map<String, String> memberAuth = getDocs(MemberAuthType.values());
 
-        SingleResult<Docs> singleResult = responseService.getSingleResult(
-                Docs.testBuilder()
-                        .apiResponseCodes(apiResponseCodes)
-                        .memberAuth(memberAuth)
-                        .build()
-        );
-        return singleResult;
+
+        Docs build = Docs.testBuilder()
+                         .apiResponseCodes(apiResponseCodes)
+                         .memberAuth(memberAuth)
+                         .build();
+        return build;
     }
 
     private Map<String, String> getDocs(EnumType[] enumTypes) {
