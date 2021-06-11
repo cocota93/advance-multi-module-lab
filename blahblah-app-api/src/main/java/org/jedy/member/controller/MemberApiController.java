@@ -3,11 +3,11 @@ package org.jedy.member.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jedy.member.dto.response.MemberCreateResponse;
-import org.jedy.member_core.domain.Member;
-import org.jedy.member_core.domain.ReqLoginMember;
-import org.jedy.member_core.domain.ReqSignupMember;
+import org.jedy.member.domain.Member;
+import org.jedy.member.domain.ReqLoginMember;
+import org.jedy.member.domain.ReqSignupMember;
 import org.jedy.member.service.MemberAuthService;
-import org.jedy.member_core.repository.MemberRepository;
+import org.jedy.member.repository.MemberRepository;
 import org.jedy.system_core.global.response.ResponseService;
 import org.jedy.system_core.global.response.SingleResult;
 import org.springframework.security.core.Authentication;
@@ -15,8 +15,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/members")

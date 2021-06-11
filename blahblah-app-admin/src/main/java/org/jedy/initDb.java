@@ -2,8 +2,8 @@ package org.jedy;
 
 import lombok.RequiredArgsConstructor;
 import org.jedy.constant.CustomConstant;
-import org.jedy.member_core.domain.Member;
-import org.jedy.member_core.repository.MemberRepository;
+import org.jedy.member.domain.Member;
+import org.jedy.member.repository.MemberRepository;
 import org.jedy.operator_core.domain.Operator;
 import org.jedy.operator_core.domain.OperatorAuth;
 import org.jedy.operator_core.domain.OperatorAuthType;

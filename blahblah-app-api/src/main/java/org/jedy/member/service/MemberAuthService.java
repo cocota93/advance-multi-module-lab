@@ -3,11 +3,11 @@ package org.jedy.member.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.jedy.member_core.domain.Member;
-import org.jedy.member_core.domain.MemberAuth;
-import org.jedy.member_core.domain.MemberAuthType;
-import org.jedy.member_core.domain.ReqSignupMember;
-import org.jedy.member_core.repository.MemberRepository;
+import org.jedy.member.domain.Member;
+import org.jedy.member.domain.MemberAuth;
+import org.jedy.member.domain.MemberAuthType;
+import org.jedy.member.domain.ReqSignupMember;
+import org.jedy.member.repository.MemberRepository;
 import org.jedy.system_core.global.error.exception.EntityNotFoundException;
 import org.jedy.member.dto.response.MemberCreateResponse;
 import org.jedy.member.exception.MemberLoginFailException;

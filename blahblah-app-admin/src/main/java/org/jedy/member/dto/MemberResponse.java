@@ -4,7 +4,7 @@ import com.querydsl.core.annotations.QueryProjection;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.jedy.member_core.domain.Member;
+import org.jedy.member.domain.Member;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)

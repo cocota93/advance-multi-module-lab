@@ -1,4 +1,4 @@
-package org.jedy.member_core.exception;
+package org.jedy.member.exception;
 
 import org.jedy.system_core.global.error.exception.EntityNotFoundException;
 

@@ -100,19 +100,6 @@ project(':boot-shop-app-domain') {
 }
 
 
-project(':member-core') {
-    bootJar.enabled = false//main이 없는 모듈에는 다 포함 추가해줘야한다
-    jar.enabled = true//main이 없는 모듈에는 다 포함 추가해줘야한다
-
-    dependencies {
-        compile project(':system-core')
-
-
-        compile('com.h2database:h2:1.4.199')
-        compile 'org.springframework.boot:spring-boot-starter-security'
-        testImplementation 'org.springframework.security:spring-security-test'
-    }
-}
 
 project(':operator-core') {
     bootJar.enabled = false//main이 없는 모듈에는 다 포함 추가해줘야한다
@@ -167,7 +154,7 @@ project(':blahblah-app-api') {
 //    version = '0.0.2-SNAPSHOT'
 
     dependencies {
-        compile project(':member-core')
+        compile project(':boot-shop-app-domain')
         compile project(':core-web')
         compile project(':ad-statistic-core')
 
@@ -230,7 +217,6 @@ project(':blahblah-app-admin') {
 
     dependencies {
         compile project(':operator-core')
-        compile project(':member-core')
         compile project(':core-web')
         compile project(':boot-shop-app-domain')
         compile project(':ad-statistic-core')

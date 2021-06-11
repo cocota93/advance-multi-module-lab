@@ -7,7 +7,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.jedy.member.dto.MemberResponse;
 import org.jedy.member.dto.MemberSearchCondition;
 import org.jedy.member.dto.QMemberResponse;
-import org.jedy.member_core.domain.Member;
+import org.jedy.member.domain.Member;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.repository.support.PageableExecutionUtils;
@@ -15,7 +15,7 @@ import org.springframework.data.repository.support.PageableExecutionUtils;
 import javax.persistence.EntityManager;
 import java.util.List;
 
-import static org.jedy.member_core.domain.QMember.member;
+import static org.jedy.member.domain.QMember.member;
 import static org.springframework.util.StringUtils.hasText;
 
 public class MemberQueryRepositoryImpl implements MemberQueryRepositoryCustom{

@@ -1,8 +1,8 @@
 package org.jedy.security;
 
 import org.jedy.member.exception.MemberNotFindException;
-import org.jedy.member_core.domain.Member;
-import org.jedy.member_core.repository.MemberRepository;
+import org.jedy.member.domain.Member;
+import org.jedy.member.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

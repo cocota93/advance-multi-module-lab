@@ -1,4 +1,4 @@
-package org.jedy.member_core.domain;
+package org.jedy.member.domain;
 
 import lombok.Data;
 

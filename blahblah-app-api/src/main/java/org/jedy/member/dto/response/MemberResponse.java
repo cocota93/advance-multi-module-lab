@@ -3,9 +3,9 @@ package org.jedy.member.dto.response;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.jedy.member_core.domain.Member;
-import org.jedy.member_core.domain.MemberAuth;
-import org.jedy.member_core.domain.MemberAuthType;
+import org.jedy.member.domain.Member;
+import org.jedy.member.domain.MemberAuth;
+import org.jedy.member.domain.MemberAuthType;
 
 import java.util.ArrayList;
 import java.util.List;

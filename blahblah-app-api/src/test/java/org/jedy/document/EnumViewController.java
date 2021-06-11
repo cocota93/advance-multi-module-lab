@@ -1,6 +1,6 @@
 package org.jedy.document;
 
-import org.jedy.member_core.domain.MemberAuthType;
+import org.jedy.member.domain.MemberAuthType;
 import org.jedy.system_core.global.error.exception.ErrorCode;
 import org.jedy.system_core.global.response.ResponseService;
 import org.jedy.system_core.global.response.SingleResult;

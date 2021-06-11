@@ -1,7 +1,7 @@
 //package org.jedy.controller;
 //
-//import org.jedy.member_core.domain.Member;
-//import org.jedy.member_core.repository.MemberRepository;
+//import org.jedy.member.domain.Member;
+//import org.jedy.member.repository.MemberRepository;
 //import org.junit.jupiter.api.Test;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.boot.test.context.SpringBootTest;
