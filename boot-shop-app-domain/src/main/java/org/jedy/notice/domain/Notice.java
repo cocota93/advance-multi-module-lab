@@ -1,4 +1,4 @@
-package org.jedy.notice_core.domain;
+package org.jedy.notice.domain;
 
 import lombok.AccessLevel;
 import lombok.Getter;

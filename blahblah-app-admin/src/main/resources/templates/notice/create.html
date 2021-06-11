@@ -1,18 +1,23 @@
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/layouts/main_template}">
-
-<head>
-  <title>Spring Security Example </title>
-</head>
-<body>
-<div layout:fragment="content">
-  <form th:action="@{/notice/create}" method="post">
-    <label>새글 내용</label>
-    <div> <textarea name="content" style="width:300px;height:200px;overflow-y:hidden"></textarea> </div>
-    <div><input type="submit" value="등록"/></div>
-  </form>
-
-</div>
-</body>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{/layouts/main_template}"
+>
+  <head>
+    <title>Spring Security Example</title>
+  </head>
+  <body>
+    <div layout:fragment="content">
+      <form th:action="@{/org/jedy/notice/create}" method="post">
+        <label>새글 내용</label>
+        <div>
+          <textarea
+            name="content"
+            style="width: 300px; height: 200px; overflow-y: hidden"
+          ></textarea>
+        </div>
+        <div><input type="submit" value="등록" /></div>
+      </form>
+    </div>
+  </body>
 </html>

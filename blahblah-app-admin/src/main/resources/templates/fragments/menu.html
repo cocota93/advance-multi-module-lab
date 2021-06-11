@@ -1,15 +1,22 @@
 <html xmlns:th="http://www.thymeleaf.org">
-
-<body>
-	<div align="center" th:fragment="menu">
-		<table>
-			<tr>
-				<td width="80" style="text-align: center;"><a th:href="@{/}" th:text="홈" ></a></td>
-				<td width="80" style="text-align: center;"><a th:href="@{/members/list}" th:text="회원목록" ></a></td>
-				<td width="80" style="text-align: center;"><a th:href="@{/notice/list}" th:text="공지사항" ></a></td>
-				<td width="80" style="text-align: center;"><a th:href="@{/oembed/search}" th:text="oEmbed"  ></a></td>
-			</tr>
-		</table>
-	</div>
-</body>
+  <body>
+    <div align="center" th:fragment="menu">
+      <table>
+        <tr>
+          <td width="80" style="text-align: center">
+            <a th:href="@{/}" th:text="홈"></a>
+          </td>
+          <td width="80" style="text-align: center">
+            <a th:href="@{/members/list}" th:text="회원목록"></a>
+          </td>
+          <td width="80" style="text-align: center">
+            <a th:href="@{/org/jedy/notice/list}" th:text="공지사항"></a>
+          </td>
+          <td width="80" style="text-align: center">
+            <a th:href="@{/oembed/search}" th:text="oEmbed"></a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
 </html>

@@ -3,14 +3,14 @@ package org.jedy.notice.repository.query;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
 import org.jedy.notice.dto.NoticeSearchCondition;
-import org.jedy.notice_core.domain.Notice;
+import org.jedy.notice.domain.Notice;
 import org.jedy.system_core.support.Querydsl4RepositorySupport;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-import static org.jedy.notice_core.domain.QNotice.notice;
+import static org.jedy.notice.domain.QNotice.notice;
 
 public class NoticeQueryRepositoryImpl extends Querydsl4RepositorySupport implements NoticeQueryRepositoryCustom {
 

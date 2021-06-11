@@ -1,9 +1,7 @@
-package org.jedy.notice_core.repository;
+package org.jedy.notice.repository;
 
-import org.jedy.notice_core.domain.Notice;
+import org.jedy.notice.domain.Notice;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
 
 public interface NoticeRepository extends JpaRepository<Notice, Long> {
 

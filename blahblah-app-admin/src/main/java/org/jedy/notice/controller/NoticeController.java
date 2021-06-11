@@ -1,21 +1,17 @@
 package org.jedy.notice.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.jedy.member.dto.MemberResponse;
-import org.jedy.member.dto.MemberSearchCondition;
+import org.jedy.notice.domain.Notice;
+import org.jedy.notice.repository.NoticeRepository;
+import org.jedy.notice.service.NoticeServiceImpl;
 import org.jedy.notice.dto.NoticeSearchCondition;
 import org.jedy.notice.repository.query.NoticeQueryRepository;
-import org.jedy.notice_core.domain.Notice;
-import org.jedy.notice_core.repository.NoticeRepository;
-import org.jedy.notice_core.service.NoticeServiceImpl;
 import org.jedy.system_core.global.error.exception.EntityNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/notice")

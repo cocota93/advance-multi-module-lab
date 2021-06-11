@@ -1,11 +1,9 @@
-package org.jedy.notice_core.service;
+package org.jedy.notice.service;
 
 import lombok.RequiredArgsConstructor;
-import org.jedy.notice_core.domain.Notice;
-import org.jedy.notice_core.repository.NoticeRepository;
-import org.jedy.system_core.global.error.exception.BusinessException;
+import org.jedy.notice.domain.Notice;
+import org.jedy.notice.repository.NoticeRepository;
 import org.jedy.system_core.global.error.exception.EntityNotFoundException;
-import org.jedy.system_core.global.error.exception.ErrorCode;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
