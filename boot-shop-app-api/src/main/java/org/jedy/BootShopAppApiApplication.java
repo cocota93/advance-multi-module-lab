@@ -1,12 +1,10 @@
 package org.jedy;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
-public class BlahblahAppApiApplication {
+public class BootShopAppApiApplication {
 
     public static final String APPLICATION_LOCATIONS = "spring.config.location="
             + "classpath:application.yml,"
@@ -16,7 +14,7 @@ public class BlahblahAppApiApplication {
 
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder(BlahblahAppApiApplication.class)
+        new SpringApplicationBuilder(BootShopAppApiApplication.class)
                 .properties(APPLICATION_LOCATIONS)
                 .run(args);
     }

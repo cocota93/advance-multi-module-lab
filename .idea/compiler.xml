@@ -11,8 +11,8 @@
         </processorPath>
         <module name="advance-multi-module-lab.boot-shop-app-admin.test" />
         <module name="advance-multi-module-lab.core-web.test" />
-        <module name="advance-multi-module-lab.blahblah-app-api.test" />
         <module name="advance-multi-module-lab.system-core.test" />
+        <module name="advance-multi-module-lab.boot-shop-app-api.test" />
         <module name="advance-multi-module-lab.boot-shop-app-domain.test" />
       </profile>
       <profile name="Gradle Imported" enabled="true">
@@ -39,9 +39,9 @@
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/annotations/2.0.1/9ef6656259841cebfb9fb0697bb122ada4485498/annotations-2.0.1.jar" />
         </processorPath>
         <module name="advance-multi-module-lab.boot-shop-app-admin.main" />
+        <module name="advance-multi-module-lab.boot-shop-app-api.main" />
         <module name="advance-multi-module-lab.boot-shop-app-domain.main" />
         <module name="advance-multi-module-lab.core-web.main" />
-        <module name="advance-multi-module-lab.blahblah-app-api.main" />
         <module name="advance-multi-module-lab.system-core.main" />
       </profile>
     </annotationProcessing>

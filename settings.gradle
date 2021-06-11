@@ -1,6 +1,6 @@
 rootProject.name = 'advance-multi-module-lab'
 include 'boot-shop-app-admin'
-include 'blahblah-app-api'
+include 'boot-shop-app-api'
 include 'system-core'
 include 'core-web'
 include 'boot-shop-app-domain'
