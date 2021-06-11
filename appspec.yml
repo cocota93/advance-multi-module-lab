@@ -1,11 +1,18 @@
 version: 0.0
 os: linux
-files:
-  - source:  / #s3에서 파일 가져올 위치
-    destination: /home/ec2-user/app/nonstop/blahblah-app-api/ #압축을 어디에 풀건지
 
+files:
+  - source: /
+    destination: /home/ubuntu/build
+
+permissions:
+  - object: /
+    pattern: "**"
+    owner: ubuntu
+    group: ubuntu
 
 hooks:
-  AfterInstall: # 배포가 끝나면 아래 명령어를 실행
-    - location: execute-deploy.sh
-      timeout: 180
+  ApplicationStart:
+    - location: deploy.sh
+      timeout: 60
+      runas: root
