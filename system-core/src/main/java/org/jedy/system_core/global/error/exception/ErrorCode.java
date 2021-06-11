@@ -6,6 +6,17 @@ import org.jedy.system_core.support.EnumType;
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum ErrorCode implements EnumType {
 
+    /*
+    * 시스템적인 예외처리는 GlobalExceptionHandler 여기서
+    * 비즈니스 예외에 대한 선언은 이 아래에서
+    *
+    * 400 : 클라에러
+    * 401 : 인증필요
+    * 403 : 권한부족
+    * 404 : 요청 리소스 없음 or 권한부족할때 리소스존재여부 숨기고 싶을때
+    * 500 : 서버에러
+     * */
+
     // Common
     INVALID_INPUT_VALUE(400, "C001", " Invalid Input Value"),
     METHOD_NOT_ALLOWED(405, "C002", " Invalid Input Value"),
@@ -14,6 +25,7 @@ public enum ErrorCode implements EnumType {
     INVALID_TYPE_VALUE(400, "C005", " Invalid Type Value"),
     HANDLE_ACCESS_DENIED(403, "C006", "Access is Denied"),
     TOKEN_EXPIRE(400, "C007", "token expire"),
+
 
 
     // Member
