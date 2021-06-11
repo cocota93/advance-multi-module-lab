@@ -9,12 +9,10 @@
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.mapstruct/mapstruct-processor/1.4.2.Final/e55bd90d51cddd638c07d5bd89fc7535d4e3d069/mapstruct-processor-1.4.2.Final.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.16/6dc192c7f93ec1853f70d59d8a6dcf94eb42866/lombok-1.18.16.jar" />
         </processorPath>
-        <module name="advance-multi-module-lab.operator-core.test" />
-        <module name="advance-multi-module-lab.system-core.test" />
-        <module name="advance-multi-module-lab.ad-statistic-core.test" />
         <module name="advance-multi-module-lab.core-web.test" />
         <module name="advance-multi-module-lab.blahblah-app-admin.test" />
         <module name="advance-multi-module-lab.blahblah-app-api.test" />
+        <module name="advance-multi-module-lab.system-core.test" />
         <module name="advance-multi-module-lab.boot-shop-app-domain.test" />
       </profile>
       <profile name="Gradle Imported" enabled="true">
@@ -40,10 +38,8 @@
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.javassist/javassist/3.18.2-GA/1180a90fbad732b60fb728a6bbe8fcb3151423d7/javassist-3.18.2-GA.jar" />
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/annotations/2.0.1/9ef6656259841cebfb9fb0697bb122ada4485498/annotations-2.0.1.jar" />
         </processorPath>
-        <module name="advance-multi-module-lab.ad-statistic-core.main" />
         <module name="advance-multi-module-lab.boot-shop-app-domain.main" />
         <module name="advance-multi-module-lab.core-web.main" />
-        <module name="advance-multi-module-lab.operator-core.main" />
         <module name="advance-multi-module-lab.blahblah-app-admin.main" />
         <module name="advance-multi-module-lab.blahblah-app-api.main" />
         <module name="advance-multi-module-lab.system-core.main" />

@@ -1,7 +1,7 @@
-package org.jedy.operator_core.repository;
+package org.jedy.operator.repository;
 
 
-import org.jedy.operator_core.domain.Operator;
+import org.jedy.operator.domain.Operator;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

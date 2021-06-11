@@ -1,11 +1,11 @@
 package org.jedy.adStatistic.controller;
 
 import org.jedy.ApiDocumentationTest;
-import org.jedy.ad_statistic_core.domain.AdHourlyStatistic;
-import org.jedy.ad_statistic_core.dto.req.AdStatisticSearchCondition;
-import org.jedy.ad_statistic_core.dto.req.ReqUploadAdStatistic;
-import org.jedy.ad_statistic_core.dto.res.ResAdHourlyStatistic;
-import org.jedy.ad_statistic_core.service.AdHourlyStatisticService;
+import org.jedy.ad_statistic.domain.AdHourlyStatistic;
+import org.jedy.ad_statistic.dto.req.AdStatisticSearchCondition;
+import org.jedy.ad_statistic.dto.req.ReqUploadAdStatistic;
+import org.jedy.ad_statistic.dto.res.ResAdHourlyStatistic;
+import org.jedy.ad_statistic.service.AdHourlyStatisticService;
 import org.jedy.system_core.util.ConverterUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package org.jedy.ad_statistic_core.dto.req;
+package org.jedy.ad_statistic.dto.req;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package org.jedy.operator_core.domain;
+package org.jedy.operator.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;

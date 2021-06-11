@@ -1,9 +1,9 @@
-package org.jedy.ad_statistic_core.dto.res;
+package org.jedy.ad_statistic.dto.res;
 
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.jedy.ad_statistic_core.domain.AdHourlyStatistic;
+import org.jedy.ad_statistic.domain.AdHourlyStatistic;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;

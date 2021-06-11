@@ -1,6 +1,5 @@
 package org.jedy.security;
 
-import org.jedy.operator_core.domain.Operator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
@@ -18,7 +17,6 @@ import org.springframework.web.cors.CorsUtils;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Optional;
-import java.util.UUID;
 
 @Configuration
 @EnableWebSecurity

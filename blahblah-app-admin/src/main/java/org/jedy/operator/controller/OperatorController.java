@@ -1,9 +1,9 @@
 package org.jedy.operator.controller;
 
-import org.jedy.operator_core.domain.Operator;
-import org.jedy.operator_core.domain.OperatorAuth;
-import org.jedy.operator_core.domain.OperatorAuthType;
-import org.jedy.operator_core.repository.OperatorRepository;
+import org.jedy.operator.domain.Operator;
+import org.jedy.operator.domain.OperatorAuth;
+import org.jedy.operator.domain.OperatorAuthType;
+import org.jedy.operator.repository.OperatorRepository;
 import org.jedy.system_core.global.response.ResponseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;

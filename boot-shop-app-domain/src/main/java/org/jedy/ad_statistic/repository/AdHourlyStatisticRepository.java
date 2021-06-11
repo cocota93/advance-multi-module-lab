@@ -1,7 +1,7 @@
-package org.jedy.ad_statistic_core.repository;
+package org.jedy.ad_statistic.repository;
 
 
-import org.jedy.ad_statistic_core.domain.AdHourlyStatistic;
+import org.jedy.ad_statistic.domain.AdHourlyStatistic;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDate;

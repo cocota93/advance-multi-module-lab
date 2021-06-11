@@ -1,7 +1,7 @@
 package org.jedy.security;
 
-import org.jedy.operator_core.domain.Operator;
-import org.jedy.operator_core.repository.OperatorRepository;
+import org.jedy.operator.domain.Operator;
+import org.jedy.operator.repository.OperatorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

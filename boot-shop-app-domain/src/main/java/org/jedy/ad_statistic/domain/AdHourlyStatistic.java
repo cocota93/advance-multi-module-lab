@@ -1,10 +1,10 @@
-package org.jedy.ad_statistic_core.domain;
+package org.jedy.ad_statistic.domain;
 
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.jedy.ad_statistic_core.dto.req.ReqUploadAdStatistic;
+import org.jedy.ad_statistic.dto.req.ReqUploadAdStatistic;
 
 import javax.persistence.*;
 import java.time.LocalDate;
