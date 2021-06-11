@@ -5,7 +5,6 @@ include 'system-core'
 include 'member-core'
 include 'operator-core'
 include 'core-web'
-include 'oembed-core'
 include 'ad-statistic-core'
 include 'boot-shop-app-domain'
 

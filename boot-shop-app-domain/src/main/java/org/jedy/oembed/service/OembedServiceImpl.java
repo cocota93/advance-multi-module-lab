@@ -1,10 +1,10 @@
-package org.jedy.oembed_core.service;
+package org.jedy.oembed.service;
 
 import lombok.RequiredArgsConstructor;
-import org.jedy.oembed_core.domain.Oembed;
-import org.jedy.oembed_core.dto.OembedReceiver;
-import org.jedy.oembed_core.repository.OembedRepository;
-import org.jedy.oembed_core.util.OembedUrlUtil;
+import org.jedy.oembed.domain.Oembed;
+import org.jedy.oembed.dto.OembedReceiver;
+import org.jedy.oembed.repository.OembedRepository;
+import org.jedy.oembed.util.OembedUrlUtil;
 import org.jedy.system_core.global.error.exception.EntityNotFoundException;
 import org.jedy.system_core.global.error.exception.ErrorCode;
 import org.jedy.system_core.util.ConverterUtil;

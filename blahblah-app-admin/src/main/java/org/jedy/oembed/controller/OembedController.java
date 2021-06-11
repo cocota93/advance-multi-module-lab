@@ -2,11 +2,11 @@ package org.jedy.oembed.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.jedy.oembed_core.domain.Oembed;
-import org.jedy.oembed_core.dto.OembedReceiver;
-import org.jedy.oembed_core.dto.ResOembed;
-import org.jedy.oembed_core.dto.mapper.OembedMapper;
-import org.jedy.oembed_core.service.OembedServiceImpl;
+import org.jedy.oembed.domain.Oembed;
+import org.jedy.oembed.dto.OembedReceiver;
+import org.jedy.oembed.dto.ResOembed;
+import org.jedy.oembed.dto.mapper.OembedMapper;
+import org.jedy.oembed.service.OembedServiceImpl;
 import org.jedy.system_core.global.response.ResponseService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

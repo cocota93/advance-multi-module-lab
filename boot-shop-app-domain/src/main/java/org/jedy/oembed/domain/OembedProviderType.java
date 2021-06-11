@@ -1,4 +1,4 @@
-package org.jedy.oembed_core.domain;
+package org.jedy.oembed.domain;
 
 
 public enum OembedProviderType {

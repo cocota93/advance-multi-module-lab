@@ -1,6 +1,6 @@
-package org.jedy.oembed_core.repository;
+package org.jedy.oembed.repository;
 
-import org.jedy.oembed_core.domain.Oembed;
+import org.jedy.oembed.domain.Oembed;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface OembedRepository extends JpaRepository<Oembed, Long> {

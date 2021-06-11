@@ -1,10 +1,9 @@
-package org.jedy.oembed_core.dto.mapper;
+package org.jedy.oembed.dto.mapper;
 
-import org.jedy.oembed_core.domain.Oembed;
-import org.jedy.oembed_core.dto.OembedReceiver;
-import org.jedy.oembed_core.dto.ResOembed;
+import org.jedy.oembed.domain.Oembed;
+import org.jedy.oembed.dto.OembedReceiver;
+import org.jedy.oembed.dto.ResOembed;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper

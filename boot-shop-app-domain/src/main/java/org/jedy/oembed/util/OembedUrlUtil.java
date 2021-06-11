@@ -1,14 +1,12 @@
-package org.jedy.oembed_core.util;
+package org.jedy.oembed.util;
 
-import org.jedy.oembed_core.domain.OembedProviderType;
+import org.jedy.oembed.domain.OembedProviderType;
 import org.jedy.system_core.global.error.exception.BusinessException;
 import org.jedy.system_core.global.error.exception.ErrorCode;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /*
 * api호출시 각 제공자가 정해둔 특정 파라미터를 더 줄수 있는데
@@ -35,8 +33,8 @@ public class OembedUrlUtil {
         }
         String fixedHost = host.replace(".", "").toUpperCase();
         OembedProviderType providerType = Arrays.stream(OembedProviderType.values())
-                .filter(src -> fixedHost.contains(src.toString()))
-                .findAny().orElseThrow(() -> new BusinessException(ErrorCode.NOT_SUPPORT_PROVIDER_TYPE))
+                                                .filter(src -> fixedHost.contains(src.toString()))
+                                                .findAny().orElseThrow(() -> new BusinessException(ErrorCode.NOT_SUPPORT_PROVIDER_TYPE))
                 ;
 
         StringBuilder sb = new StringBuilder();

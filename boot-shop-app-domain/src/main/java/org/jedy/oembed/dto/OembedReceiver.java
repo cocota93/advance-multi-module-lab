@@ -1,4 +1,4 @@
-package org.jedy.oembed_core.dto;
+package org.jedy.oembed.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
