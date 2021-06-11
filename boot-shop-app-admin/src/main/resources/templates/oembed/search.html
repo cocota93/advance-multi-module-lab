@@ -1,199 +1,235 @@
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/layouts/main_template}">
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{/layouts/main_template}"
+>
+  <head>
+    <title>oEmbed Test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<head>
-  <title>oEmbed Test</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-
-  <style>
-      #search-form{
-          position: relative;
-          overflow: hidden;
+    <style>
+      #search-form {
+        position: relative;
+        overflow: hidden;
       }
 
-      .icon{
-          position: absolute;
-          margin-left: 17px;
-          margin-top: 17px;
-          z-index: 1;
-          color: #4f5b66;
+      .icon {
+        position: absolute;
+        margin-left: 17px;
+        margin-top: 17px;
+        z-index: 1;
+        color: #4f5b66;
       }
 
-      input#searchUrl{
-          height: 50px;
-          border: none;
-          padding-left: 45px;
-          overflow: hidden;
+      input#searchUrl {
+        height: 50px;
+        border: none;
+        padding-left: 45px;
+        overflow: hidden;
       }
 
-      #searchBtn{
-          outline: none;
-          opacity: 1;
-          margin-left: -80px;
-          height: 50%;
-          width: fit-content;
-          align-self: center;
+      #searchBtn {
+        outline: none;
+        opacity: 1;
+        margin-left: -80px;
+        height: 50%;
+        width: fit-content;
+        align-self: center;
       }
-
 
       tbody {
-          word-break:break-all;
+        word-break: break-all;
       }
       th {
-          width: 270px;
+        width: 270px;
       }
+    </style>
+  </head>
+  <body>
+    <div layout:fragment="content">
+      <div style="padding: 20px; background-color: #2eaab7">
+        <h2
+          th:text="'oEmbed Test'"
+          style="color: #f2f2f2; padding-bottom: 10px"
+        ></h2>
+        <form
+          class="d-flex"
+          id="search-form"
+          th:action="@{/oembed/search}"
+          method="post"
+        >
+          <span class="icon"><i class="fa fa-search"></i></span>
 
-  </style>
-</head>
-<body>
-<div layout:fragment="content">
+          <input
+            th:if="${searchUrl}"
+            class="form-control me-2"
+            type="search"
+            id="searchUrl"
+            name="searchUrl"
+            placeholder="Search"
+            th:value="${searchUrl}"
+            aria-label="Search"
+          />
+          <input
+            th:unless="${searchUrl}"
+            class="form-control me-2"
+            type="search"
+            id="searchUrl"
+            name="searchUrl"
+            placeholder="Search"
+            value="https://vimeo.com/20097015"
+            aria-label="Search"
+          />
+          <!--      <button class="btn btn-outline-success " type="submit" id="searchBtn" onclick="doSearch(event)" style="background-color: gold; color: black; border: none;">확인</button>-->
+          <button
+            class="btn btn-outline-success"
+            type="submit"
+            id="searchBtn"
+            style="background-color: gold; color: black; border: none"
+          >
+            확인
+          </button>
+        </form>
+      </div>
 
-  <div style="padding: 20px; background-color: #2EAAB7;">
-    <h2 th:text="'oEmbed Test'" style="color: #f2f2f2; padding-bottom: 10px;"></h2>
-    <form class="d-flex" id="search-form" th:action="@{/oembed/search}" method="get">
-      <span class="icon"><i class="fa fa-search"></i></span>
+      <div
+        class="container"
+        style="background-color: white; margin: 20px; padding: 20px"
+      >
+        <table class="table table-striped" id="searchResult">
+          <thead>
+            <tr th:if="${searchResult?.title}">
+              <th style="border: none; padding-bottom: 30px">title</th>
+              <td
+                style="border: none; padding-bottom: 30px; font-weight: bold"
+                th:text="${searchResult?.title}"
+              ></td>
+            </tr>
+          </thead>
 
-      <input th:if="${searchUrl}" class="form-control me-2" type="search" id="searchUrl" name="searchUrl" placeholder="Search" th:value="${searchUrl}" aria-label="Search">
-      <input th:unless="${searchUrl}" class="form-control me-2" type="search" id="searchUrl" name="searchUrl" placeholder="Search" value="https://vimeo.com/20097015" aria-label="Search">
-<!--      <button class="btn btn-outline-success " type="submit" id="searchBtn" onclick="doSearch(event)" style="background-color: gold; color: black; border: none;">확인</button>-->
-      <button class="btn btn-outline-success " type="submit" id="searchBtn" style="background-color: gold; color: black; border: none;">확인</button>
-    </form>
-  </div>
+          <tbody>
+            <tr th:if="${searchResult?.author_name}">
+              <th scope="row">type</th>
+              <td th:text="${searchResult?.author_name}"></td>
+            </tr>
+            <tr th:if="${searchResult?.version}">
+              <th scope="row">version</th>
+              <td th:text="${searchResult?.version}"></td>
+            </tr>
+            <tr th:if="${searchResult?.provider_name}">
+              <th scope="row">provider_name</th>
+              <td th:text="${searchResult?.provider_name}"></td>
+            </tr>
+            <tr th:if="${searchResult?.provider_url}">
+              <th scope="row">provider_url</th>
+              <td th:text="${searchResult?.provider_url}"></td>
+            </tr>
+            <tr th:if="${searchResult?.is_plus}">
+              <th scope="row">is_plus</th>
+              <td th:text="${searchResult?.is_plus}"></td>
+            </tr>
+            <tr th:if="${searchResult?.html}">
+              <th scope="row">html</th>
+              <td>
+                <div th:text="${searchResult?.html}"></div>
+                <div th:utext="${searchResult?.html}"></div>
+              </td>
+            </tr>
 
-  <div class="container" style="background-color: white; margin: 20px; padding: 20px;">
+            <tr th:if="${searchResult?.width}">
+              <th scope="row">width</th>
+              <td th:text="${searchResult?.width}"></td>
+            </tr>
+            <tr th:if="${searchResult?.height}">
+              <th scope="row">height</th>
+              <td th:text="${searchResult?.height}"></td>
+            </tr>
+            <tr th:if="${searchResult?.duration}">
+              <th scope="row">duration</th>
+              <td th:text="${searchResult?.duration}"></td>
+            </tr>
+            <tr th:if="${searchResult?.description}">
+              <th scope="row">description</th>
+              <td th:text="${searchResult?.description}"></td>
+            </tr>
+            <tr th:if="${searchResult?.thumbnail_url}">
+              <th scope="row">thumbnail_url</th>
+              <td>
+                <a
+                  th:href="@{${searchResult?.thumbnail_url}}"
+                  th:text="${searchResult?.thumbnail_url}"
+                ></a>
+                <img th:src="${searchResult?.thumbnail_url}" />
+              </td>
+            </tr>
+            <tr th:if="${searchResult?.thumbnail_width}">
+              <th scope="row">thumbnail_width</th>
+              <td th:text="${searchResult?.thumbnail_width}"></td>
+            </tr>
+            <tr th:if="${searchResult?.thumbnail_height}">
+              <th scope="row">thumbnail_height</th>
+              <td th:text="${searchResult?.thumbnail_height}"></td>
+            </tr>
+            <tr th:if="${searchResult?.thumbnail_url_with_play_button}">
+              <th scope="row">thumbnail_url_with_play_button</th>
+              <td>
+                <a
+                  th:href="@{${searchResult?.thumbnail_url_with_play_button}}"
+                  th:text="${searchResult?.thumbnail_url_with_play_button}"
+                ></a>
+              </td>
+            </tr>
 
-    <table class="table table-striped" id="searchResult" >
-      <thead >
-        <tr th:if="${searchResult?.title}">
-          <th style="border: none; padding-bottom: 30px;">title</th>
-          <td style="border: none; padding-bottom: 30px; font-weight: bold;" th:text="${searchResult?.title}"></td>
-        </tr>
-      </thead>
+            <tr th:if="${searchResult?.upload_date}">
+              <th scope="row">upload_date</th>
+              <td th:text="${searchResult?.upload_date}"></td>
+            </tr>
 
-      <tbody >
-        <tr th:if="${searchResult?.author_name}">
-          <th scope="row">type</th>
-          <td th:text="${searchResult?.author_name}"></td>
-        </tr>
-        <tr th:if="${searchResult?.version}">
-          <th scope="row">version</th>
-          <td th:text="${searchResult?.version}"></td>
-        </tr>
-        <tr th:if="${searchResult?.provider_name}">
-          <th scope="row">provider_name</th>
-          <td th:text="${searchResult?.provider_name}"></td>
-        </tr>
-        <tr th:if="${searchResult?.provider_url}">
-          <th scope="row">provider_url</th>
-          <td th:text="${searchResult?.provider_url}"></td>
-        </tr>
-        <tr th:if="${searchResult?.is_plus}">
-          <th scope="row">is_plus</th>
-          <td th:text="${searchResult?.is_plus}"></td>
-        </tr>
-        <tr th:if="${searchResult?.html}">
-          <th scope="row">html</th>
-            <td >
-              <div th:text="${searchResult?.html}"></div>
-              <div th:utext="${searchResult?.html}"></div>
-            </td>
-        </tr>
+            <tr th:if="${searchResult?.video_id}">
+              <th scope="row">video_id</th>
+              <td th:text="${searchResult?.video_id}"></td>
+            </tr>
 
-        <tr th:if="${searchResult?.width}">
-          <th scope="row">width</th>
-          <td th:text="${searchResult?.width}"></td>
-        </tr>
-        <tr th:if="${searchResult?.height}">
-          <th scope="row">height</th>
-          <td th:text="${searchResult?.height}"></td>
-        </tr>
-        <tr th:if="${searchResult?.duration}">
-          <th scope="row">duration</th>
-          <td th:text="${searchResult?.duration}"></td>
-        </tr>
-        <tr th:if="${searchResult?.description}">
-          <th scope="row">description</th>
-          <td th:text="${searchResult?.description}"></td>
-        </tr>
-        <tr th:if="${searchResult?.thumbnail_url}">
-          <th scope="row">thumbnail_url</th>
-          <td>
-            <a th:href="@{${searchResult?.thumbnail_url}}" th:text="${searchResult?.thumbnail_url}"></a>
-            <img th:src="${searchResult?.thumbnail_url}">
-          </td>
-        </tr>
-        <tr th:if="${searchResult?.thumbnail_width}">
-          <th scope="row">thumbnail_width</th>
-          <td th:text="${searchResult?.thumbnail_width}"></td>
-        </tr>
-        <tr th:if="${searchResult?.thumbnail_height}">
-          <th scope="row">thumbnail_height</th>
-          <td th:text="${searchResult?.thumbnail_height}"></td>
-        </tr>
-        <tr th:if="${searchResult?.thumbnail_url_with_play_button}">
-          <th scope="row">thumbnail_url_with_play_button</th>
-          <td>
-            <a th:href="@{${searchResult?.thumbnail_url_with_play_button}}" th:text="${searchResult?.thumbnail_url_with_play_button}"></a>
-          </td>
-        </tr>
+            <tr th:if="${searchResult?.uri}">
+              <th scope="row">url</th>
+              <td th:text="${searchResult?.uri}"></td>
+            </tr>
 
-        <tr th:if="${searchResult?.upload_date}">
-          <th scope="row">upload_date</th>
-          <td th:text="${searchResult?.upload_date}"></td>
-        </tr>
+            <tr th:if="${searchResult?.author_name}">
+              <th scope="row">author_name</th>
+              <td th:text="${searchResult?.author_name}"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-        <tr th:if="${searchResult?.video_id}">
-          <th scope="row">video_id</th>
-          <td th:text="${searchResult?.video_id}"></td>
-        </tr>
+      <script th:inline="javascript">
+              var searchResult = [[${searchResult}]];
+              if(!!searchResult){
+                console.log(searchResult);
+              }
 
-        <tr th:if="${searchResult?.uri}">
-          <th scope="row">url</th>
-          <td th:text="${searchResult?.uri}"></td>
-        </tr>
-
-        <tr th:if="${searchResult?.author_name}">
-          <th scope="row">author_name</th>
-          <td th:text="${searchResult?.author_name}"></td>
-        </tr>
-
-      </tbody>
-    </table>
-
-
-
-  </div>
-
-  <script th:inline="javascript">
-      var searchResult = [[${searchResult}]];
-      if(!!searchResult){
-        console.log(searchResult);
-      }
-
-//      function doSearch(event){
-//        event.preventDefault();
-//
-//        let url = "/oembed/search"
-//        var token = $("meta[name='_csrf']").attr("content");
-//        var header = $("meta[name='_csrf_header']").attr("content");
-//        $(document).ajaxSend(function(e, xhr, options) { xhr.setRequestHeader(header, token); });
-//
-//        var param = $("#search-form").serialize();
-//        $.post(url, param, function (response) {
-//            let oembedInfo = response.data;
-//            console.log(oembedInfo);
-//
-//
-//            // let oembedInfo = [response.data];
-//            // console.log(oembedInfo);
-//            // var table = $("#searchResult");
-//            // table.bootstrapTable({ data: oembedInfo })
-//        });
-//      }
-
-  </script>
-</div>
-</body>
+        //      function doSearch(event){
+        //        event.preventDefault();
+        //
+        //        let url = "/oembed/search"
+        //        var token = $("meta[name='_csrf']").attr("content");
+        //        var header = $("meta[name='_csrf_header']").attr("content");
+        //        $(document).ajaxSend(function(e, xhr, options) { xhr.setRequestHeader(header, token); });
+        //
+        //        var param = $("#search-form").serialize();
+        //        $.post(url, param, function (response) {
+        //            let oembedInfo = response.data;
+        //            console.log(oembedInfo);
+        //
+        //
+        //            // let oembedInfo = [response.data];
+        //            // console.log(oembedInfo);
+        //            // var table = $("#searchResult");
+        //            // table.bootstrapTable({ data: oembedInfo })
+        //        });
+        //      }
+      </script>
+    </div>
+  </body>
 </html>

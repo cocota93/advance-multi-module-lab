@@ -10,6 +10,7 @@ import org.jedy.oembed.service.OembedServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.thymeleaf.util.StringUtils;
 
 @Controller
@@ -21,14 +22,8 @@ public class OembedController {
     private final OembedServiceImpl oembedService;
 
 
-//    @GetMapping(value = "/search")
-//    public String searchPage(){
-//        log.info("asd");
-//        return "/oembed/search";
-//    }
-
     @GetMapping(value = "/search")
-    public String search(Model model, String searchUrl) throws Exception {
+    public String searchPage(Model model, String searchUrl) throws Exception {
         if(!StringUtils.isEmpty(searchUrl)){
             OembedReceiver oembedReceiver = oembedService.searchFromExternal(searchUrl);
             Oembed oembed = OembedMapper.INSTANCE.dtoToEntity(oembedReceiver);
@@ -37,6 +32,15 @@ public class OembedController {
             model.addAttribute("searchResult", resOembed);
             model.addAttribute("searchUrl", searchUrl);
         }
+
         return "/oembed/search";
+    }
+
+    @PostMapping(value = "/search")
+    public String search(RedirectAttributes redirectAttributes, String searchUrl) throws Exception {
+        if(!StringUtils.isEmpty(searchUrl)){
+            redirectAttributes.addAttribute("searchUrl", searchUrl);
+        }
+        return "redirect:/oembed/search";
     }
 }
