@@ -29,6 +29,7 @@ subprojects {
     group = 'org.jedy'
     version = '0.0.1-SNAPSHOT'
     sourceCompatibility = '1.8'
+    def querydslVersion = '4.3.1'
 
     repositories {
         mavenCentral()
@@ -51,32 +52,25 @@ subprojects {
         compile 'org.springframework.boot:spring-boot-starter-data-jpa'
         compile 'org.springframework.boot:spring-boot-starter-validation'
         compile 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5'
-        compile 'com.querydsl:querydsl-jpa'
         compile("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.6.2")
         compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.4")
 //        compile 'org.springframework.boot:spring-boot-starter-web'
 //        compile('com.h2database:h2:1.4.199')
 
-        annotationProcessor("jakarta.persistence:jakarta.persistence-api") // java.lang.NoClassDefFoundError(javax.annotation.Entity) 발생 대응
-        annotationProcessor("jakarta.annotation:jakarta.annotation-api") // java.lang.NoClassDefFoundError (javax.annotation.Generated) 발생 대응
-        annotationProcessor("com.querydsl:querydsl-apt:4.2.2:jpa") // querydsl JPAAnnotationProcessor 사용 지정
+// Querydsl
+        implementation group: 'com.querydsl', name: 'querydsl-jpa', version: querydslVersion
+        implementation group: 'com.querydsl', name: 'querydsl-apt', version: querydslVersion
+        implementation group: 'com.querydsl', name: 'querydsl-core', version: querydslVersion
 
+        annotationProcessor group: 'com.querydsl', name: 'querydsl-apt', version: querydslVersion
+        annotationProcessor group: 'com.querydsl', name: 'querydsl-apt', version: querydslVersion, classifier: 'jpa'
+        annotationProcessor("jakarta.persistence:jakarta.persistence-api")
+        annotationProcessor("jakarta.annotation:jakarta.annotation-api")
     }
 
-//    task initSourceFolders {
-//        sourceSets*.java.srcDirs*.each {
-//            if (!it.exists()) {
-//                it.mkdirs()
-//            }
-//        }
-//
-//        sourceSets*.resources.srcDirs*.each {
-//            if (!it.exists()) {
-//                it.mkdirs()
-//            }
-//        }
-//    }
-
+    clean {
+        delete file('src/main/generated') // 인텔리제이 Annotation processor 생성물 생성위치
+    }
 }
 
 project(':system-core') {
@@ -114,10 +108,7 @@ project(':operator-core') {
     dependencies {
         compile project(':system-core')
 
-
-
         compile('com.h2database:h2:1.4.199')
-
         compile 'org.springframework.boot:spring-boot-starter-security'
         testImplementation 'org.springframework.security:spring-security-test'
     }
