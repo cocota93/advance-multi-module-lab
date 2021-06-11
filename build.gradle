@@ -184,7 +184,7 @@ project(':blahblah-app-api') {
 
 }
 
-project(':blahblah-app-admin') {
+project(':boot-shop-app-admin') {
 
     dependencies {
         compile project(':core-web')

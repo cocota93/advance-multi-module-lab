@@ -1,10 +1,10 @@
 # Project exclude paths
 /.gradle/
 
-/blahblah-app-admin/build/
-/blahblah-app-admin/build/classes/java/main/
-/blahblah-app-admin/out/
-/blahblah-app-admin/src/main/generated/
+/boot-shop-app-admin/build/
+/boot-shop-app-admin/build/classes/java/main/
+/boot-shop-app-admin/out/
+/boot-shop-app-admin/src/main/generated/
 
 /blahblah-app-api/build/
 /blahblah-app-api/build/classes/java/main/

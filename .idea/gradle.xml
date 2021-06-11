@@ -8,8 +8,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/blahblah-app-admin" />
             <option value="$PROJECT_DIR$/blahblah-app-api" />
+            <option value="$PROJECT_DIR$/boot-shop-app-admin" />
             <option value="$PROJECT_DIR$/boot-shop-app-domain" />
             <option value="$PROJECT_DIR$/core-web" />
             <option value="$PROJECT_DIR$/system-core" />
