@@ -41,9 +41,34 @@ public class initDb {
 
 
         public void defaultOperatorInit(){
-            Operator operator = new Operator(customConstant.getTestOperatorId(), passwordEncoder.encode(customConstant.getTestOperatorPassword()));
-            operator.addAuthority(new OperatorAuth(operator, OperatorAuthType.PAY_MANAGER));
-            em.persist(operator);
+            {
+                Operator operator = new Operator(customConstant.getTestOperatorId(), passwordEncoder.encode(customConstant.getTestOperatorPassword()));
+                operator.addAuthority(new OperatorAuth(operator, OperatorAuthType.PAY_MANAGER));
+                em.persist(operator);
+            }
+
+            {
+                Operator operator = new Operator("super", passwordEncoder.encode("1234"));
+                operator.addAuthority(new OperatorAuth(operator, OperatorAuthType.SUPER_MANAGER));
+                em.persist(operator);
+            }
+            {
+                Operator operator = new Operator("sub", passwordEncoder.encode("1234"));
+                operator.addAuthority(new OperatorAuth(operator, OperatorAuthType.SUB_MANAGER));
+                em.persist(operator);
+            }
+            {
+                Operator operator = new Operator("pay", passwordEncoder.encode("1234"));
+                operator.addAuthority(new OperatorAuth(operator, OperatorAuthType.PAY_MANAGER));
+                em.persist(operator);
+            }
+            {
+                Operator operator = new Operator("complex", passwordEncoder.encode("1234"));
+                operator.addAuthority(new OperatorAuth(operator, OperatorAuthType.SUPER_MANAGER));
+                operator.addAuthority(new OperatorAuth(operator, OperatorAuthType.SUB_MANAGER));
+                operator.addAuthority(new OperatorAuth(operator, OperatorAuthType.PAY_MANAGER));
+                em.persist(operator);
+            }
         }
 
         public void memberInit(){

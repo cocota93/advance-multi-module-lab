@@ -28,6 +28,8 @@ public enum ErrorCode implements EnumType {
 
 
 
+
+
     // Member
     EMAIL_DUPLICATION(400, "M001", "Email is Duplication"),
     LOGIN_INPUT_INVALID(400, "M002", "Login input is invalid"),
@@ -39,6 +41,7 @@ public enum ErrorCode implements EnumType {
 
     // Operator
     ADD_AUTH_OWNER_NOT_EQUAL(400, "OPERATOR_00001", "owner of added auth not equal"),
+    INVALID_AUTHORITY_ASSIGN(403, "OPERATOR_00002", "권한이 제대로 부여되지 않았습니다. 관리자에게 문의해주세요"),
 
     // Oembed
     NOT_SUPPORT_PROVIDER_TYPE(405, "OEMBED_00001", "Not support provider type")
