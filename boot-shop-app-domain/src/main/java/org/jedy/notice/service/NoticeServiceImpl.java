@@ -28,4 +28,9 @@ public class NoticeServiceImpl {
         Notice notice = noticeRepository.findById(noticeId).orElseThrow(() -> new EntityNotFoundException("이미 삭제된 글을 삭제 시도했습니다. noticeId : " + noticeId));
         notice.delete();
     }
+
+    public Notice findById(Long noticeId){
+        return noticeRepository.findById(noticeId).orElseThrow(() -> new EntityNotFoundException("이미 삭제된 글을 읽으려 시도합니다. noticeId : " + noticeId));
+    }
+
 }

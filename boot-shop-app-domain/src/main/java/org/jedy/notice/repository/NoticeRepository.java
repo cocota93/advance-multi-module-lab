@@ -5,7 +5,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface NoticeRepository extends JpaRepository<Notice, Long> {
 
-//    public List<Notice> basicSelect() {
-//        return  select()
-//    }
 }
