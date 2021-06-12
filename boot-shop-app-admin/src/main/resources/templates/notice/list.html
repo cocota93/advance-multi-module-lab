@@ -34,12 +34,12 @@
           <td align="right">
             <a
               th:text="${notice.content}"
-              th:href="@{/org/jedy/notice/modify(noticeId=${notice.id})}"
+              th:href="@{/notice/modify(noticeId=${notice.id})}"
             ></a>
           </td>
         </tr>
       </table>
-      <a th:href="@{/org/jedy/notice/create}" th:text="'새글'"></a>
+      <a th:href="@{/notice/create}" th:text="'새글'"></a>
     </div>
   </body>
 </html>
