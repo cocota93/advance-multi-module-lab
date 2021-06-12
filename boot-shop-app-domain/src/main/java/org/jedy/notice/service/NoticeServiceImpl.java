@@ -2,6 +2,7 @@ package org.jedy.notice.service;
 
 import lombok.RequiredArgsConstructor;
 import org.jedy.notice.domain.Notice;
+import org.jedy.notice.exception.NoticeNotFoundException;
 import org.jedy.notice.repository.NoticeRepository;
 import org.jedy.system_core.global.error.exception.EntityNotFoundException;
 import org.springframework.stereotype.Service;
@@ -20,17 +21,17 @@ public class NoticeServiceImpl {
     }
 
     public void modify(Long noticeId, String content){
-        Notice notice = noticeRepository.findById(noticeId).orElseThrow(() -> new EntityNotFoundException("이미 삭제된 글을 수정 시도했습니다. noticeId : " + noticeId));
+        Notice notice = noticeRepository.findById(noticeId).orElseThrow(() -> new NoticeNotFoundException(noticeId));
         notice.setContent(content);
     }
 
     public void delete(Long noticeId){
-        Notice notice = noticeRepository.findById(noticeId).orElseThrow(() -> new EntityNotFoundException("이미 삭제된 글을 삭제 시도했습니다. noticeId : " + noticeId));
+        Notice notice = noticeRepository.findById(noticeId).orElseThrow(() -> new NoticeNotFoundException(noticeId));
         notice.delete();
     }
 
     public Notice findById(Long noticeId){
-        return noticeRepository.findById(noticeId).orElseThrow(() -> new EntityNotFoundException("이미 삭제된 글을 읽으려 시도합니다. noticeId : " + noticeId));
+        return noticeRepository.findById(noticeId).orElseThrow(() -> new NoticeNotFoundException(noticeId));
     }
 
 }
