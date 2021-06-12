@@ -104,20 +104,6 @@ project(':boot-shop-app-domain') {
 }
 
 
-project(':core-web') {
-    bootJar.enabled = false//main이 없는 모듈에는 다 포함 추가해줘야한다
-    jar.enabled = true//main이 없는 모듈에는 다 포함 추가해줘야한다
-
-    dependencies {
-        compile 'org.springframework.boot:spring-boot-starter-web'
-
-
-
-    }
-}
-
-
-
 project(':boot-shop-app-api') {
 
 
@@ -127,7 +113,6 @@ project(':boot-shop-app-api') {
 
     dependencies {
         compile project(':boot-shop-app-domain')
-        compile project(':core-web')
 
         compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.4")
         compile 'org.springframework.boot:spring-boot-starter-validation'
@@ -187,7 +172,6 @@ project(':boot-shop-app-api') {
 project(':boot-shop-app-admin') {
 
     dependencies {
-        compile project(':core-web')
         compile project(':boot-shop-app-domain')
 
 

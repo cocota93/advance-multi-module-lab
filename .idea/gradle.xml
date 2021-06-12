@@ -12,7 +12,6 @@
             <option value="$PROJECT_DIR$/boot-shop-app-admin" />
             <option value="$PROJECT_DIR$/boot-shop-app-api" />
             <option value="$PROJECT_DIR$/boot-shop-app-domain" />
-            <option value="$PROJECT_DIR$/core-web" />
             <option value="$PROJECT_DIR$/system-core" />
           </set>
         </option>
