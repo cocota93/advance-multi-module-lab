@@ -2,5 +2,10 @@
 <project version="4">
   <component name="JpaBuddyIdeaProjectConfig">
     <option name="defaultUnitInitialized" value="true" />
+    <option name="createEntityParentFqns">
+      <list>
+        <option value="org.jedy.system_core.entity.BaseTimeEntity" />
+      </list>
+    </option>
   </component>
 </project>
