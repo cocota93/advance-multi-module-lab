@@ -1,47 +1,37 @@
-# Project exclude paths
-/.gradle/
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-/boot-shop-app-admin/build/
-/boot-shop-app-admin/build/classes/java/main/
-/boot-shop-app-admin/out/
-/boot-shop-app-admin/src/main/generated/
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
 
-/blahblah-app-api/build/
-/blahblah-app-api/build/classes/java/main/
-/blahblah-app-api/out/
-/blahblah-app-api/src/main/generated/
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
 
-/member-core/build/
-/member-core/build/classes/java/main/
-/member-core/out/
-/member-core/src/main/generated/
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
 
-/operator-core/build/
-/operator-core/build/classes/java/main/
-/operator-core/out/
-/operator-core/src/main/generated/
-
-/oembed-core/build/
-/oembed-core/build/classes/java/main/
-/oembed-core/out/
-/oembed-core/src/main/generated/
-
-/ad-statistic-core/build/
-/ad-statistic-core/build/classes/java/main/
-/ad-statistic-core/out/
-/ad-statistic-core/src/main/generated/
-
-/core-web/build/
-/core-web/build/classes/java/main/
-/core-web/out/
-/core-web/src/main/generated/
-
-/system-core/build/
-/system-core/build/classes/java/main/
-/system-core/out/
-/system-core/src/main/generated/
-
-/notice-core/build/
-/notice-core/build/classes/java/main/
-/notice-core/out/
-/notice-core/src/main/generated/
+### VS Code ###
+.vscode/
