@@ -24,12 +24,6 @@ public class MemberApiController {
     private final MemberRepository memberRepository;
 
 
-    @GetMapping(value = "/create")
-    public MemberCreateResponse create() {
-        return memberAuthService.testCreate();
-    }
-
-
     @PostMapping(value = "/signup")
     public MemberCreateResponse signup(@Valid @RequestBody ReqSignupMember reqSignupMember) {
         MemberCreateResponse member = memberAuthService.signup(reqSignupMember);
@@ -60,21 +54,4 @@ public class MemberApiController {
         return "jwtcheck_success";
     }
 
-    @PostMapping(value = "/findLoginId")
-    public void findLoginId() {
-        memberAuthService.findLoginId();
-    }
-
-    @PostMapping(value = "/findPassword")
-    public void findPassword() {
-        memberAuthService.findPassword();
-    }
-
-    @PostMapping(value = "/modifyPassword")
-    public void modifyPassword() {
-        memberAuthService.modifyPassword();
-    }
-
-
-//    이메일인증
 }

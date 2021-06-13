@@ -7,6 +7,7 @@ import org.jedy.member.domain.Member;
 import org.jedy.member.domain.MemberAuth;
 import org.jedy.member.domain.MemberAuthType;
 import org.jedy.member.domain.ReqSignupMember;
+import org.jedy.member.exception.MemberSignupDuplicationException;
 import org.jedy.member.repository.MemberRepository;
 import org.jedy.system_core.global.error.exception.EntityNotFoundException;
 import org.jedy.member.dto.response.MemberCreateResponse;
@@ -49,6 +50,10 @@ public class MemberAuthService {
 
     //cascade가 원자적으로 동작하나? member랑 memberAuth랑 각각 한번씩 저장해야되는데 이게 원자적으로 되는건가?
     private Long defaultSignupMember(ReqSignupMember reqSignupMember) {
+        memberRepository.findByLoginId(reqSignupMember.getLoginId()).ifPresent(oldMember -> {
+            throw new MemberSignupDuplicationException(oldMember.getLoginId());
+        });
+
         Member member = Member.BySignup()
                 .loginId(reqSignupMember.getLoginId())
                 .password(passwordEncoder.encode(reqSignupMember.getPassword()))
@@ -77,12 +82,5 @@ public class MemberAuthService {
         return token;
     }
 
-    public void findLoginId() {
-    }
 
-    public void findPassword() {
-    }
-
-    public void modifyPassword() {
-    }
 }

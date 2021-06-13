@@ -33,7 +33,7 @@ public enum ErrorCode implements EnumType {
     // Member
     EMAIL_DUPLICATION(400, "M001", "Email is Duplication"),
     LOGIN_INPUT_INVALID(400, "M002", "Login input is invalid"),
-    SOMETHING_INVALID(400, "M003", "Something is invalid"),
+    LOGIN_ID_DUPLICATION(400, "M003", "LoginId is Duplication"),
 
     // Coupon
     COUPON_ALREADY_USE(400, "COUPON_00001", "Coupon was already used"),
