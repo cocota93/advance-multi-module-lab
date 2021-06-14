@@ -12,9 +12,9 @@ import java.util.List;
 
 import static org.jedy.notice.domain.QNotice.notice;
 
-public class NoticeQueryRepositoryImpl extends Querydsl4RepositorySupport implements NoticeQueryRepositoryCustom {
+public class NoticeQueryRepositoryCustomImpl extends Querydsl4RepositorySupport implements NoticeQueryRepositoryCustom {
 
-    public NoticeQueryRepositoryImpl() {
+    public NoticeQueryRepositoryCustomImpl() {
         super(Notice.class);
     }
 
