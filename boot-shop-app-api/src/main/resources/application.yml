@@ -6,7 +6,7 @@ spring:
 spring:
   profiles:
     group:
-      "local": "testenv,testdb,globalconstant"
+      "local": "testenv,testdb,globalconstant,initdb"
 ---
 spring:
   config:
