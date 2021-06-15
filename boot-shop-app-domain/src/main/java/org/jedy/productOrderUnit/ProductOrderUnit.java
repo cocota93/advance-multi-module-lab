@@ -1,18 +1,14 @@
 package org.jedy.productOrderUnit;
 
-import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import org.jedy.productOrder.ProductOrder;
 import org.jedy.system_core.entity.BaseTimeEntity;
 
 import javax.persistence.*;
 
 
-@Table(name = "product_order_unit")
 @Entity
 @Getter
-@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class ProductOrderUnit extends BaseTimeEntity {
 
     @Id

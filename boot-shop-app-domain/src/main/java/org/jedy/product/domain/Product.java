@@ -18,7 +18,6 @@ import javax.persistence.*;
 /**
  * 상품 자체에 대한 정보.
  * */
-@Table(name = "product")
 @Entity
 @Getter
 @Builder

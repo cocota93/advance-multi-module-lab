@@ -1,8 +1,6 @@
 package org.jedy.productOrder;
 
-import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import org.jedy.address.Address;
 import org.jedy.member.domain.Member;
 import org.jedy.productOrderUnit.ProductOrderUnit;
@@ -42,10 +40,8 @@ import static javax.persistence.FetchType.LAZY;
  * 취소가 된 부분에 대해서는 별도의 로그가 남는다.
  * 주문에 대한 세부적인 아이템들은 ProductOrderUnit클래스로 관리된다.
  * */
-@Table(name = "product_order")
 @Entity
 @Getter
-@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class ProductOrder extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -2,7 +2,6 @@ package org.jedy.cart.domain;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import org.jedy.member.domain.Member;
 import org.jedy.product.domain.Product;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -33,15 +32,13 @@ import static javax.persistence.FetchType.LAZY;
  * 유저가 어떤 기기로 로그인하든 똑같은 장바구니 내역을 볼수 있도록 도와줄뿐
  * 실제 주문과는 관련되어있지 않는다.
  * */
-@Table(name = "cart")
 @Entity
 @Getter
-@RequiredArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 public class Cart {
     @Id
-    @Column(name = "cart_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cart_id", nullable = false)
     private Long id;
 
 
