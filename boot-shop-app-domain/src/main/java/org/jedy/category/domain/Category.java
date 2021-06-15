@@ -27,7 +27,7 @@ public class Category {
     @Column(name = "category_id")
     private Long id;
 
-
+    @Column
     private String catCd;
 
     @Column(length = 50)
@@ -40,6 +40,6 @@ public class Category {
 //    private Integer catLv;
 
     @Column
-    private boolean use;
+    private boolean useSlot;
 
 }

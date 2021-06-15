@@ -25,7 +25,7 @@ public class CategoryService {
                         .catName(categoryRequestDto.getCatName())
                         .upperCatCd(categoryRequestDto.getUpperCatCd())
 //                        .catLv(categoryRequestDto.getCatLv())
-                        .use(true)
+                        .useSlot(true)
                         .build()
         );
 

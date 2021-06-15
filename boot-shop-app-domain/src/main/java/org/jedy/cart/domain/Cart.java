@@ -4,11 +4,9 @@ import lombok.Builder;
 import lombok.Getter;
 import org.jedy.member.domain.Member;
 import org.jedy.product.domain.Product;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 import static javax.persistence.FetchType.LAZY;
 
@@ -46,11 +44,11 @@ public class Cart {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @LastModifiedDate
-    private LocalDateTime lastModifiedDate;
+//    @LastModifiedDate
+//    private LocalDateTime lastModifiedDate;
 
     @Column
-    private boolean use;
+    private boolean useSlot;
 
     @OneToOne(fetch = LAZY)
     @JoinColumn(name = "product_id")
@@ -62,7 +60,7 @@ public class Cart {
     public void changeProduct(Product product, int count) {
         this.product = product;
         this.count = count;
-        this.use = true;
+        this.useSlot = true;
     }
 
     @Builder(builderClassName = "InitAssignBySignup", builderMethodName = "InitAssignBySignup")

@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface CartRepositoryCustom {
 
-    List<CartResponse> findUseCartList(String memberLoginId, Boolean use);
-    Cart findEmptyCart(String memberLoginId, Boolean use);
+    List<CartResponse> findUseCartList(String memberLoginId, Boolean useSlot);
+    Cart findEmptyCart(String memberLoginId, Boolean useSlot);
 }
