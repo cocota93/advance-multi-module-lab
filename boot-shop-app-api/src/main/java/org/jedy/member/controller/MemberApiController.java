@@ -8,6 +8,7 @@ import org.jedy.member.domain.ReqLoginMember;
 import org.jedy.member.domain.ReqSignupMember;
 import org.jedy.member.service.MemberAuthService;
 import org.jedy.member.repository.MemberRepository;
+import org.jedy.member.service.MemberSignupService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -21,12 +22,13 @@ import javax.validation.Valid;
 public class MemberApiController {
 
     private final MemberAuthService memberAuthService;
+    private final MemberSignupService memberSignupService;
     private final MemberRepository memberRepository;
 
 
     @PostMapping(value = "/signup")
     public MemberCreateResponse signup(@Valid @RequestBody ReqSignupMember reqSignupMember) {
-        MemberCreateResponse member = memberAuthService.signup(reqSignupMember);
+        MemberCreateResponse member = memberSignupService.signup(reqSignupMember);
         return member;
     }
 
@@ -36,7 +38,7 @@ public class MemberApiController {
         return loginToken;
     }
 
-    //postman으로 헤더에 X_AUTH_TOKEN 제대로 안넣어서 보내면 requestId가 익명으로 나오고
+    //postman으로 헤더에 X-AUTH-TOKEN 제대로 안넣어서 보내면 requestId가 익명으로 나오고
     //제대로 넣어서 보내면 누군지 식별됨.
     //이대한 일련의 과정은 JwtAuthenticationFilter에서 처리됨.
     @PostMapping(value = "/jwtcheck")
