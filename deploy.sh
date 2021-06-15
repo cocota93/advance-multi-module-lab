@@ -27,4 +27,4 @@ else
 fi
 
 echo "> $APPLICATION_JAR 배포"
-nohup java -jar --spring.profiles.active=live $APPLICATION_JAR > /dev/null 2> /dev/null < /dev/null &
+nohup java -jar -Dspring.profiles.active=live $APPLICATION_JAR > /dev/null 2> /dev/null < /dev/null &
