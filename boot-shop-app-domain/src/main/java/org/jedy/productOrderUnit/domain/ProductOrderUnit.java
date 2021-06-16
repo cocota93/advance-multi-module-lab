@@ -1,7 +1,8 @@
-package org.jedy.productOrderUnit;
+package org.jedy.productOrderUnit.domain;
 
+import lombok.Builder;
 import lombok.Getter;
-import org.jedy.productOrder.ProductOrder;
+import org.jedy.productOrder.domain.ProductOrder;
 import org.jedy.system_core.entity.BaseTimeEntity;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
+@Builder
 public class ProductOrderUnit extends BaseTimeEntity {
 
     @Id
@@ -24,8 +26,9 @@ public class ProductOrderUnit extends BaseTimeEntity {
     private ProductOrder productOrder;
 
 
+
+
     /** 구매당시 1개당 가격 */
     private Long price;
     private Integer count;
-    private Long totalPrice;
 }

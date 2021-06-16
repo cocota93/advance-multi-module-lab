@@ -1,4 +1,4 @@
-package org.jedy.productOrderUnit;
+package org.jedy.productOrderUnit.domain;
 
 public enum ProductOrderUnitStatus {
     ORDER, CANCEL

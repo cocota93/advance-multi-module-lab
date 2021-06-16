@@ -1,4 +1,4 @@
-package org.jedy.productOrder;
+package org.jedy.productOrder.domain;
 
 public enum ProductOrderDeliveryStatus {
     READY, COMP

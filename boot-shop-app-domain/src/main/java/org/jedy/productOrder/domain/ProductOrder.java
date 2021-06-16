@@ -1,9 +1,10 @@
-package org.jedy.productOrder;
+package org.jedy.productOrder.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import org.jedy.address.Address;
 import org.jedy.member.domain.Member;
-import org.jedy.productOrderUnit.ProductOrderUnit;
+import org.jedy.productOrderUnit.domain.ProductOrderUnit;
 import org.jedy.system_core.entity.BaseTimeEntity;
 
 import javax.persistence.*;
@@ -42,6 +43,7 @@ import static javax.persistence.FetchType.LAZY;
  * */
 @Entity
 @Getter
+@Builder
 public class ProductOrder extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,7 +64,7 @@ public class ProductOrder extends BaseTimeEntity {
     private Long totalPrice;
 
     @Enumerated(EnumType.STRING)
-    private ProductOrderDeliveryStatus status; //READY, COMP
+    private ProductOrderDeliveryStatus deliveryStatus; //READY, COMP
 
     @Embedded
     private Address address;
