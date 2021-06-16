@@ -31,6 +31,6 @@ rm $DEPLOY_PATH/nohup.out
 
 echo "> $APPLICATION_JAR 배포"
 echo "> java -jar -Dspring.profiles.active=live $APPLICATION_JAR &"
-nohup java -jar -Dspring.profiles.active=live $APPLICATION_JAR &
+nohup java -jar -Dspring.profiles.active=live $APPLICATION_JAR >> /home/ubuntu/deploy.log 2>/home/ubuntu/deploy_err.log &
 
 echo "> jar실행완료"
