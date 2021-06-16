@@ -61,4 +61,8 @@ public class Member extends BaseTimeEntity {
 
     authorityList.add(memberAuth);
   }
+
+  public boolean EqualLoginId(String loginId) {
+    return this.loginId.equals(loginId);
+  }
 }

@@ -3,6 +3,8 @@ package org.jedy.cart.controller;
 import lombok.RequiredArgsConstructor;
 import org.jedy.cart.domain.Cart;
 import org.jedy.cart.dto.request.CartAddRequest;
+import org.jedy.cart.dto.request.CartDeleteRequest;
+import org.jedy.cart.dto.request.CartModifyRequest;
 import org.jedy.cart.dto.response.CartResponse;
 import org.jedy.cart.service.CartService;
 import org.springframework.data.domain.Page;
@@ -30,4 +32,15 @@ public class CartController {
         return ResponseEntity.ok().build();
     }
 
+    @PostMapping(value = "/modify")
+    public ResponseEntity<Void> update(@AuthenticationPrincipal UserDetails userDetails, @RequestBody CartModifyRequest cartModifyRequest) {
+        cartService.modify(userDetails.getUsername(), cartModifyRequest);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping(value = "/delete")
+    public ResponseEntity<Void> delete(@AuthenticationPrincipal UserDetails userDetails, @RequestBody CartDeleteRequest cartDeleteRequest) {
+        cartService.delete(userDetails.getUsername(), cartDeleteRequest);
+        return ResponseEntity.ok().build();
+    }
 }

@@ -70,4 +70,15 @@ public class Cart {
     public Cart(Member member) {
         this.member = member;
     }
+
+
+    public boolean equalOwner(String loginId) {
+        if(member == null) return false;
+        if(!member.EqualLoginId(loginId)) return false;
+        return true;
+    }
+
+    public void disableSlot() {
+        useSlot = false;
+    }
 }
