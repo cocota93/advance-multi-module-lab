@@ -27,7 +27,7 @@ public class CartService {
     private final CartRepository cartRepository;
     private final ProductRepository productRepository;
 
-    public Page<Cart> search(String memberLoginId) {
+    public Page<CartResponse> search(String memberLoginId) {
         List<CartResponse> useCartList = cartRepository.findUseCartList(memberLoginId, true);
         PageImpl page = new PageImpl(useCartList);
         return page;

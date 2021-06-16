@@ -3,6 +3,7 @@ package org.jedy.cart.controller;
 import lombok.RequiredArgsConstructor;
 import org.jedy.cart.domain.Cart;
 import org.jedy.cart.dto.request.CartAddRequest;
+import org.jedy.cart.dto.response.CartResponse;
 import org.jedy.cart.service.CartService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +19,8 @@ public class CartController {
     private final CartService cartService;
 
     @GetMapping(value = "/search")
-    public Page<Cart> search(@AuthenticationPrincipal UserDetails userDetails) {
-        Page<Cart> search = cartService.search(userDetails.getUsername());
+    public Page<CartResponse> search(@AuthenticationPrincipal UserDetails userDetails) {
+        Page<CartResponse> search = cartService.search(userDetails.getUsername());
         return search;
     }
 
