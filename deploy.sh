@@ -26,5 +26,10 @@ else
   sleep 5
 fi
 
+echo "> 로그파일 삭제"
+rm $DEPLOY_PATH/nohup.out
+
 echo "> $APPLICATION_JAR 배포"
 nohup java -jar -Dspring.profiles.active=live $APPLICATION_JAR &
+
+echo "> jar실행완료"

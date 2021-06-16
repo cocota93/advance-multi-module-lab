@@ -1,7 +1,9 @@
 package org.jedy.cart.domain;
 
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.jedy.member.domain.Member;
 import org.jedy.product.domain.Product;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -32,7 +34,8 @@ import static javax.persistence.FetchType.LAZY;
  * */
 @Entity
 @Getter
-@EntityListeners(AuditingEntityListener.class)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+//@EntityListeners(AuditingEntityListener.class)
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

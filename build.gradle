@@ -120,7 +120,6 @@ project(':boot-shop-app-api') {
         implementation 'io.jsonwebtoken:jjwt:0.9.1'
         implementation 'org.springframework.boot:spring-boot-starter-actuator'
         compile("org.mariadb.jdbc:mariadb-java-client")
-        compile 'mysql:mysql-connector-java'
 
         asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor:1.2.6.RELEASE' // (4)
         testImplementation('org.springframework.restdocs:spring-restdocs-mockmvc') // (5)
