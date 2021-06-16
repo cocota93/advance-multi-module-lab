@@ -6,12 +6,12 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 
 @SpringBootApplication
 public class BootShopAppApiApplication {
-//
+
 //    public static final String APPLICATION_LOCATIONS = "spring.config.location="
 //            + "classpath:application.yml,"
 ////            + "classpath:"
 ////            + "application.yml,"
-//            + "file:/home/ec2-user/app/config/blahblah-app-api/real-application.yml";
+//            + "file:/home/ubuntu/application-live.yml";
 //
 //
 //    public static void main(String[] args) {

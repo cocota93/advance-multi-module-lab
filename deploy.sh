@@ -27,10 +27,14 @@ else
 fi
 
 echo "> 로그파일 삭제"
-rm $DEPLOY_PATH/nohup.out
+LOG_FILE_NAME=deploy.log
+ERR_LOG_FILE_NAME=deploy_err.log
+rm $DEPLOY_PATH$LOG_FILE_NAME
+rm $DEPLOY_PATH$ERR_LOG_FILE_NAME
 
 echo "> $APPLICATION_JAR 배포"
-echo "> java -jar -Dspring.profiles.active=live $APPLICATION_JAR &"
-nohup java -jar -Dspring.profiles.active=live $APPLICATION_JAR >> /home/ubuntu/deploy.log 2>/home/ubuntu/deploy_err.log &
+ACTIVE_PROFILE=live
+echo "> java -jar -Dspring.profiles.active=$ACTIVE_PROFILE $APPLICATION_JAR &"
+nohup java -jar -Dspring.profiles.active=$ACTIVE_PROFILE -Dspring.config.location=file:/home/ubuntu/application.yml $APPLICATION_JAR >> /home/ubuntu/deploy.log 2>/home/ubuntu/deploy_err.log &
 
 echo "> jar실행완료"
