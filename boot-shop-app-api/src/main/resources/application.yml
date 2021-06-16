@@ -20,7 +20,8 @@ spring:
     activate:
       on-profile: "testenv"
 
-  jwt.secret: wjsurshdmf@$&
+  jwt:
+    secret: "wjsurshdmf@$&"
 
   #actuator
   #https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html

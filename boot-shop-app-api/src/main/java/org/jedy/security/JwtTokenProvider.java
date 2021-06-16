@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -22,16 +23,15 @@ import java.util.List;
 @Component
 public class JwtTokenProvider { // JWT 토큰을 생성 및 검증 모듈
 
-    @Value("${spring.jwt.secret}")
     private String secretKey;
 
     private long tokenValidMilisecond = 1000L * 60 * 60; // 1시간만 토큰 유효
 
     private final UserDetailsService userDetailsService;
 
-    @PostConstruct
-    protected void init() {
-        secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
+    @Autowired
+    protected void init(@Value("${spring.jwt.secret}") String secretKey) {
+        this.secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
 
     // Jwt 토큰 생성
