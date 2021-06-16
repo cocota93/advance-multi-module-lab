@@ -3,6 +3,7 @@ package org.jedy.member.service;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.jedy.cart.domain.Cart;
 import org.jedy.cart.repository.CartRepository;
 import org.jedy.member.domain.Member;
 import org.jedy.member.domain.MemberAuth;
@@ -35,9 +36,9 @@ public class MemberSignupService {
         Long memberId = defaultSignupMember(reqSignupMember);
         Member member = memberRepository.findById(memberId).orElseThrow(() -> new EntityNotFoundException("signup is not working"));
 
-//        for (int i = 0; i < 20; i++) {
-//            cartRepository.save(Cart.InitAssignBySignup().member(member).build());
-//        }
+        for (int i = 0; i < 20; i++) {
+            cartRepository.save(Cart.InitAssignBySignup().member(member).build());
+        }
 
         return new MemberCreateResponse(member);
     }
