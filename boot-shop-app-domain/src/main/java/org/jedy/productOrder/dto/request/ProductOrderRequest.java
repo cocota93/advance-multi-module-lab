@@ -2,6 +2,8 @@ package org.jedy.productOrder.dto.request;
 
 import lombok.Data;
 import org.jedy.address.Address;
+import org.jedy.payment.domain.Payment;
+import org.jedy.payment.domain.PaymentType;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
@@ -26,8 +28,9 @@ public class ProductOrderRequest {
     @Valid
     private List<ProductOrderUnitReq> orderUnitReqList;
     //List<coupon> 쿠폰 사용 리스트
+
     //결제수단
-    //
+    private PaymentType paymentType;
 
 
     @Data
