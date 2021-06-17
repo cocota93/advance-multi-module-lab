@@ -1,18 +1,18 @@
 package org.jedy.productOrder.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.jedy.cart.dto.request.CartAddRequest;
 import org.jedy.payment.service.PaymentService;
 import org.jedy.productOrder.dto.request.ProductOrderRequest;
+import org.jedy.productOrder.dto.request.ProductOrderSearchCondition;
+import org.jedy.productOrder.dto.response.ProductOrderSimpleResponse;
 import org.jedy.productOrder.service.ProductOrderCalculateService;
 import org.jedy.productOrder.service.ProductOrderService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -38,6 +38,12 @@ public class ProductOrderController {
     }
 
     //구매한 상품리스트
+    @GetMapping(value = "/simpleSearch")
+    public Page<ProductOrderSimpleResponse> simpleSearch(@AuthenticationPrincipal UserDetails userDetails, ProductOrderSearchCondition searchCondition, Pageable pageable) {
+        Page<ProductOrderSimpleResponse> page = productOrderService.simpleSearch(userDetails.getUsername(), searchCondition, pageable);
+        return page;
+    }
+
 
     //부분취소
     //모두취소

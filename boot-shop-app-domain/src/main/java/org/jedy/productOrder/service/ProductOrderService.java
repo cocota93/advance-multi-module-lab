@@ -10,12 +10,16 @@ import org.jedy.product.repository.ProductRepository;
 import org.jedy.productOrder.domain.ProductOrder;
 import org.jedy.productOrder.domain.ProductOrderStatus;
 import org.jedy.productOrder.dto.request.ProductOrderRequest;
+import org.jedy.productOrder.dto.request.ProductOrderSearchCondition;
+import org.jedy.productOrder.dto.response.ProductOrderSimpleResponse;
 import org.jedy.productOrder.repository.ProductOrderRepository;
 import org.jedy.productOrderUnit.domain.ProductOrderUnit;
 import org.jedy.productOrderUnit.domain.ProductOrderUnitStatus;
 import org.jedy.productOrderUnit.repository.ProductOrderUnitRepository;
 import org.jedy.system_core.global.error.exception.BusinessException;
 import org.jedy.system_core.global.error.exception.ErrorCode;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -57,5 +61,11 @@ public class ProductOrderService {
         }
         return;
     }
+
+    public Page<ProductOrderSimpleResponse> simpleSearch(String loginId, ProductOrderSearchCondition searchCondition, Pageable pageable) {
+        return productOrderRepository.simpleSearch(loginId, searchCondition, pageable);
+    }
+
+
 }
 
