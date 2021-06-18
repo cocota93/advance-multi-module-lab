@@ -46,8 +46,8 @@ public class ProductOrderController {
     }
 
     @GetMapping(value = "/detailSearch")
-    public ProductOrderDetailResponse detailSearch(@AuthenticationPrincipal UserDetails userDetails, ProductOrderSearchCondition searchCondition, Pageable pageable) {
-        ProductOrderDetailResponse response = productOrderService.detailSearch(userDetails.getUsername(), searchCondition, pageable);
+    public ProductOrderDetailResponse detailSearch(@AuthenticationPrincipal UserDetails userDetails, ProductOrderSearchCondition searchCondition) {
+        ProductOrderDetailResponse response = productOrderService.detailSearch(userDetails.getUsername(), searchCondition);
         return response;
     }
 

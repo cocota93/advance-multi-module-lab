@@ -70,9 +70,9 @@ public class ProductOrderService {
         return productOrderRepository.simpleSearch(loginId, searchCondition, pageable);
     }
 
-    public ProductOrderDetailResponse detailSearch(String loginid, ProductOrderSearchCondition searchCondition, Pageable pageable) {
-        Member requestMember = memberRepository.findByLoginId(loginid)
-                                               .orElseThrow(() -> new MemberNotFindException(loginid));
+    public ProductOrderDetailResponse detailSearch(String loginId, ProductOrderSearchCondition searchCondition) {
+        Member requestMember = memberRepository.findByLoginId(loginId)
+                                               .orElseThrow(() -> new MemberNotFindException(loginId));
 
         ProductOrder requestTarget = productOrderRepository.findByProductOrderUnitAndMember(searchCondition.getProductOrderId(), requestMember.getId())
                                                           .orElseThrow(() -> new EntityNotFoundException("product order not found " + searchCondition.getProductOrderId()));
