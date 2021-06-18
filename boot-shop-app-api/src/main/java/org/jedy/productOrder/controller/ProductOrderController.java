@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.jedy.payment.service.PaymentService;
 import org.jedy.productOrder.dto.request.ProductOrderRequest;
 import org.jedy.productOrder.dto.request.ProductOrderSearchCondition;
+import org.jedy.productOrder.dto.response.ProductOrderDetailResponse;
 import org.jedy.productOrder.dto.response.ProductOrderSimpleResponse;
 import org.jedy.productOrder.service.ProductOrderCalculateService;
 import org.jedy.productOrder.service.ProductOrderService;
@@ -44,6 +45,11 @@ public class ProductOrderController {
         return page;
     }
 
+    @GetMapping(value = "/detailSearch")
+    public ProductOrderDetailResponse detailSearch(@AuthenticationPrincipal UserDetails userDetails, ProductOrderSearchCondition searchCondition, Pageable pageable) {
+        ProductOrderDetailResponse response = productOrderService.detailSearch(userDetails.getUsername(), searchCondition, pageable);
+        return response;
+    }
 
     //부분취소
     //모두취소

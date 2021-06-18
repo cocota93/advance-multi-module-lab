@@ -1,7 +1,6 @@
 package org.jedy.productOrder.domain;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 import org.jedy.address.Address;
 import org.jedy.member.domain.Member;
 import org.jedy.productOrderUnit.domain.ProductOrderUnit;
@@ -44,6 +43,8 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 @Getter
 @Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class ProductOrder extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

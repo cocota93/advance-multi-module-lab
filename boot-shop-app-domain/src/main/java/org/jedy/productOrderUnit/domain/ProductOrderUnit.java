@@ -1,7 +1,6 @@
 package org.jedy.productOrderUnit.domain;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 import org.jedy.productOrder.domain.ProductOrder;
 import org.jedy.system_core.entity.BaseTimeEntity;
 
@@ -11,6 +10,8 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class ProductOrderUnit extends BaseTimeEntity {
 
     @Id
