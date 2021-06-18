@@ -2,8 +2,6 @@ package org.jedy.cart.repository;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
 import org.jedy.cart.domain.Cart;
-import org.jedy.cart.dto.response.CartResponse;
-import org.jedy.cart.dto.response.QCartResponse;
 import org.jedy.cart.exception.EmptyCartNotFindException;
 import org.jedy.system_core.support.Querydsl4RepositorySupport;
 
@@ -20,15 +18,13 @@ public class CartRepositoryCustomImpl extends Querydsl4RepositorySupport impleme
     }
 
     @Override
-    public List<CartResponse> findUseCartList(String memberLoginId, Boolean useSlot) {
+    public List<Cart> findUseCartList(String memberLoginId, Boolean useSlot) {
 //      @QueryProejection사용하여 dto조회시 페치조인과 일반조인 https://irerin07.tistory.com/144
         return select(
-                new QCartResponse(
-                    cart.id, cart.product, cart.count
-                )
+                cart
         ).from(cart)
-         .join(cart.member, member)
-         .leftJoin(cart.product, product)
+         .join(cart.member, member).fetchJoin()
+         .leftJoin(cart.product, product).fetchJoin()
          .where(
                  memberLoginIdEq(memberLoginId),
                  useSlotEq(useSlot)

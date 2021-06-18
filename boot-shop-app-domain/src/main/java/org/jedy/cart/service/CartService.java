@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -32,8 +33,12 @@ public class CartService {
     private final ProductRepository productRepository;
 
     public Page<CartResponse> search(String memberLoginId) {
-        List<CartResponse> useCartList = cartRepository.findUseCartList(memberLoginId, true);
-        PageImpl page = new PageImpl(useCartList);
+        List<Cart> useCartList = cartRepository.findUseCartList(memberLoginId, true);
+        PageImpl page = new PageImpl(
+                useCartList.stream().map(cart ->
+                        new CartResponse(cart.getId(), cart.getProduct(), cart.getCount())
+                ).collect(Collectors.toList())
+        );
         return page;
     }
 
