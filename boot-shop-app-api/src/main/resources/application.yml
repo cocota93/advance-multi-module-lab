@@ -42,7 +42,11 @@ spring:
   #    serialization:
   #      fail-on-empty-beans : false
 
-  #  jpa:
+  jpa:
+    hibernate:
+      properties:
+        hibernate:
+          default_batch_fetch_size: 100
 #    generate-ddl: true
 #    show_sql: true
 #    format_sql: true
