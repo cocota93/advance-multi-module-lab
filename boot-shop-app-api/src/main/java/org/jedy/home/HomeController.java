@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Arrays;
 
 @RestController
-@AllArgsConstructor
 public class HomeController {
 
 //    private PostsService postsService;

@@ -1,7 +1,6 @@
 package org.jedy.payment.domain;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 import org.jedy.system_core.entity.BaseTimeEntity;
 
 import javax.persistence.*;
@@ -9,6 +8,8 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class Payment extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

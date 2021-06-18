@@ -1,9 +1,6 @@
 package org.jedy.ad_statistic.domain;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.jedy.ad_statistic.dto.req.ReqUploadAdStatistic;
 
 import javax.persistence.*;

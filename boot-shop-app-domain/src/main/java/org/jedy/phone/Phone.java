@@ -1,6 +1,7 @@
 package org.jedy.phone;
 
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -14,10 +15,4 @@ public class Phone {
     String head;
     String body;
     String tail;
-
-    public Phone(String head, String body, String tail) {
-        this.head = head;
-        this.body = body;
-        this.tail = tail;
-    }
 }
