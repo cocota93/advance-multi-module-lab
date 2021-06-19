@@ -9,7 +9,7 @@
 - JPA 
 - Jpa data 
 - QueryDsl 
-- Postgre sql 
+- H2
 - spring security form방식 - 어드민서버 적용
 - spring security jwt방식 - api서버 적용
 - swagger(springdoc openapi) - 어드민서버 적용
