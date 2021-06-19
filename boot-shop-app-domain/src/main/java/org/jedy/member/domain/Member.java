@@ -41,7 +41,7 @@ public class Member extends BaseTimeEntity {
   private Integer age;
 
   @JsonIgnore
-  @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "owner")
   private List<MemberAuth> authorityList = new ArrayList<>();
 
 

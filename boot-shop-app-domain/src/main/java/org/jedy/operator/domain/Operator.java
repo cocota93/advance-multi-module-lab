@@ -36,7 +36,7 @@ public class Operator extends BaseTimeEntity {
     private String password;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "owner")
     private List<OperatorAuth> authorityList = new ArrayList<>();
 
     public Operator(String loginId, String password) {

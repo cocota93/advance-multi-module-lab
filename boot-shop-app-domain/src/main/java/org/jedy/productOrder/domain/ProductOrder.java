@@ -7,6 +7,7 @@ import org.jedy.productOrderUnit.domain.ProductOrderUnit;
 import org.jedy.system_core.entity.BaseTimeEntity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.FetchType.LAZY;
@@ -58,8 +59,8 @@ public class ProductOrder extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private ProductOrderStatus orderStatus;
 
-    @OneToMany(mappedBy = "productOrder", cascade = CascadeType.ALL)
-    private List<ProductOrderUnit> productOrderUnits;
+    @OneToMany(mappedBy = "productOrder")
+    private List<ProductOrderUnit> productOrderUnits  = new ArrayList<>();
 
     @Column
     private Long totalPrice;

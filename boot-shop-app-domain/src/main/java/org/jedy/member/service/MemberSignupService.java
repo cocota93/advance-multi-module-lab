@@ -11,6 +11,7 @@ import org.jedy.member.domain.MemberAuthType;
 import org.jedy.member.domain.ReqSignupMember;
 import org.jedy.member.dto.response.MemberCreateResponse;
 import org.jedy.member.exception.MemberSignupDuplicationException;
+import org.jedy.member.repository.MemberAuthRepository;
 import org.jedy.member.repository.MemberRepository;
 import org.jedy.system_core.global.error.exception.EntityNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -28,6 +29,7 @@ import java.util.List;
 @Slf4j
 public class MemberSignupService {
     private final MemberRepository memberRepository;
+    private final MemberAuthRepository MemberAuthRepository;
     private final PasswordEncoder passwordEncoder;
     private final CartRepository cartRepository;
 
@@ -56,8 +58,13 @@ public class MemberSignupService {
                               .email(reqSignupMember.getEmail())
                               .age(reqSignupMember.getAge())
                               .build();
-        member.addAuthority(new MemberAuth(member, MemberAuthType.COMMON_USER));
-        return memberRepository.save(member).getId();
+        memberRepository.save(member);
+
+        MemberAuth memberAuth = new MemberAuth(member, MemberAuthType.COMMON_USER);
+        MemberAuthRepository.save(memberAuth);
+
+        member.addAuthority(memberAuth);
+        return member.getId();
     }
 
 }
