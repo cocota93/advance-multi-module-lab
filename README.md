@@ -13,7 +13,7 @@
 - spring security form방식 - 어드민서버 적용
 - spring security jwt방식 - api서버 적용
 - swagger(springdoc openapi) - 어드민서버 적용
-- restdoc - api서버 적용
+- ~~restdoc - api서버 적용~~
 
 ### 프로젝트 특징
 - 기존에 진행하던 [multi-module-lab](https://github.com/cocota93/multi-module-lab) 프로젝트를 [멀티모듈 설계이야기 - 우아한형제들 기술블로그](https://woowabros.github.io/study/2019/07/01/multi-module.html)
