@@ -11,15 +11,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class HomeControllerTest {
 
 
-    @Autowired
-    private TestRestTemplate restTemplate;
-
-    @Test
-    public void Profile확인 () {
-        //when
-        String profile = this.restTemplate.getForObject("/profile", String.class);
-
-        //then
-        assertEquals("local", profile);
-    }
+//    @Autowired
+//    private TestRestTemplate restTemplate;
+//
+//    @Test
+//    public void Profile확인 () {
+//        //when
+//        String profile = this.restTemplate.getForObject("/profile", String.class);
+//
+//        //then
+//        assertEquals("local", profile);
+//    }
 }
