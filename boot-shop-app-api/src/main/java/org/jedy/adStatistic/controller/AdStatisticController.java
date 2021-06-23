@@ -9,12 +9,12 @@ import org.jedy.ad_statistic.dto.req.ReqUploadAdStatistic;
 import org.jedy.ad_statistic.dto.res.ResAdHourlyStatistic;
 import org.jedy.ad_statistic.dto.res.ResUploadAdHourlyStatistic;
 import org.jedy.ad_statistic.service.AdHourlyStatisticService;
+import org.jedy.system_core.entity.PageResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/adStatistic")
@@ -28,9 +28,10 @@ public class AdStatisticController {
 
     @GetMapping("/search")
     @ResponseBody
-    public Page<ResAdHourlyStatistic> search(AdStatisticSearchCondition adStatisticSearchCondition){
+    public PageResponse<ResAdHourlyStatistic> search(AdStatisticSearchCondition adStatisticSearchCondition){
         Page<ResAdHourlyStatistic> searchResult = adStatisticQueryRepository.searchPageComplex(adStatisticSearchCondition, 0, 20);
-        return searchResult;
+        PageResponse<ResAdHourlyStatistic> pageResponse = new PageResponse<>(searchResult.getContent(), searchResult.getPageable(), searchResult.getTotalElements());
+        return pageResponse;
     }
 
     @PostMapping("/upload")

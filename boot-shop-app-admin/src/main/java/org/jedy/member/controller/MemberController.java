@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.jedy.member.dto.MemberResponse;
 import org.jedy.member.dto.MemberSearchCondition;
 import org.jedy.member.service.MemberPagingServiceImpl;
+import org.jedy.system_core.entity.PageResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,15 +31,17 @@ public class MemberController {
   @GetMapping("/list")
   public String getList(Model model, MemberSearchCondition condition, @RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "20") Integer size) {
     Page<MemberResponse> pageList = memberPagingServiceImpl.searchPaging(condition, page, size);
-    model.addAttribute("pageList", pageList);
+    PageResponse pageResponse = new PageResponse(pageList.getContent(),pageList.getPageable(), pageList.getTotalElements());
+    model.addAttribute("pageList", pageResponse);
     return "members/list";
   }
 
   @GetMapping("/listResponseBoy")
   @ResponseBody
-  public Page listResponseBoy(MemberSearchCondition condition, @RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "20") Integer size) {
+  public PageResponse<MemberResponse> listResponseBoy(MemberSearchCondition condition, @RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "20") Integer size) {
     Page<MemberResponse> pageList = memberPagingServiceImpl.searchPaging(condition, page, size);
-    return pageList;
+    PageResponse<MemberResponse> pageResponse = new PageResponse<>(pageList.getContent(),pageList.getPageable(), pageList.getTotalElements());
+    return pageResponse;
   }
 
 }

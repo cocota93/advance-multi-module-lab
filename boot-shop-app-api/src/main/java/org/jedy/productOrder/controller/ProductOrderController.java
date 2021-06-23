@@ -8,6 +8,7 @@ import org.jedy.productOrder.dto.response.ProductOrderDetailResponse;
 import org.jedy.productOrder.dto.response.ProductOrderSimpleResponse;
 import org.jedy.productOrder.service.ProductOrderCalculateService;
 import org.jedy.productOrder.service.ProductOrderService;
+import org.jedy.system_core.entity.PageResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -40,9 +41,10 @@ public class ProductOrderController {
 
     //구매한 상품리스트
     @GetMapping(value = "/simpleSearch")
-    public Page<ProductOrderSimpleResponse> simpleSearch(@AuthenticationPrincipal UserDetails userDetails, ProductOrderSearchCondition searchCondition, Pageable pageable) {
+    public PageResponse<ProductOrderSimpleResponse> simpleSearch(@AuthenticationPrincipal UserDetails userDetails, ProductOrderSearchCondition searchCondition, Pageable pageable) {
         Page<ProductOrderSimpleResponse> page = productOrderService.simpleSearch(userDetails.getUsername(), searchCondition, pageable);
-        return page;
+        PageResponse<ProductOrderSimpleResponse> pageResponse = new PageResponse<>(page.getContent(), page.getPageable(), page.getTotalElements());
+        return pageResponse;
     }
 
     @GetMapping(value = "/detailSearch")

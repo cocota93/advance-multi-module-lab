@@ -5,6 +5,7 @@ import org.jedy.notice.domain.Notice;
 import org.jedy.notice.dto.NoticeSearchCondition;
 import org.jedy.notice.service.NoticePagingServiceImpl;
 import org.jedy.notice.service.NoticeServiceImpl;
+import org.jedy.system_core.entity.PageResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
@@ -58,7 +59,8 @@ public class NoticeController {
         condition.setDeleted(false);
 
         Page<Notice> pageList = noticePagingService.searchPaging(condition, pageable);
-        model.addAttribute("pageList", pageList);
+        PageResponse pageResponse = new PageResponse(pageList.getContent(), pageList.getPageable(),pageList.getTotalElements());
+        model.addAttribute("pageList", pageResponse);
 
         return "/notice/list";
     }
