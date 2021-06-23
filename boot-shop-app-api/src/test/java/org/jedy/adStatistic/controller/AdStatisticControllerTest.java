@@ -41,7 +41,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(controllers = {
         AdStatisticController.class
 })
-class AdStatisticRestDocControllerTest extends ApiDocumentationTest {
+class AdStatisticControllerTest extends ApiDocumentationTest {
 
     @MockBean
     private AdHourlyStatisticService adHourlyStatisticService;
