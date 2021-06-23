@@ -9,10 +9,12 @@
 - Jpa data 
 - QueryDsl 
 - H2
+- AWS EC2, S3, CodeDeploy, RDS(MariaDB), ELB 
+- Jenkins  
 - spring security form방식 - 어드민서버 적용
 - spring security jwt방식 - api서버 적용
 - swagger(springdoc openapi) - 어드민서버 적용
-- ~~restdoc - api서버 적용~~
+- restdoc - api서버 적용
 
 ### 프로젝트 특징
 - 기존에 진행하던 [multi-module-lab](https://github.com/cocota93/multi-module-lab) 프로젝트를 [멀티모듈 설계이야기 - 우아한형제들 기술블로그](https://woowabros.github.io/study/2019/07/01/multi-module.html)
@@ -23,18 +25,21 @@
 ### 멀티모듈 구조
 ```
 application계층
-  - blahblah-app-admin
-  - blahblah-app-api
+  - boot-shop-app-admin
+  - boot-shop-app-api
 
 in system available계층
     - 추후 실사용때 추가
     
 system domain계층
   - domain
-    - member
-    - notice
-    - operator
-  
+    - Member
+    - Notice
+    - Operator
+    - Cart
+    - Product
+    - ProductOrder
+    - ProductOrderUnit
 system core계층  
   - system-core
 ```
@@ -42,8 +47,6 @@ system core계층
 ### 코드를 보는 방법
 - spring security form : Operator를 중점으로
 - spring security jwt : Member를 중점으로
-- crud : Notice를 중점으로
-- restdoc : [restdoc구경하기](http://ec2-3-35-121-25.ap-northeast-2.compute.amazonaws.com/docs/index.html) (프리티어 만료로 서버 내립니다)
 
 
 ### 코드 작성 규칙
