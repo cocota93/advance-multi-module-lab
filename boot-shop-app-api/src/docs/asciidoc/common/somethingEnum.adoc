@@ -5,4 +5,5 @@ endif::[]
 :icons: font
 
 [[job]]
-include::{snippets}/common/custom-response-fields-apiResponseCodes.adoc[]
+//include::{snippets}/common/custom-response-fields-apiResponseCodes.adoc[]
+include::{snippets}/ad_hourly_statistic_search/response-fields.adoc[]

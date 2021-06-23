@@ -1,6 +1,7 @@
 package org.jedy.system_core.entity;
 
 import lombok.Data;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.util.Assert;
 
@@ -27,19 +28,24 @@ public class PageResponse<T> {
         Assert.notNull(pageable, "Pageable must not be null!");
 
         this.content.addAll(content);
-        pageSize = pageable.getPageSize();
-        pageNumber = pageable.getPageNumber();
-        offset = pageable.getOffset();
+        this.pageSize = pageable.getPageSize();
+        this.pageNumber = pageable.getPageNumber();
+        this.offset = pageable.getOffset();
         this.total = pageable.toOptional().filter(it -> !content.isEmpty())//
                              .filter(it -> it.getOffset() + it.getPageSize() > total)//
                              .map(it -> it.getOffset() + content.size())//
                              .orElse(total);
 
-        hasPrevious = pageable.hasPrevious();
-        firstPage = !hasPrevious;
+        this.hasPrevious = pageable.hasPrevious();
+        this.firstPage = !hasPrevious;
 
-        lastPage = offset + pageSize >= total;
-        hasNext = !lastPage;
+        this.lastPage = offset + pageSize >= total;
+        this.hasNext = !lastPage;
+    }
+
+
+    public PageResponse(@NotNull Page<T> page) {
+        this(page.getContent(), page.getPageable(), page.getTotalElements());
     }
 
 

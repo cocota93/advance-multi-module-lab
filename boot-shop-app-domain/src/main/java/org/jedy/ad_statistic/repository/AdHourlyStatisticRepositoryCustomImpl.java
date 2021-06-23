@@ -1,41 +1,35 @@
-package org.jedy.adStatistic.repository.query;
-
+package org.jedy.ad_statistic.repository;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQuery;
-import com.querydsl.jpa.impl.JPAQueryFactory;
+import org.jedy.ad_statistic.domain.AdHourlyStatistic;
 import org.jedy.ad_statistic.domain.QAdHourlyStatistic;
 import org.jedy.ad_statistic.dto.req.AdStatisticSearchCondition;
 import org.jedy.ad_statistic.dto.res.QResAdHourlyStatistic;
 import org.jedy.ad_statistic.dto.res.ResAdHourlyStatistic;
 import org.jedy.member.domain.Member;
+import org.jedy.productOrder.domain.ProductOrder;
+import org.jedy.productOrder.repository.ProductOrderRepositoryCustom;
+import org.jedy.system_core.support.Querydsl4RepositorySupport;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.repository.support.PageableExecutionUtils;
 
-import javax.persistence.EntityManager;
 import java.time.LocalDate;
 import java.util.List;
 
 import static org.jedy.ad_statistic.domain.QAdHourlyStatistic.adHourlyStatistic;
 import static org.jedy.member.domain.QMember.member;
-//import static org.jedy.member.domain.QResAdHourlyStatistic.resAdHourlyStatistic;
-import static org.springframework.util.StringUtils.hasText;
 
-public class AdStatisticQueryRepositoryImpl implements AdStatisticQueryRepositoryCustom {
+public class AdHourlyStatisticRepositoryCustomImpl extends Querydsl4RepositorySupport implements AdHourlyStatisticRepositoryCustom {
+    public AdHourlyStatisticRepositoryCustomImpl() { super(AdHourlyStatistic.class); }
 
-    private final JPAQueryFactory queryFactory;
-
-    public AdStatisticQueryRepositoryImpl(EntityManager em){
-        this.queryFactory = new JPAQueryFactory(em);
-    }
 
     @Override
-    public Page<ResAdHourlyStatistic> searchPageComplex(AdStatisticSearchCondition condition, Integer page, Integer size) {
+    public Page<ResAdHourlyStatistic> searchPage(AdStatisticSearchCondition condition, Integer page, Integer size) {
         PageRequest pageRequest = PageRequest.of(page, size);
 
-        List<ResAdHourlyStatistic> content = queryFactory
-                .select(
+        List<ResAdHourlyStatistic> content = select(
                         new QResAdHourlyStatistic(
                                 adHourlyStatistic
                         )
@@ -49,8 +43,7 @@ public class AdStatisticQueryRepositoryImpl implements AdStatisticQueryRepositor
                 .limit(pageRequest.getPageSize())
                 .fetch();
 
-        JPAQuery<Member> countQuery = queryFactory
-                .select(member)
+        JPAQuery<Member> countQuery = select(member)
                 .from(member)
                 .where(
                         targetDateEq(condition.getTargetDate()),
@@ -69,5 +62,4 @@ public class AdStatisticQueryRepositoryImpl implements AdStatisticQueryRepositor
     private BooleanExpression hourEq(Integer hour) {
         return hour != null ? QAdHourlyStatistic.adHourlyStatistic.hour.eq(hour) : null;
     }
-
 }

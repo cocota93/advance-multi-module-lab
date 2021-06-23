@@ -21,18 +21,18 @@ blahblah API
 
 API에 관계없이 아래 사항을 지켜주셔야 합니다. +
 blahblah... +
-현재 페이지는 http://localhost:8081/docs/index.html 로 접속하시면 볼수 있습니다.
+현재 페이지는 http://localhost:8080/docs/index.html 로 접속하시면 볼수 있습니다.
 
 &#160;
 
-=== Common Response
+//=== Common Response
 
-include::{snippets}/common/custom-response-fields.adoc[]
+//include::{snippets}/common/custom-response-fields.adoc[]
+//
+//
+//include::{snippets}/common/custom-response-fields-apiResponseCodes.adoc[]
 
-
-include::{snippets}/common/custom-response-fields-apiResponseCodes.adoc[]
-
-&#160;
+//&#160;
 
 
 == 통계 API
@@ -49,7 +49,7 @@ include::{snippets}/ad_hourly_statistic_search/http-request.adoc[]
 
 
 ==== Response
-include::{snippets}/ad_hourly_statistic_search/response-fields-data.adoc[]
+include::{snippets}/ad_hourly_statistic_search/response-fields.adoc[]
 
 
 ===== Response HTTP Example
@@ -69,7 +69,7 @@ include::{snippets}/ad_hourly_statistic_upload/http-request.adoc[]
 
 
 ==== Response
-include::{snippets}/ad_hourly_statistic_upload/response-fields-data.adoc[]
+include::{snippets}/ad_hourly_statistic_upload/response-fields.adoc[]
 
 
 ===== Response HTTP Example

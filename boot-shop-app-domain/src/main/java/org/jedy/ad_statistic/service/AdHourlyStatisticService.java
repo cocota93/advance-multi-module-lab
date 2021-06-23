@@ -3,6 +3,7 @@ package org.jedy.ad_statistic.service;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import lombok.RequiredArgsConstructor;
 import org.jedy.ad_statistic.repository.AdHourlyStatisticRepository;
 import org.jedy.ad_statistic.domain.AdHourlyStatistic;
 import org.jedy.ad_statistic.domain.QAdHourlyStatistic;
@@ -10,9 +11,12 @@ import org.jedy.ad_statistic.dto.req.AdStatisticSearchCondition;
 import org.jedy.ad_statistic.dto.req.ReqUploadAdStatistic;
 import org.jedy.ad_statistic.dto.res.QResAdHourlyStatistic;
 import org.jedy.ad_statistic.dto.res.ResAdHourlyStatistic;
+import org.jedy.ad_statistic.repository.AdHourlyStatisticRepositoryCustom;
+import org.jedy.system_core.entity.PageResponse;
 import org.jedy.system_core.global.error.exception.EntityNotFoundException;
 import org.jedy.system_core.global.error.exception.ErrorCode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,14 +30,10 @@ import static org.jedy.ad_statistic.domain.QAdHourlyStatistic.adHourlyStatistic;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class AdHourlyStatisticService {
 
-    @Autowired private AdHourlyStatisticRepository adHourlyStatisticRepository;
-    private JPAQueryFactory queryFactory;
-
-    public AdHourlyStatisticService(EntityManager em){
-        this.queryFactory = new JPAQueryFactory(em);
-    }
+    private AdHourlyStatisticRepository adHourlyStatisticRepository;
 
 
     public AdHourlyStatistic findById(Long id) {
@@ -63,20 +63,9 @@ public class AdHourlyStatisticService {
         return findResult.getId();
     }
 
-    public List<ResAdHourlyStatistic> search(AdStatisticSearchCondition condition) {
-
-        return queryFactory
-                .select(
-                        new QResAdHourlyStatistic(
-                                QAdHourlyStatistic.adHourlyStatistic
-                        )
-                )
-                .from(QAdHourlyStatistic.adHourlyStatistic)
-                .where(
-                        targetDateEq(condition.getTargetDate()),
-                        hourEq(condition.getHour())
-                )
-                .fetch();
+    public PageResponse<ResAdHourlyStatistic> searchPage(AdStatisticSearchCondition adStatisticSearchCondition, int page, int size) {
+        Page<ResAdHourlyStatistic> resAdHourlyStatistics = adHourlyStatisticRepository.searchPage(adStatisticSearchCondition, page, size);
+        return new PageResponse<>(resAdHourlyStatistics);
     }
 
     private BooleanExpression targetDateEq(LocalDate targetDate) {

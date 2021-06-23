@@ -13,7 +13,7 @@ public class Docs {
     Map<String, String> apiResponseCodes;
     Map<String, String> memberAuth;
 
-    @Builder(builderClassName = "TestBuilder", builderMethodName = "testBuilder")
+    @Builder(builderClassName = "testBuilder", builderMethodName = "testBuilder")
     private Docs(Map<String, String> apiResponseCodes, Map<String, String> memberAuth) {
         this.apiResponseCodes = apiResponseCodes;
         this.memberAuth = memberAuth;

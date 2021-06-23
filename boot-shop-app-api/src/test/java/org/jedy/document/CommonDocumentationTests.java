@@ -27,17 +27,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Slf4j
 public class CommonDocumentationTests extends ApiDocumentationTest {
 //
-//    @Test
-//    public void commons() throws Exception{
-//        ResultActions result = this.mockMvc.perform(
-//                get("/docs")
-//                        .accept(MediaType.APPLICATION_JSON)
-//        );
-//
-//        MvcResult mvcResult = result.andReturn();
-//        Docs docs = getData(mvcResult);
-//
-//        //then
+@Test
+public void commons() throws Exception{
+    ResultActions result = this.mockMvc.perform(
+            get("/docs")
+                    .accept(MediaType.APPLICATION_JSON)
+    );
+
+    MvcResult mvcResult = result.andReturn();
+    Docs docs = getData(mvcResult);
+
+    //then
 //        result.andExpect(status().isOk())
 //                .andDo(document("common",
 //                        customResponseFields("custom-response", null,
@@ -51,27 +51,27 @@ public class CommonDocumentationTests extends ApiDocumentationTest {
 //                                enumConvertFieldDescriptor(docs.getApiResponseCodes())
 //                        )
 //                ));
-//    }
-//
-//    private static FieldDescriptor[] enumConvertFieldDescriptor(Map<String, String> enumValues) {
-//
-//        return enumValues.entrySet().stream()
-//                .map(x -> fieldWithPath(x.getKey()).description(x.getValue()))
-//                .toArray(FieldDescriptor[]::new);
-//    }
-//
-//    Docs getData(MvcResult result) throws IOException {
-//        SingleResult<Docs> apiResponseDto = objectMapper.readValue(result.getResponse().getContentAsByteArray(),
-//                new TypeReference<SingleResult<Docs>>() {
-//                });
-//
-//        return apiResponseDto.getData();
-//    }
-//
-//    public static CustomResponseFieldsSnippet customResponseFields(String type,
-//                                                                   PayloadSubsectionExtractor<?> subsectionExtractor,
-//                                                                   Map<String, Object> attributes, FieldDescriptor... descriptors) {
-//        return new CustomResponseFieldsSnippet(type, subsectionExtractor, Arrays.asList(descriptors), attributes
-//                , true);
-//    }
+}
+
+    private static FieldDescriptor[] enumConvertFieldDescriptor(Map<String, String> enumValues) {
+
+        return enumValues.entrySet().stream()
+                         .map(x -> fieldWithPath(x.getKey()).description(x.getValue()))
+                         .toArray(FieldDescriptor[]::new);
+    }
+
+    Docs getData(MvcResult result) throws IOException {
+        Docs apiResponseDto = objectMapper.readValue(result.getResponse().getContentAsByteArray(),
+                new TypeReference<Docs>() {
+                });
+
+        return apiResponseDto;
+    }
+
+    public static CustomResponseFieldsSnippet customResponseFields(String type,
+                                                                   PayloadSubsectionExtractor<?> subsectionExtractor,
+                                                                   Map<String, Object> attributes, FieldDescriptor... descriptors) {
+        return new CustomResponseFieldsSnippet(type, subsectionExtractor, Arrays.asList(descriptors), attributes
+                , true);
+    }
 }
