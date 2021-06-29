@@ -58,6 +58,7 @@ public class ProductOrderService {
                                                .orElseThrow(() -> new BusinessException("존재하지 않는 물품입니다.." + productOrderUnitReq.getProductId(), ErrorCode.ENTITY_NOT_FOUND));
             ProductOrderUnit productOrderUnit = ProductOrderUnit.builder()
                                                                 .productOrder(productOrder)
+                                                                .product(product)
                                                                 .price(product.getPrice())
                                                                 .count(productOrderUnitReq.getCount())
                                                                 .productOrderUnitStatus(ProductOrderUnitStatus.ORDER)

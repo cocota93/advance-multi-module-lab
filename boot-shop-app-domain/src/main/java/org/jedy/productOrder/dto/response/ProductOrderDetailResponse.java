@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.jedy.address.Address;
+import org.jedy.product.domain.Product;
 import org.jedy.productOrder.domain.ProductOrderDeliveryStatus;
 import org.jedy.productOrder.domain.ProductOrderStatus;
 import org.jedy.productOrderUnit.domain.ProductOrderUnit;
@@ -32,6 +33,7 @@ public class ProductOrderDetailResponse {
                                                   .map(unit -> new ProductOrderUnitResponse(
                                                           unit.getId(),
                                                           unit.getProductOrderUnitStatus(),
+                                                          unit.getProduct(),
                                                           unit.getPrice(),
                                                           unit.getCount()
                                                   ))
@@ -46,14 +48,35 @@ public class ProductOrderDetailResponse {
     public static class ProductOrderUnitResponse {
         private Long id;
         private ProductOrderUnitStatus productOrderUnitStatus;
+        private ProductResponse productResponse;
         private Long price;
         private Integer count;
 
-        public ProductOrderUnitResponse(Long id, ProductOrderUnitStatus productOrderUnitStatus, Long price, Integer count) {
+        public ProductOrderUnitResponse(Long id, ProductOrderUnitStatus productOrderUnitStatus, Product product, Long price, Integer count) {
             this.id = id;
             this.productOrderUnitStatus = productOrderUnitStatus;
+            this.productResponse = ProductResponse.builder()
+                                                  .id(product.getId())
+                                                  .name(product.getName())
+                                                  .upperCatCd(product.getUpperCatCd())
+                                                  .build();
             this.price = price;
             this.count = count;
+        }
+    }
+
+
+    @Data
+    public static class ProductResponse {
+        private Long id;
+        private String upperCatCd;
+        private String name;
+
+        @Builder
+        public ProductResponse(Long id, String upperCatCd, String name) {
+            this.id = id;
+            this.upperCatCd = upperCatCd;
+            this.name = name;
         }
     }
 }
