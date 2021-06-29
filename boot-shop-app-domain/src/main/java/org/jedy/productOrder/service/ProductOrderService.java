@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.jedy.member.domain.Member;
 import org.jedy.member.exception.MemberNotFindException;
 import org.jedy.member.repository.MemberRepository;
+import org.jedy.payment.domain.Payment;
+import org.jedy.payment.repository.PaymentRepository;
 import org.jedy.product.domain.Product;
 import org.jedy.product.repository.ProductRepository;
 import org.jedy.productOrder.domain.ProductOrder;
@@ -26,8 +28,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 
 @Service
 @Transactional
@@ -39,19 +39,24 @@ public class ProductOrderService {
     private final ProductRepository productRepository;
     private final ProductOrderRepository productOrderRepository;
     private final ProductOrderUnitRepository productOrderUnitRepository;
+    private final PaymentRepository paymentRepository;
 
-    public void add(String username, ProductOrderRequest productOrderRequest) {
+    public void add(String username, ProductOrderRequest productOrderRequest, Long paymentId) {
         Member buyer = memberRepository.findByLoginId(username)
                                        .orElseThrow(() -> new BusinessException("구매자를 찾지 못했습니다(" + username + ")", ErrorCode.ENTITY_NOT_FOUND));
+        Payment payment = paymentRepository.findById(paymentId)
+                                           .orElseThrow(() -> new BusinessException("결제정보를 찾지 못했습니다(" + paymentId + ")", ErrorCode.ENTITY_NOT_FOUND));
 
 
         ProductOrder productOrder = ProductOrder.builder()
                                                 .member(buyer)
+                                                .payment(payment)
                                                 .address(productOrderRequest.getReceiverAddress().toAddress())
                                                 .orderStatus(ProductOrderStatus.ORDER)
 //                    .deliveryStatus()
                                                 .build();
         productOrderRepository.save(productOrder);
+        payment.assignProductOrder(productOrder);
 
         for (ProductOrderRequest.ProductOrderUnitReq productOrderUnitReq : productOrderRequest.getOrderUnitReqList()) {
             Product product = productRepository.findById(productOrderUnitReq.getProductId())
@@ -76,7 +81,7 @@ public class ProductOrderService {
                                                .orElseThrow(() -> new MemberNotFindException(loginId));
 
         ProductOrder requestTarget = productOrderRepository.findByProductOrderUnitAndMember(searchCondition.getProductOrderId(), requestMember.getId())
-                                                          .orElseThrow(() -> new EntityNotFoundException("product order not found " + searchCondition.getProductOrderId()));
+                                                           .orElseThrow(() -> new EntityNotFoundException("product order not found " + searchCondition.getProductOrderId()));
         ProductOrderDetailResponse detailResponse = ProductOrderDetailResponse.builder()
                                                                               .id(requestTarget.getId())
 //                                  .totalPrice()
@@ -84,6 +89,7 @@ public class ProductOrderService {
                                                                               .orderStatus(requestTarget.getOrderStatus())
                                                                               .address(requestTarget.getAddress())
                                                                               .productOrderUnits(requestTarget.getProductOrderUnits())
+                                                                              .payment(requestTarget.getPayment())
                                                                               .build();
 
         return detailResponse;

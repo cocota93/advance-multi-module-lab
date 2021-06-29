@@ -30,10 +30,10 @@ public class ProductOrderController {
     @PostMapping(value = "/add")
     public ResponseEntity<Void> add(@AuthenticationPrincipal UserDetails userDetails, @Valid @RequestBody ProductOrderRequest productOrderRequest) {
         long totalPrice = productOrderCalculateService.calculate(productOrderRequest.getOrderUnitReqList());
-        paymentService.pay(productOrderRequest.getPaymentType(), totalPrice);
+        Long paymentId = paymentService.pay(productOrderRequest.getPaymentType(), totalPrice);
 
         //! add라는 네이밍은 모호한것 같음. RegisterReceipt 이런게 낫지않을까?
-        productOrderService.add(userDetails.getUsername(), productOrderRequest);
+        productOrderService.add(userDetails.getUsername(), productOrderRequest, paymentId);
 
         //배달처리용 서비스클래스 하나 따로 만들기
         return ResponseEntity.ok().build();

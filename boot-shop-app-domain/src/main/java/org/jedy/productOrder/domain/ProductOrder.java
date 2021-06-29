@@ -3,6 +3,7 @@ package org.jedy.productOrder.domain;
 import lombok.*;
 import org.jedy.address.Address;
 import org.jedy.member.domain.Member;
+import org.jedy.payment.domain.Payment;
 import org.jedy.productOrderUnit.domain.ProductOrderUnit;
 import org.jedy.system_core.entity.BaseTimeEntity;
 
@@ -70,4 +71,8 @@ public class ProductOrder extends BaseTimeEntity {
 
     @Embedded
     private Address address;
+
+    @OneToOne(fetch = LAZY)
+    @JoinColumn(name = "payment_id")
+    private Payment payment;
 }

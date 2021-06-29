@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.jedy.address.Address;
+import org.jedy.payment.domain.Payment;
+import org.jedy.payment.domain.PaymentType;
 import org.jedy.product.domain.Product;
 import org.jedy.productOrder.domain.ProductOrderDeliveryStatus;
 import org.jedy.productOrder.domain.ProductOrderStatus;
@@ -23,10 +25,11 @@ public class ProductOrderDetailResponse {
     private Long totalPrice;
     private ProductOrderDeliveryStatus deliveryStatus; //READY, COMP
     private Address address;
+    private PaymentResponse payment;
 
     @QueryProjection
     @Builder
-    public ProductOrderDetailResponse(Long id, ProductOrderStatus orderStatus, List<ProductOrderUnit> productOrderUnits, Long totalPrice, ProductOrderDeliveryStatus deliveryStatus, Address address) {
+    public ProductOrderDetailResponse(Long id, ProductOrderStatus orderStatus, List<ProductOrderUnit> productOrderUnits, Long totalPrice, ProductOrderDeliveryStatus deliveryStatus, Address address, Payment payment) {
         this.id = id;
         this.orderStatus = orderStatus;
         this.productOrderUnits = productOrderUnits.stream()
@@ -41,6 +44,11 @@ public class ProductOrderDetailResponse {
         this.totalPrice = totalPrice;
         this.deliveryStatus = deliveryStatus;
         this.address = address;
+        this.payment = PaymentResponse.builder()
+                                      .id(payment.getId())
+                                      .paymentType(payment.getPaymentType())
+                                      .price(payment.getPrice())
+                                      .build();
     }
 
     @NoArgsConstructor
@@ -77,6 +85,20 @@ public class ProductOrderDetailResponse {
             this.id = id;
             this.upperCatCd = upperCatCd;
             this.name = name;
+        }
+    }
+
+    @Data
+    static class PaymentResponse {
+        private Long id;
+        private PaymentType paymentType;
+        private Long price;
+
+        @Builder
+        public PaymentResponse(Long id, PaymentType paymentType, Long price) {
+            this.id = id;
+            this.paymentType = paymentType;
+            this.price = price;
         }
     }
 }

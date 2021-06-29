@@ -27,7 +27,8 @@ public class ProductOrderRepositoryCustomImpl extends Querydsl4RepositorySupport
                                 productOrder.orderStatus,
                                 productOrder.totalPrice,
                                 productOrder.deliveryStatus,
-                                productOrder.address
+                                productOrder.address,
+                                productOrder.payment
                         )
                 )
                 .from(productOrder)
