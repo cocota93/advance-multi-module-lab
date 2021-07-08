@@ -16,12 +16,6 @@
 - swagger(springdoc openapi) - 어드민서버 적용
 - restdoc - api서버 적용
 
-### 프로젝트 특징
-- 기존에 진행하던 [multi-module-lab](https://github.com/cocota93/multi-module-lab) 프로젝트를 [멀티모듈 설계이야기 - 우아한형제들 기술블로그](https://woowabros.github.io/study/2019/07/01/multi-module.html)
-를 바탕으로 새롭게 시작한 프로젝트 입니다.
-- 어드민계정(Operator)과 일반 유저계정(Member)을 완전히 분리하여 진행
-
-
 ### 멀티모듈 구조
 ```
 application계층
