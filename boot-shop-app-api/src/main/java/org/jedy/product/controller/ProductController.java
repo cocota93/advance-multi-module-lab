@@ -24,4 +24,9 @@ public class ProductController {
         return search;
     }
 
+    @GetMapping(value = "/exist")
+    public boolean exist(String productName){
+        return productService.exist(productName);
+    }
+
 }

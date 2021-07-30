@@ -1,8 +1,10 @@
 package org.jedy.product.service;
 
+import com.querydsl.core.types.Predicate;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.jedy.product.domain.Product;
+import org.jedy.product.domain.QProduct;
 import org.jedy.product.dto.request.ProductRequestDto;
 import org.jedy.product.dto.request.ProductSearchCondition;
 import org.jedy.product.dto.response.ProductSearchResponse;
@@ -32,5 +34,11 @@ public class ProductService  {
 
     public Page<ProductSearchResponse> search(ProductSearchCondition productSearchCondition, Pageable pageable) {
         return productRepository.search(productSearchCondition, pageable);
+    }
+
+    public boolean exist(String productName){
+        final Predicate predicate = QProduct.product.name.eq(productName);
+
+        return productRepository.exists(predicate);
     }
 }
