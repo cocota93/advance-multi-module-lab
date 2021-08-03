@@ -38,7 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests() // 다음 리퀘스트에 대한 사용권한 체크
             .antMatchers("/", "/home", "/profile", "/docs/**", "/api/members/create",
                     "/api/members/login", "/api/members/signup", "/api/members/findLoginId",
-                    "/api/members/findPassword", "/api/products/**"
+                    "/api/members/findPassword", "/api/products/**", "/api/productOrder/list/*"
                     /*"/api/cart"*/)
             .permitAll() // 가입 및 인증 주소는 누구나 접근가능
         .and()

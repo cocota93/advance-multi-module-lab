@@ -2,6 +2,7 @@ package org.jedy.productOrder.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.jedy.payment.service.PaymentService;
+import org.jedy.productOrder.domain.ProductOrderStatus;
 import org.jedy.productOrder.dto.request.ProductOrderRequest;
 import org.jedy.productOrder.dto.request.ProductOrderSearchCondition;
 import org.jedy.productOrder.dto.response.ProductOrderDetailResponse;
@@ -52,6 +53,14 @@ public class ProductOrderController {
         ProductOrderDetailResponse response = productOrderService.detailSearch(userDetails.getUsername(), searchCondition);
         return response;
     }
+
+    @GetMapping(value = "/list/{productOrderStatus}")
+    public boolean getList(@PathVariable("productOrderStatus") ProductOrderStatus productOrderStatus){
+        System.out.println("productOrderStatus = " + productOrderStatus);
+        return true;
+    }
+
+
 
     //부분취소
     //모두취소
